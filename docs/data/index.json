@@ -1,0 +1,9 @@
+{
+ "team": "EDM",
+ "teamName": "Edmonton Oilers",
+ "seasons": [
+  {"seasonId": "20252026", "label": "2025-26"},
+  {"seasonId": "20242025", "label": "2024-25"},
+  {"seasonId": "20232024", "label": "2023-24"}
+ ]
+}

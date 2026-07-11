@@ -1,0 +1,33 @@
+name: Update schedule data
+
+on:
+  schedule:
+    # 06:15 UTC daily = just after West Coast games end (11:15pm MT)
+    - cron: "15 6 * 10,11,12,1,2,3,4 *"
+  workflow_dispatch:
+    inputs:
+      season:
+        description: "Season id (e.g. 20262027). Blank = config default."
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Update season data
+        run: python scripts/update_data.py ${{ github.event.inputs.season }}
+      - name: Commit if changed
+        run: |
+          git config user.name "schedule-bot"
+          git config user.email "actions@github.com"
+          git add docs/data
+          git diff --cached --quiet || git commit -m "Data update $(date -u +%F)"
+          git push

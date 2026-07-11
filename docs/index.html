@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schedule Lab · Edmonton Oilers</title>
+<meta name="description" content="Situational schedule analytics — rest, travel, game states, and results.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-left">
+    <p class="eyebrow">Schedule Lab · Edmonton Oilers</p>
+    <h1 class="season-title" id="seasonTitle">—</h1>
+    <p class="record-line" id="recordLine">Loading season data…</p>
+  </div>
+  <div class="masthead-right">
+    <label class="select-label" for="seasonSelect">Season</label>
+    <select id="seasonSelect" aria-label="Choose season"></select>
+  </div>
+</header>
+
+<section class="grind" aria-label="Season timeline">
+  <div class="grind-head">
+    <h2>The Grind</h2>
+    <p class="grind-note">Every game on true calendar time — tight clusters are back-to-backs, gaps are rest. <span id="filterNote"></span></p>
+  </div>
+  <div id="grindStrip" class="grind-strip"></div>
+  <div class="grind-legend">
+    <span><i class="dot dot-w"></i>Win</span>
+    <span><i class="dot dot-l"></i>Regulation loss</span>
+    <span><i class="dot dot-otl"></i>OT / SO loss</span>
+    <span><i class="dot dot-fut"></i>Not played</span>
+  </div>
+</section>
+
+<section class="splits" aria-label="Situational splits">
+  <div class="splits-head">
+    <h2>Situational splits</h2>
+    <p>Record · points percentage in each situation. Select a card to filter the timeline and schedule.</p>
+  </div>
+  <div id="splitsGrid"></div>
+</section>
+
+<section class="sched" aria-label="Schedule">
+  <div class="sched-head">
+    <h2>Schedule</h2>
+    <p id="schedCount"></p>
+  </div>
+  <div class="table-wrap">
+    <table id="schedTable">
+      <thead>
+        <tr>
+          <th class="num">#</th><th>Date</th><th>Day</th><th>Opp</th><th>H/A</th>
+          <th>Result</th><th class="num">Rest</th><th>Situations</th>
+          <th class="num">FO%</th><th>Moon</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <p>Results and game data from the NHL API · rest, travel and moon phases computed ·
+     team-ops flags (MDO, skates, arrivals) entered by hand.
+     <span id="updatedStamp"></span></p>
+</footer>
+
+<div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>
