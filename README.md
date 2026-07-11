@@ -1,4 +1,4 @@
-# Schedule Lab — Edmonton Oilers
+# Schedule Lab
 
 Situational schedule analytics: rest, travel, game states, and results, updated
 automatically from the NHL API and rendered as a static GitHub Pages site.
