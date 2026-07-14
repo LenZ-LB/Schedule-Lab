@@ -61,14 +61,22 @@ const SPLITS = [
     { id: "csf",   name: "Conceded first",    test: g => g.scoredFirst === false },
     { id: "la1",   name: "Leading after 1st", test: g => g.leadAfter1 === true },
     { id: "la2",   name: "Leading after 2nd", test: g => g.leadAfter2 === true },
-    { id: "t3",    name: "Tied into 3rd",     test: g => g.tiedIntoThird === true },
     { id: "w3",    name: "Won the 3rd",       test: g => g.wonThird === true },
+    { id: "stw",   name: "Won special teams", test: g => g.specialTeamsWin === true },
+    { id: "stt",   name: "Tied special teams",test: g => g.specialTeamsTie === true },
     { id: "fo50",  name: "Won 50%+ faceoffs", test: g => g.fo50 === true },
+    { id: "cfo",   name: "Won contested draws", test: g => g.contestedFoWin === true },
+  ]},
+  { group: "Margin", items: [
+    { id: "m1",    name: "One-goal games",    test: g => g.marginBucket === 1 },
+    { id: "m2",    name: "Two-goal games",    test: g => g.marginBucket === 2 },
+    { id: "m3",    name: "3+ goal games",     test: g => g.marginBucket === 3 },
   ]},
   { group: "Team ops (hand-tracked)", items: [
     { id: "mdo",   name: "After mandatory day off", test: g => g.mdo === true },
     { id: "ms",    name: "Morning skate",     test: g => g.morningSkate === true },
     { id: "noms",  name: "No morning skate",  test: g => g.morningSkate === false },
+    { id: "dbs",   name: "Skated day before", test: g => g.dayBeforeSkate === true },
     { id: "l117",  name: "11F / 7D lineup",   test: g => g.elevenF7D === true },
   ]},
   { group: "Calendar & cosmos", items: [
@@ -98,50 +106,115 @@ function renderHeader() {
     (remaining ? ` &nbsp;\u00B7&nbsp; ${remaining} remaining` : "");
 }
 
-function grindColor(g) {
-  return { w: "var(--orange)", l: "var(--loss)", otl: "var(--otl)", fut: "var(--fut)" }[outcomeClass(g)];
+function pointsForResult(r) {
+  return ["W", "OTW", "SOW"].includes(r) ? 2 : (r === "OTL" || r === "SOL") ? 1 : 0;
+}
+
+function streaks(played) {
+  // longest win streak, longest winless streak, current form (last 10)
+  let bestW = 0, bestWL = 0, curW = 0, curWL = 0, curStreak = 0, curType = null;
+  for (const g of played) {
+    if (isWin(g)) {
+      curW++; curWL = 0; bestW = Math.max(bestW, curW);
+      if (curType === "W") curStreak++; else { curType = "W"; curStreak = 1; }
+    } else {
+      curWL++; curW = 0; bestWL = Math.max(bestWL, curWL);
+      if (curType === "L") curStreak++; else { curType = "L"; curStreak = 1; }
+    }
+  }
+  const last10 = played.slice(-10);
+  const l10 = record(last10);
+  return { bestW, bestWL, curStreak, curType, l10 };
 }
 
 function renderGrind() {
   const games = state.season.games;
   const wrap = $("#grindStrip");
   if (!games.length) { wrap.innerHTML = ""; return; }
-  const W = 1000, H = 112, top = 26, bh = 52;
-  const t0 = new Date(games[0].date).getTime() - 3 * 864e5;
-  const t1 = new Date(games[games.length - 1].date).getTime() + 3 * 864e5;
-  const x = d => 8 + (new Date(d).getTime() - t0) / (t1 - t0) * (W - 16);
-
-  let svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Season timeline">`;
-  // month labels + gridlines
-  const cur = new Date(games[0].date); cur.setDate(1);
-  const end = new Date(games[games.length - 1].date);
-  while (cur <= end) {
-    const gx = x(cur.toISOString().slice(0, 10));
-    if (gx > 14 && gx < W - 14) {
-      svg += `<line x1="${gx.toFixed(1)}" y1="${top - 8}" x2="${gx.toFixed(1)}" y2="${top + bh + 10}" stroke="#16395E" stroke-width="1"/>`;
-      svg += `<text x="${(gx + 4).toFixed(1)}" y="${H - 8}" fill="#8FA9C4" font-size="11" font-family="Barlow Condensed" letter-spacing="1.5">${cur.toLocaleString("en", { month: "short" }).toUpperCase()}</text>`;
-    }
-    cur.setMonth(cur.getMonth() + 1);
-  }
   const active = state.filter ? findSplit(state.filter) : null;
-  games.forEach(g => {
-    const gx = x(g.date);
-    const dim = active && !active.test(g) ? " dim" : "";
-    const h = isPlayed(g) ? bh : bh * 0.55;
-    svg += `<rect class="tick${dim}" data-game="${g.game}" x="${(gx - 1.6).toFixed(1)}" y="${top + (bh - h)}" width="3.2" height="${h}" rx="1.2" fill="${grindColor(g)}"/>`;
-  });
+
+  const N = games.length;                       // scheduled games (usually 82)
+  const played = games.filter(isPlayed);
+  const maxPts = 2 * N;
+
+  // cumulative points after each game
+  let run = 0;
+  const pts = games.map(g => { if (g.result) run += pointsForResult(g.result); return run; });
+  const lastPlayedIdx = played.length - 1;
+
+  const W = 1000, H = 300, padL = 44, padR = 16, padT = 18, padB = 40;
+  const plotW = W - padL - padR, plotH = H - padT - padB;
+  const x = i => padL + (N <= 1 ? 0 : i / (N - 1) * plotW);       // i = 0-based game index
+  const yMaxPts = Math.max(60, Math.ceil((played.length ? pts[lastPlayedIdx] : 0) / 20) * 20 + 20, 100);
+  const y = p => padT + plotH - (p / yMaxPts) * plotH;
+
+  let svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Points pace over the season">`;
+
+  // y gridlines every 20 pts
+  for (let p = 0; p <= yMaxPts; p += 20) {
+    svg += `<line x1="${padL}" y1="${y(p).toFixed(1)}" x2="${W - padR}" y2="${y(p).toFixed(1)}" stroke="#12314F" stroke-width="1"/>`;
+    svg += `<text x="${padL - 8}" y="${(y(p) + 4).toFixed(1)}" text-anchor="end" fill="#5E7B9C" font-size="11" font-family="Barlow Condensed">${p}</text>`;
+  }
+  // x ticks every ~10 games
+  for (let i = 9; i < N; i += 10) {
+    svg += `<text x="${x(i).toFixed(1)}" y="${H - 14}" text-anchor="middle" fill="#5E7B9C" font-size="11" font-family="Barlow Condensed">${i + 1}</text>`;
+  }
+  svg += `<text x="${(padL + plotW / 2).toFixed(1)}" y="${H - 2}" text-anchor="middle" fill="#5E7B9C" font-size="10.5" font-family="Barlow Condensed" letter-spacing="1.5">GAME</text>`;
+
+  // reference pace lines: 96 pts (typical playoff cut) and 100 pts
+  const pace = (target, color, dash, label, labelDy) => {
+    const x2 = x(N - 1), y2 = y(target);
+    let s = `<line x1="${x(0)}" y1="${y(0).toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${color}" stroke-width="1.5" stroke-dasharray="${dash}" opacity="0.55"/>`;
+    s += `<text x="${(x2 - 2).toFixed(1)}" y="${(y2 + labelDy).toFixed(1)}" text-anchor="end" fill="${color}" font-size="10.5" font-family="Barlow Condensed" letter-spacing="1" opacity="0.9">${label}</text>`;
+    return s;
+  };
+  svg += pace(96, "#7FB2E5", "3 3", "96-PT PACE", -6);
+  svg += pace(100, "#4D6B8C", "1 4", "100-PT", 13);
+
+  // the cumulative points line (played games only)
+  if (played.length) {
+    let d = `M ${x(0).toFixed(1)} ${y(0).toFixed(1)}`;
+    for (let i = 0; i <= lastPlayedIdx; i++) d += ` L ${x(i).toFixed(1)} ${y(pts[i]).toFixed(1)}`;
+    // area fill under the line
+    const areaD = d + ` L ${x(lastPlayedIdx).toFixed(1)} ${y(0).toFixed(1)} L ${x(0).toFixed(1)} ${y(0).toFixed(1)} Z`;
+    svg += `<path d="${areaD}" fill="url(#paceFill)" opacity="0.5"/>`;
+    svg += `<defs><linearGradient id="paceFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FF4C00" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#FF4C00" stop-opacity="0"/></linearGradient></defs>`;
+    svg += `<path d="${d}" fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linejoin="round"/>`;
+
+    // result dots — color shows how each point was earned; streaks read as slope
+    games.forEach((g, i) => {
+      if (!g.result) return;
+      const dim = active && !active.test(g) ? 0.16 : 1;
+      const col = isWin(g) ? "var(--orange)" : (g.result === "OTL" || g.result === "SOL") ? "var(--otl)" : "var(--loss)";
+      const r = isWin(g) ? 3.6 : 3;
+      svg += `<circle class="pt" data-game="${g.game}" cx="${x(i).toFixed(1)}" cy="${y(pts[i]).toFixed(1)}" r="${r}" fill="${col}" opacity="${dim}" stroke="#061729" stroke-width="1"/>`;
+    });
+  }
   svg += "</svg>";
   wrap.innerHTML = svg;
 
+  // streak callouts above the chart
+  const s = streaks(played);
+  const callout = $("#grindStats");
+  if (callout) {
+    const form = `${s.l10.w}-${s.l10.l}-${s.l10.otl + s.l10.sol}`;
+    const cur = s.curType === "W" ? `W${s.curStreak}` : s.curType === "L" ? `L${s.curStreak}` : "\u2014";
+    callout.innerHTML = played.length
+      ? `<span><b>${cur}</b> current</span><span><b>${s.bestW}</b> best win streak</span>` +
+        `<span><b>${form}</b> last 10</span><span><b>${played.length ? pts[lastPlayedIdx] : 0}</b> pts in ${played.length} GP</span>`
+      : "<span>No games played yet.</span>";
+  }
+
   const tip = $("#tooltip");
-  wrap.querySelectorAll(".tick").forEach(el => {
+  wrap.querySelectorAll(".pt").forEach(el => {
     const g = games[+el.dataset.game - 1];
+    const i = g.game - 1;
     el.addEventListener("mousemove", e => {
       tip.hidden = false;
-      const res = g.result
-        ? `<b>${g.result}</b> ${g.gf}\u2013${g.ga}` : "not played";
-      tip.innerHTML = `#${g.game} \u00B7 ${g.date} \u00B7 ${g.homeAway === "h" ? "vs" : "@"} ${g.opponent}<br>${res}` +
-        (g.b2b ? " \u00B7 B2B" : "") + (g.threeIn4 ? " \u00B7 3-in-4" : "");
+      tip.innerHTML = `#${g.game} \u00B7 ${g.date} \u00B7 ${g.homeAway === "h" ? "vs" : "@"} ${g.opponent}<br>` +
+        `<b>${g.result}</b> ${g.gf}\u2013${g.ga} \u00B7 ${pts[i]} pts`;
       tip.style.left = Math.min(e.clientX + 14, innerWidth - 280) + "px";
       tip.style.top = (e.clientY + 14) + "px";
     });
@@ -201,8 +274,11 @@ function chips(g) {
   if (g.threeIn4) c.push(["3in4", true]);
   if (g.tzChange) c.push([`TZ ${g.tzChange > 0 ? "+" : ""}${g.tzChange}`, g.tzChange < 0]);
   if (g.earlyArrival) c.push(["EA", false]);
+  if (g.specialTeamsWin) c.push(["ST+", false]);
+  else if (g.specialTeamsTie) c.push(["ST=", false]);
   if (g.mdo) c.push(["MDO", false]);
   if (g.morningSkate) c.push(["MS", false]);
+  if (g.dayBeforeSkate) c.push(["DBS", false]);
   if (g.elevenF7D) c.push(["11F/7D", false]);
   return c.map(([t, warn]) => `<span class="chip${warn ? " warn" : ""}">${t}</span>`).join("");
 }

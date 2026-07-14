@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Schedule Lab · Edmonton Oilers</title>
-<meta name="description" content="Situational schedule analytics — rest, travel, game states, and results.">
+<title>Schedule Lab</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
 
 <header class="masthead">
   <div class="masthead-left">
-    <p class="eyebrow">Schedule Lab · Edmonton Oilers</p>
+    <p class="eyebrow">Schedule Lab · Situational Analytics</p>
     <h1 class="season-title" id="seasonTitle">—</h1>
     <p class="record-line" id="recordLine">Loading season data…</p>
   </div>
@@ -24,17 +24,18 @@
   </div>
 </header>
 
-<section class="grind" aria-label="Season timeline">
+<section class="grind" aria-label="Points pace">
   <div class="grind-head">
     <h2>The Grind</h2>
-    <p class="grind-note">Every game on true calendar time — tight clusters are back-to-backs, gaps are rest. <span id="filterNote"></span></p>
+    <p class="grind-note">Cumulative points across the season — steep stretches are win streaks, flat stretches are slumps. <span id="filterNote"></span></p>
   </div>
+  <div id="grindStats" class="grind-stats"></div>
   <div id="grindStrip" class="grind-strip"></div>
   <div class="grind-legend">
-    <span><i class="dot dot-w"></i>Win</span>
-    <span><i class="dot dot-l"></i>Regulation loss</span>
-    <span><i class="dot dot-otl"></i>OT / SO loss</span>
-    <span><i class="dot dot-fut"></i>Not played</span>
+    <span><i class="dot dot-w"></i>Win (+2)</span>
+    <span><i class="dot dot-otl"></i>OT / SO loss (+1)</span>
+    <span><i class="dot dot-l"></i>Regulation loss (0)</span>
+    <span class="leg-line">— — 96-pt playoff pace</span>
   </div>
 </section>
 

@@ -36,23 +36,9 @@ TEAM_TZ = {
 }
 TZ_OFFSET = {"ET": 0, "CT": -1, "MT": -2, "PT": -3}  # relative hours vs ET
 
-TEAM_NAMES = {
-    "ANA": "Anaheim Ducks", "ARI": "Arizona Coyotes", "BOS": "Boston Bruins",
-    "BUF": "Buffalo Sabres", "CGY": "Calgary Flames", "CAR": "Carolina Hurricanes",
-    "CHI": "Chicago Blackhawks", "COL": "Colorado Avalanche",
-    "CBJ": "Columbus Blue Jackets", "DAL": "Dallas Stars", "DET": "Detroit Red Wings",
-    "EDM": "Edmonton Oilers", "FLA": "Florida Panthers", "LAK": "Los Angeles Kings",
-    "MIN": "Minnesota Wild", "MTL": "Montreal Canadiens", "NSH": "Nashville Predators",
-    "NJD": "New Jersey Devils", "NYI": "New York Islanders", "NYR": "New York Rangers",
-    "OTT": "Ottawa Senators", "PHI": "Philadelphia Flyers", "PIT": "Pittsburgh Penguins",
-    "SJS": "San Jose Sharks", "SEA": "Seattle Kraken", "STL": "St. Louis Blues",
-    "TBL": "Tampa Bay Lightning", "TOR": "Toronto Maple Leafs", "UTA": "Utah Hockey Club",
-    "UTM": "Utah Mammoth", "VAN": "Vancouver Canucks", "VGK": "Vegas Golden Knights",
-    "WSH": "Washington Capitals", "WPG": "Winnipeg Jets",
-}
-
-MANUAL_FIELDS = ("mdo", "morningSkate", "skate", "earlyArrival",
-                 "elevenF7D", "foTies", "notes")
+MANUAL_FIELDS = ("mdo", "morningSkate", "dayBeforeSkate", "earlyArrival",
+                 "elevenF7D", "contestedFoWin", "specialTeamsWin",
+                 "specialTeamsTie", "notes")
 
 
 def fetch(url):
@@ -146,7 +132,8 @@ def classify_result(us, them, last_period):
 
 
 def linescore_fields(game_id, team, home_away):
-    """Fetch gamecenter landing for period scores + first goal. Best-effort."""
+    """Fetch gamecenter landing for period leads, first goal, and the
+    special-teams goal battle (PP + SH goals for vs against)."""
     out = {}
     try:
         landing = fetch(f"{API}/gamecenter/{game_id}/landing")
@@ -162,7 +149,7 @@ def linescore_fields(game_id, team, home_away):
     for p in ls:
         ptype = (p.get("periodDescriptor") or {}).get("periodType", "REG")
         if ptype == "SO":
-            continue  # shootout excluded from goal totals (matches sheet convention)
+            continue
         us_cum += p.get(us_key, 0) or 0
         them_cum += p.get(them_key, 0) or 0
         per.append((us_cum, them_cum))
@@ -170,23 +157,31 @@ def linescore_fields(game_id, team, home_away):
         out["leadAfter1"] = per[0][0] > per[0][1]
     if len(per) >= 2:
         out["leadAfter2"] = per[1][0] > per[1][1]
-        out["leadIntoThird"] = per[1][0] > per[1][1]
-        out["tiedIntoThird"] = per[1][0] == per[1][1]
     if len(per) >= 3:
-        p3_us = per[2][0] - per[1][0]
-        p3_them = per[2][1] - per[1][1]
-        out["wonThird"] = p3_us > p3_them
-    # first goal scorer's team
+        out["wonThird"] = (per[2][0] - per[1][0]) > (per[2][1] - per[1][1])
+
+    # first goal + special-teams battle, from scoring plays
+    st_for = st_against = 0
+    first_done = False
     try:
         for period in (summ.get("scoring") or []):
-            goals = period.get("goals") or []
-            if goals:
-                first = goals[0]
-                abbrev = first.get("teamAbbrev")
-                if isinstance(abbrev, dict):
-                    abbrev = abbrev.get("default")
-                out["scoredFirst"] = (abbrev == team)
-                break
+            for goal in (period.get("goals") or []):
+                ab = goal.get("teamAbbrev")
+                if isinstance(ab, dict):
+                    ab = ab.get("default")
+                ours = (ab == team)
+                if not first_done:
+                    out["scoredFirst"] = ours
+                    first_done = True
+                strength = (goal.get("strength") or goal.get("goalModifier") or "").lower()
+                # NHL API marks non-even goals as "pp" / "sh"; even as "ev"/"even"
+                if strength in ("pp", "powerplay", "power-play", "sh", "shorthanded", "short-handed"):
+                    if ours:
+                        st_for += 1
+                    else:
+                        st_against += 1
+        out["specialTeamsWin"] = st_for > st_against
+        out["specialTeamsTie"] = st_for == st_against and (st_for + st_against) > 0
     except Exception:
         pass
     return out
@@ -213,7 +208,7 @@ def build_season(season_id, team):
     sched = fetch(f"{API}/club-schedule-season/{team}/{season_id}")
     raw = [g for g in sched.get("games", []) if g.get("gameType") == 2]
     raw.sort(key=lambda g: g.get("gameDate", ""))
-    print(f"{team} {season_id}: {len(raw)} regular-season games on schedule")
+    print(f"{season_id}: {len(raw)} regular-season games on schedule")
 
     games = []
     prev_date = None
@@ -262,9 +257,10 @@ def build_season(season_id, team):
             "dayOfWeek": d.strftime("%A"),
             "homeAway": "h" if is_home else "a",
             "opponent": opp,
-            "opponentName": TEAM_NAMES.get(opp, opp),
+            "opponentName": opp,
             "timeLocal": time_local,
             "result": None, "gf": None, "ga": None, "diff": None,
+            "marginBucket": None,
             "restDays": rest,
             "b2b": rest == 0 if rest is not None else False,
             "threeIn4": three_in4,
@@ -272,10 +268,11 @@ def build_season(season_id, team):
             "tzChange": TZ_OFFSET.get(venue_tz, 0) - TZ_OFFSET.get(prev_venue_tz, 0),
             "venueTz": venue_tz,
             "leadAfter1": None, "leadAfter2": None,
-            "leadIntoThird": None, "tiedIntoThird": None,
             "scoredFirst": None, "wonThird": None,
-            "fo50": None, "foPct": None, "foTies": None,
-            "elevenF7D": None, "mdo": None, "morningSkate": None, "skate": None,
+            "specialTeamsWin": None, "specialTeamsTie": None,
+            "fo50": None, "foPct": None, "contestedFoWin": None,
+            "elevenF7D": None, "mdo": None, "morningSkate": None,
+            "dayBeforeSkate": None,
             "moon": moon_phase(date_str),
         }
 
@@ -297,6 +294,8 @@ def build_season(season_id, team):
                     "result": classify_result(us, them, last),
                     "gf": gf, "ga": ga, "diff": gf - ga,
                 })
+                m = abs(gf - ga)
+                game["marginBucket"] = None if m == 0 else (1 if m == 1 else 2 if m == 2 else 3)
                 game.update(linescore_fields(g.get("id"), team, game["homeAway"]))
                 game.update(faceoff_fields(g.get("id"), game["homeAway"]))
 
@@ -315,6 +314,8 @@ def merge_manual(games, season_id):
     by_date = {g["date"]: g for g in games}
     n = 0
     for date_str, fields in flags.items():
+        if date_str.startswith("_"):
+            continue  # comment/metadata keys
         g = by_date.get(date_str)
         if not g:
             print(f"  ! manual flag date {date_str} not on schedule", file=sys.stderr)
@@ -326,10 +327,10 @@ def merge_manual(games, season_id):
     return n
 
 
-def update_index(season_id, team):
+def update_index(season_id):
     """Keep docs/data/index.json listing all available seasons."""
     idx_path = ROOT / "docs" / "data" / "index.json"
-    idx = {"team": team, "teamName": TEAM_NAMES.get(team, team), "seasons": []}
+    idx = {"seasons": []}
     if idx_path.exists():
         idx = json.loads(idx_path.read_text())
     ids = {s["seasonId"] for s in idx["seasons"]}
@@ -346,10 +347,24 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("season", nargs="?", default=None, help="e.g. 20262027")
     ap.add_argument("--team", default=None)
+    ap.add_argument("--dry-run", action="store_true",
+                    help="fetch + compute, write to /tmp instead of docs/data")
+    ap.add_argument("--force", action="store_true",
+                    help="allow overwriting a hand-imported season")
     args = ap.parse_args()
 
+    import os
     cfg = json.loads((ROOT / "config.json").read_text())
-    team = args.team or cfg.get("team", "EDM")
+    team = args.team or os.environ.get("TEAM_CODE")
+    if not team:
+        local = ROOT / "config.local.json"
+        if local.exists():
+            team = json.loads(local.read_text()).get("team")
+    if not team:
+        sys.exit("No team configured. Pass --team XXX, set the TEAM_CODE env var, "
+                 "or create config.local.json (see config.local.json.example). "
+                 "The team code is deliberately kept out of the repository.")
+    team = team.upper()
     season_id = args.season or cfg.get("currentSeason") or season_auto()
 
     games = build_season(season_id, team)
@@ -364,15 +379,24 @@ def main():
     out = {
         "seasonId": season_id,
         "label": f"{season_id[:4]}-{season_id[6:]}",
-        "team": team,
-        "teamName": TEAM_NAMES.get(team, team),
         "source": "nhl-api",
         "updated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "games": games,
     }
     outpath = ROOT / "docs" / "data" / f"{season_id}.json"
+    if args.dry_run:
+        outpath = Path("/tmp") / f"{season_id}.dryrun.json"
+        outpath.write_text(json.dumps(out, indent=1))
+        print(f"[dry run] wrote {outpath} — docs/data untouched")
+        return
+    if outpath.exists() and not args.force:
+        existing = json.loads(outpath.read_text())
+        if existing.get("source") == "manual-import":
+            sys.exit(f"{outpath.name} was imported from the original workbooks and "
+                     "contains hand-tracked fields the API can't reproduce. "
+                     "Refusing to overwrite it. Use --force if you really mean to.")
     outpath.write_text(json.dumps(out, indent=1))
-    update_index(season_id, team)
+    update_index(season_id)
     print(f"Wrote {outpath}")
 
 

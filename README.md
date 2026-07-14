@@ -1,48 +1,60 @@
 # Schedule Lab
 
-Situational schedule analytics: rest, travel, game states, and results, updated
-automatically from the NHL API and rendered as a static GitHub Pages site.
+Situational schedule analytics for an NHL club: rest, travel, game states, and
+results — updated automatically from the NHL API and rendered as a static
+GitHub Pages site. Three seasons of hand-tracked data are imported as history;
+from the current season onward the pipeline fills everything derivable on its own.
 
-Three seasons of hand-built spreadsheet tracking (2023-24 → 2025-26) are imported
-as historical data; from 2026-27 onward the pipeline fills everything derivable
-on its own.
+## Privacy posture
+
+This repo is deliberately keyword-anonymous:
+
+- The club is never named in code, data, config, README, or page content.
+- The team tri-code lives only in a repo **secret** (`TEAM_CODE`), which GitHub
+  masks in workflow logs, or in a git-ignored `config.local.json` for local runs.
+- The site ships `<meta name="robots" content="noindex, nofollow, noarchive">`
+  and a deny-all `robots.txt`, so well-behaved search engines won't index it.
+- Scripts never print the team code, and generated data files don't contain it.
+
+Know the limits: none of this is access control. Anyone who reaches the URL can
+infer the club from the schedule itself, and rogue crawlers ignore robots rules.
+If you need actual gating, use a private repo with GitHub Pro (Pages on private
+repos requires a paid plan) or put the site behind Cloudflare Access.
 
 ## How it works
 
 ```
 NHL API (api-web.nhle.com)          data/manual_flags/<season>.json
-        │                                     │  (MDO, skates, arrivals — hand-entered)
-        ▼                                     ▼
-scripts/update_data.py  ──────────────────────┤
-        │                                     │
-        ▼                                     │
-docs/data/<season>.json  ◄────────merged──────┘
-        │
-        ▼
-docs/index.html  (GitHub Pages — no build step, vanilla JS)
+        |                                     |  (team-ops flags, hand-entered)
+        v                                     v
+scripts/update_data.py  ----------------------+
+        |
+        v
+docs/data/<season>.json  ->  docs/ (GitHub Pages, no build step)
 ```
 
-A GitHub Action runs nightly during the season (and on demand) and commits the
-refreshed JSON. The site reads the JSON directly — no server, no build.
+A GitHub Action runs nightly during the season (and on demand) and commits
+refreshed JSON. The site reads the JSON directly.
 
 ## Setup
 
-1. Push this repo to GitHub.
-2. Settings → Pages → Deploy from branch → `main` / `docs/`.
-3. Settings → Actions → General → Workflow permissions → "Read and write
-   permissions" (the workflow commits data updates).
-4. Done. The workflow runs nightly Oct–Apr, or trigger it from the Actions tab.
+1. Push to GitHub (pick a neutral repo name).
+2. Settings -> Secrets and variables -> Actions -> New repository secret:
+   `TEAM_CODE` = your club's tri-code.
+3. Settings -> Pages -> Deploy from branch -> `main` / `docs/`.
+4. Settings -> Actions -> General -> Workflow permissions -> Read and write.
 
 ### Run the updater by hand
 
 ```bash
 pip install -r requirements.txt
-python scripts/update_data.py              # season from config.json
-python scripts/update_data.py 20262027     # explicit season
-python scripts/update_data.py 20262027 --team EDM
+cp config.local.json.example config.local.json   # put your tri-code in it
+python scripts/update_data.py                    # season from config.json
+python scripts/update_data.py 20262027           # explicit season
+TEAM_CODE=XXX python scripts/update_data.py      # or via env var
 ```
 
-Then preview the site locally:
+Preview locally:
 
 ```bash
 cd docs && python -m http.server   # http://localhost:8000
@@ -57,8 +69,8 @@ cd docs && python -m http.server   # http://localhost:8000
 | Lead after 1st/2nd, into-3rd state, won 3rd, scored first | NHL API linescore |
 | Faceoff % / FO 50+ | NHL API right-rail |
 | Rest days, back-to-backs, 3-in-4 | computed from schedule |
-| Venue timezone, TZ change vs previous game | computed (team → tz map) |
-| Moon phase (incl. traditional full-moon names) | computed (ephem, Edmonton local dates) |
+| Venue timezone, TZ change vs previous game | computed (league tz map) |
+| Moon phase (incl. traditional full-moon names) | computed (ephem, club-local dates) |
 | MDO, morning skate, skate, early arrival, 11F/7D, faceoff ties | `data/manual_flags/<season>.json` |
 
 Manual flags are keyed by game date and merged on every run, so re-running the
@@ -73,37 +85,26 @@ updater never wipes hand-entered values:
 ## Data conventions (carried over from the original workbooks)
 
 - **Shootout games:** the SO-deciding goal is excluded from GF/GA, so an SOL
-  shows the regulation/OT tie score (e.g. `SOL 3–3`).
+  shows the regulation/OT tie score (e.g. `SOL 3-3`).
 - **Records** are shown W-L-OTL(+SOL); OTW/SOW count as wins for points.
 - **Rest days** = full days between games (0 = back-to-back).
 - **3-in-4** = third game within any 4-night window.
 - **TZ change** = venue timezone minus previous game's venue timezone, in hours.
-- **Moon phase** uses the astronomical event's Edmonton-local calendar date;
-  principal phases (new/full/quarters) only on the exact event day. Note: this
-  is computed precisely, so it may differ by a day from older hand-entered rows.
+- **Moon phase** uses the astronomical event's club-local calendar date;
+  principal phases (new/full/quarters) only on the exact event day. Computed
+  precisely, so it may differ by a day from older hand-entered rows.
+- One rest-bucket flag in the imported 2025-26 season (game 27) followed the
+  raw rest-days column where the source workbook's indicator disagreed with it.
 
 ## Repo layout
 
 ```
-config.json                     team + current season
-scripts/update_data.py          NHL API → season JSON (the whole pipeline)
-scripts/convert_xlsx.py         one-time importer for the original workbooks
+config.json                     current season only (no team identifier)
+config.local.json.example       template for local team config (git-ignored)
+scripts/update_data.py          NHL API -> season JSON (the whole pipeline)
 data/manual_flags/              hand-entered team-ops flags per season
 docs/                           the site (GitHub Pages root)
 docs/data/                      one JSON per season + index.json
+docs/robots.txt                 deny-all for crawlers
 .github/workflows/update-data.yml   nightly + manual automation
 ```
-
-## Extending to other teams
-
-Everything is keyed off `config.json` (`team`, tri-code) and the team maps in
-`scripts/update_data.py` — point it at any club and the automated fields all
-work. Manual-ops flags are per-team by nature.
-
-## Known quirk found during import
-
-The 2025-26 workbook's "1 Day Off" indicator for Game 27 (Dec 2 vs MIN, L)
-disagrees with its own "Off Days Btwn" column (which correctly says 2 days).
-The imported data follows the raw rest-days column, so the site's rest buckets
-differ from the workbook's Reporting tab by one loss: 1-day-off is 28-17-3 and
-2-days-off is 8-6-2 here.

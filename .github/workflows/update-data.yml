@@ -2,7 +2,7 @@ name: Update schedule data
 
 on:
   schedule:
-    # 06:15 UTC daily = just after West Coast games end (11:15pm MT)
+    # 06:15 UTC daily = just after West Coast games end
     - cron: "15 6 * 10,11,12,1,2,3,4 *"
   workflow_dispatch:
     inputs:
@@ -23,6 +23,10 @@ jobs:
           python-version: "3.12"
       - run: pip install -r requirements.txt
       - name: Update season data
+        env:
+          # Repo secret (Settings -> Secrets -> Actions -> TEAM_CODE).
+          # Secrets are masked in public workflow logs; plain variables are not.
+          TEAM_CODE: ${{ secrets.TEAM_CODE }}
         run: python scripts/update_data.py ${{ github.event.inputs.season }}
       - name: Commit if changed
         run: |

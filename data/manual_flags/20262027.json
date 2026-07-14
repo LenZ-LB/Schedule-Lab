@@ -1,4 +1,4 @@
 {
-  "_comment": "Team-ops flags the NHL API can't know. Keyed by game date (YYYY-MM-DD). Allowed fields: mdo, morningSkate, skate, earlyArrival, elevenF7D, foTies, notes. Values true/false. Re-running the updater never overwrites these.",
-  "2026-10-07": { "mdo": false, "morningSkate": true }
+  "_comment": "Team-ops + special-teams flags the API may not fully capture. Keyed by game date (YYYY-MM-DD). Fields: mdo, morningSkate, dayBeforeSkate, earlyArrival, elevenF7D, contestedFoWin, specialTeamsWin, specialTeamsTie, notes. Merged on every run; never overwritten by the updater.",
+  "2026-10-07": { "mdo": false, "morningSkate": true, "dayBeforeSkate": true }
 }
