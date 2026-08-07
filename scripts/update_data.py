@@ -206,9 +206,19 @@ def faceoff_fields(game_id, home_away):
 
 def build_season(season_id, team):
     sched = fetch(f"{API}/club-schedule-season/{team}/{season_id}")
-    raw = [g for g in sched.get("games", []) if g.get("gameType") == 2]
+    # gameType 2 = regular season, but some feeds include preseason exhibition
+    # games tagged as 2. Filter to Oct-Apr using the season year as anchor.
+    start_year = int(season_id[:4])
+    # regular season runs Oct of start_year through Apr of start_year+1
+    season_start = f"{start_year}-09-30"   # nothing before Oct 1
+    season_end   = f"{start_year + 1}-05-01"  # nothing after Apr 30
+    raw = [
+        g for g in sched.get("games", [])
+        if g.get("gameType") == 2
+        and season_start < g.get("gameDate", "") < season_end
+    ]
     raw.sort(key=lambda g: g.get("gameDate", ""))
-    print(f"{season_id}: {len(raw)} regular-season games on schedule")
+    print(f"{season_id}: {len(raw)} regular-season games (Oct–Apr)")
 
     games = []
     prev_date = None
@@ -330,17 +340,27 @@ def merge_manual(games, season_id):
 def update_index(season_id):
     """Keep docs/data/index.json listing all available seasons."""
     idx_path = ROOT / "docs" / "data" / "index.json"
-    idx = {"seasons": []}
-    if idx_path.exists():
-        idx = json.loads(idx_path.read_text())
-    ids = {s["seasonId"] for s in idx["seasons"]}
+    try:
+        idx = json.loads(idx_path.read_text()) if idx_path.exists() else {"seasons": []}
+    except Exception as e:
+        print(f"  ! could not read index.json, creating fresh: {e}", file=sys.stderr)
+        idx = {"seasons": []}
+    ids = {s["seasonId"] for s in idx.get("seasons", [])}
     if season_id not in ids:
-        idx["seasons"].append({
+        idx.setdefault("seasons", []).append({
             "seasonId": season_id,
             "label": f"{season_id[:4]}-{season_id[6:]}",
         })
+        print(f"  Added {season_id} to index.json")
+    else:
+        print(f"  {season_id} already in index.json")
     idx["seasons"].sort(key=lambda s: s["seasonId"], reverse=True)
-    idx_path.write_text(json.dumps(idx, indent=1))
+    try:
+        idx_path.write_text(json.dumps(idx, indent=1))
+        print(f"  index.json updated: {[s['seasonId'] for s in idx['seasons']]}")
+    except Exception as e:
+        print(f"  ! failed to write index.json: {e}", file=sys.stderr)
+        raise
 
 
 def main():
