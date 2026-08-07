@@ -2,45 +2,10 @@
  "seasonId": "20262027",
  "label": "2026-27",
  "source": "nhl-api",
- "updated": "2026-08-07T19:35:49Z",
+ "updated": "2026-08-07T19:56:00Z",
  "games": [
   {
    "game": 1,
-   "gameId": 2026020004,
-   "date": "2026-09-29",
-   "dayOfWeek": "Tuesday",
-   "homeAway": "h",
-   "opponent": "VAN",
-   "opponentName": "VAN",
-   "timeLocal": "20:00",
-   "result": null,
-   "gf": null,
-   "ga": null,
-   "diff": null,
-   "marginBucket": null,
-   "restDays": null,
-   "b2b": false,
-   "threeIn4": false,
-   "earlyArrival": null,
-   "tzChange": 0,
-   "venueTz": "MT",
-   "leadAfter1": null,
-   "leadAfter2": null,
-   "scoredFirst": null,
-   "wonThird": null,
-   "specialTeamsWin": null,
-   "specialTeamsTie": null,
-   "fo50": null,
-   "foPct": null,
-   "contestedFoWin": null,
-   "elevenF7D": null,
-   "mdo": null,
-   "morningSkate": null,
-   "dayBeforeSkate": null,
-   "moon": "waning gibbous"
-  },
-  {
-   "game": 2,
    "gameId": 2026020015,
    "date": "2026-10-01",
    "dayOfWeek": "Thursday",
@@ -53,7 +18,7 @@
    "ga": null,
    "diff": null,
    "marginBucket": null,
-   "restDays": 1,
+   "restDays": null,
    "b2b": false,
    "threeIn4": false,
    "earlyArrival": null,
@@ -75,7 +40,7 @@
    "moon": "waning gibbous"
   },
   {
-   "game": 3,
+   "game": 2,
    "gameId": 2026020028,
    "date": "2026-10-03",
    "dayOfWeek": "Saturday",
@@ -110,7 +75,7 @@
    "moon": "last quarter"
   },
   {
-   "game": 4,
+   "game": 3,
    "gameId": 2026020055,
    "date": "2026-10-07",
    "dayOfWeek": "Wednesday",
@@ -145,7 +110,7 @@
    "moon": "waning crescent"
   },
   {
-   "game": 5,
+   "game": 4,
    "gameId": 2026020072,
    "date": "2026-10-10",
    "dayOfWeek": "Saturday",
@@ -180,7 +145,7 @@
    "moon": "new moon"
   },
   {
-   "game": 6,
+   "game": 5,
    "gameId": 2026020104,
    "date": "2026-10-13",
    "dayOfWeek": "Tuesday",
@@ -215,7 +180,7 @@
    "moon": "waxing crescent"
   },
   {
-   "game": 7,
+   "game": 6,
    "gameId": 2026020117,
    "date": "2026-10-15",
    "dayOfWeek": "Thursday",
@@ -250,7 +215,7 @@
    "moon": "waxing crescent"
   },
   {
-   "game": 8,
+   "game": 7,
    "gameId": 2026020133,
    "date": "2026-10-17",
    "dayOfWeek": "Saturday",
@@ -285,7 +250,7 @@
    "moon": "waxing crescent"
   },
   {
-   "game": 9,
+   "game": 8,
    "gameId": 2026020148,
    "date": "2026-10-20",
    "dayOfWeek": "Tuesday",
@@ -320,7 +285,7 @@
    "moon": "waxing gibbous"
   },
   {
-   "game": 10,
+   "game": 9,
    "gameId": 2026020163,
    "date": "2026-10-22",
    "dayOfWeek": "Thursday",
@@ -355,7 +320,7 @@
    "moon": "waxing gibbous"
   },
   {
-   "game": 11,
+   "game": 10,
    "gameId": 2026020176,
    "date": "2026-10-24",
    "dayOfWeek": "Saturday",
@@ -390,7 +355,7 @@
    "moon": "waxing gibbous"
   },
   {
-   "game": 12,
+   "game": 11,
    "gameId": 2026020187,
    "date": "2026-10-26",
    "dayOfWeek": "Monday",
@@ -425,7 +390,7 @@
    "moon": "waning gibbous"
   },
   {
-   "game": 13,
+   "game": 12,
    "gameId": 2026020200,
    "date": "2026-10-28",
    "dayOfWeek": "Wednesday",
@@ -460,7 +425,7 @@
    "moon": "waning gibbous"
   },
   {
-   "game": 14,
+   "game": 13,
    "gameId": 2026020220,
    "date": "2026-10-31",
    "dayOfWeek": "Saturday",
@@ -495,7 +460,7 @@
    "moon": "waning gibbous"
   },
   {
-   "game": 15,
+   "game": 14,
    "gameId": 2026020230,
    "date": "2026-11-01",
    "dayOfWeek": "Sunday",
@@ -530,7 +495,7 @@
    "moon": "last quarter"
   },
   {
-   "game": 16,
+   "game": 15,
    "gameId": 2026020239,
    "date": "2026-11-03",
    "dayOfWeek": "Tuesday",
@@ -565,7 +530,7 @@
    "moon": "waning crescent"
   },
   {
-   "game": 17,
+   "game": 16,
    "gameId": 2026020260,
    "date": "2026-11-05",
    "dayOfWeek": "Thursday",
@@ -600,7 +565,7 @@
    "moon": "waning crescent"
   },
   {
-   "game": 18,
+   "game": 17,
    "gameId": 2026020276,
    "date": "2026-11-07",
    "dayOfWeek": "Saturday",
@@ -635,7 +600,7 @@
    "moon": "waning crescent"
   },
   {
-   "game": 19,
+   "game": 18,
    "gameId": 2026020283,
    "date": "2026-11-09",
    "dayOfWeek": "Monday",
@@ -670,7 +635,7 @@
    "moon": "new moon"
   },
   {
-   "game": 20,
+   "game": 19,
    "gameId": 2026020295,
    "date": "2026-11-11",
    "dayOfWeek": "Wednesday",
@@ -705,7 +670,7 @@
    "moon": "waxing crescent"
   },
   {
-   "game": 21,
+   "game": 20,
    "gameId": 2026020314,
    "date": "2026-11-14",
    "dayOfWeek": "Saturday",
@@ -740,7 +705,7 @@
    "moon": "waxing crescent"
   },
   {
-   "game": 22,
+   "game": 21,
    "gameId": 2026020326,
    "date": "2026-11-15",
    "dayOfWeek": "Sunday",
@@ -775,7 +740,7 @@
    "moon": "waxing crescent"
   },
   {
-   "game": 23,
+   "game": 22,
    "gameId": 2026020335,
    "date": "2026-11-17",
    "dayOfWeek": "Tuesday",
@@ -810,7 +775,7 @@
    "moon": "first quarter"
   },
   {
-   "game": 24,
+   "game": 23,
    "gameId": 2026020349,
    "date": "2026-11-19",
    "dayOfWeek": "Thursday",
@@ -845,7 +810,7 @@
    "moon": "waxing gibbous"
   },
   {
-   "game": 25,
+   "game": 24,
    "gameId": 2026020359,
    "date": "2026-11-21",
    "dayOfWeek": "Saturday",
@@ -880,7 +845,7 @@
    "moon": "waxing gibbous"
   },
   {
-   "game": 26,
+   "game": 25,
    "gameId": 2026020375,
    "date": "2026-11-22",
    "dayOfWeek": "Sunday",
@@ -915,7 +880,7 @@
    "moon": "waxing gibbous"
   },
   {
-   "game": 27,
+   "game": 26,
    "gameId": 2026020385,
    "date": "2026-11-24",
    "dayOfWeek": "Tuesday",
@@ -950,7 +915,7 @@
    "moon": "full beaver moon"
   },
   {
-   "game": 28,
+   "game": 27,
    "gameId": 2026020414,
    "date": "2026-11-27",
    "dayOfWeek": "Friday",
@@ -985,7 +950,7 @@
    "moon": "waning gibbous"
   },
   {
-   "game": 29,
+   "game": 28,
    "gameId": 2026020427,
    "date": "2026-11-28",
    "dayOfWeek": "Saturday",
@@ -1020,7 +985,7 @@
    "moon": "waning gibbous"
   },
   {
-   "game": 30,
+   "game": 29,
    "gameId": 2026020441,
    "date": "2026-12-01",
    "dayOfWeek": "Tuesday",
@@ -1055,7 +1020,7 @@
    "moon": "waning crescent"
   },
   {
-   "game": 31,
+   "game": 30,
    "gameId": 2026020456,
    "date": "2026-12-03",
    "dayOfWeek": "Thursday",
@@ -1090,7 +1055,7 @@
    "moon": "waning crescent"
   },
   {
-   "game": 32,
+   "game": 31,
    "gameId": 2026020479,
    "date": "2026-12-06",
    "dayOfWeek": "Sunday",
@@ -1125,7 +1090,7 @@
    "moon": "waning crescent"
   },
   {
-   "game": 33,
+   "game": 32,
    "gameId": 2026020494,
    "date": "2026-12-08",
    "dayOfWeek": "Tuesday",
@@ -1160,7 +1125,7 @@
    "moon": "new moon"
   },
   {
-   "game": 34,
+   "game": 33,
    "gameId": 2026020499,
    "date": "2026-12-10",
    "dayOfWeek": "Thursday",
@@ -1195,7 +1160,7 @@
    "moon": "waxing crescent"
   },
   {
-   "game": 35,
+   "game": 34,
    "gameId": 2026020520,
    "date": "2026-12-12",
    "dayOfWeek": "Saturday",
@@ -1230,7 +1195,7 @@
    "moon": "waxing crescent"
   },
   {
-   "game": 36,
+   "game": 35,
    "gameId": 2026020533,
    "date": "2026-12-14",
    "dayOfWeek": "Monday",
@@ -1265,7 +1230,7 @@
    "moon": "waxing crescent"
   },
   {
-   "game": 37,
+   "game": 36,
    "gameId": 2026020557,
    "date": "2026-12-17",
    "dayOfWeek": "Thursday",
@@ -1300,7 +1265,7 @@
    "moon": "waxing gibbous"
   },
   {
-   "game": 38,
+   "game": 37,
    "gameId": 2026020569,
    "date": "2026-12-19",
    "dayOfWeek": "Saturday",
@@ -1335,7 +1300,7 @@
    "moon": "waxing gibbous"
   },
   {
-   "game": 39,
+   "game": 38,
    "gameId": 2026020583,
    "date": "2026-12-20",
    "dayOfWeek": "Sunday",
@@ -1370,7 +1335,7 @@
    "moon": "waxing gibbous"
   },
   {
-   "game": 40,
+   "game": 39,
    "gameId": 2026020613,
    "date": "2026-12-27",
    "dayOfWeek": "Sunday",
@@ -1405,7 +1370,7 @@
    "moon": "waning gibbous"
   },
   {
-   "game": 41,
+   "game": 40,
    "gameId": 2026020622,
    "date": "2026-12-28",
    "dayOfWeek": "Monday",
@@ -1440,7 +1405,7 @@
    "moon": "waning gibbous"
   },
   {
-   "game": 42,
+   "game": 41,
    "gameId": 2026020639,
    "date": "2026-12-30",
    "dayOfWeek": "Wednesday",
@@ -1475,7 +1440,7 @@
    "moon": "last quarter"
   },
   {
-   "game": 43,
+   "game": 42,
    "gameId": 2026020655,
    "date": "2027-01-02",
    "dayOfWeek": "Saturday",
@@ -1510,7 +1475,7 @@
    "moon": "waning crescent"
   },
   {
-   "game": 44,
+   "game": 43,
    "gameId": 2026020669,
    "date": "2027-01-03",
    "dayOfWeek": "Sunday",
@@ -1545,7 +1510,7 @@
    "moon": "waning crescent"
   },
   {
-   "game": 45,
+   "game": 44,
    "gameId": 2026020684,
    "date": "2027-01-05",
    "dayOfWeek": "Tuesday",
@@ -1580,7 +1545,7 @@
    "moon": "waning crescent"
   },
   {
-   "game": 46,
+   "game": 45,
    "gameId": 2026020701,
    "date": "2027-01-07",
    "dayOfWeek": "Thursday",
@@ -1615,7 +1580,7 @@
    "moon": "new moon"
   },
   {
-   "game": 47,
+   "game": 46,
    "gameId": 2026020711,
    "date": "2027-01-09",
    "dayOfWeek": "Saturday",
@@ -1650,7 +1615,7 @@
    "moon": "waxing crescent"
   },
   {
-   "game": 48,
+   "game": 47,
    "gameId": 2026020726,
    "date": "2027-01-11",
    "dayOfWeek": "Monday",
@@ -1685,7 +1650,7 @@
    "moon": "waxing crescent"
   },
   {
-   "game": 49,
+   "game": 48,
    "gameId": 2026020741,
    "date": "2027-01-13",
    "dayOfWeek": "Wednesday",
@@ -1720,7 +1685,7 @@
    "moon": "waxing crescent"
   },
   {
-   "game": 50,
+   "game": 49,
    "gameId": 2026020756,
    "date": "2027-01-15",
    "dayOfWeek": "Friday",
@@ -1755,7 +1720,7 @@
    "moon": "first quarter"
   },
   {
-   "game": 51,
+   "game": 50,
    "gameId": 2026020775,
    "date": "2027-01-17",
    "dayOfWeek": "Sunday",
@@ -1790,7 +1755,7 @@
    "moon": "waxing gibbous"
   },
   {
-   "game": 52,
+   "game": 51,
    "gameId": 2026020797,
    "date": "2027-01-20",
    "dayOfWeek": "Wednesday",
@@ -1825,7 +1790,7 @@
    "moon": "waxing gibbous"
   },
   {
-   "game": 53,
+   "game": 52,
    "gameId": 2026020807,
    "date": "2027-01-21",
    "dayOfWeek": "Thursday",
@@ -1860,7 +1825,7 @@
    "moon": "waxing gibbous"
   },
   {
-   "game": 54,
+   "game": 53,
    "gameId": 2026020823,
    "date": "2027-01-23",
    "dayOfWeek": "Saturday",
@@ -1895,7 +1860,7 @@
    "moon": "waning gibbous"
   },
   {
-   "game": 55,
+   "game": 54,
    "gameId": 2026020845,
    "date": "2027-01-26",
    "dayOfWeek": "Tuesday",
@@ -1930,7 +1895,7 @@
    "moon": "waning gibbous"
   },
   {
-   "game": 56,
+   "game": 55,
    "gameId": 2026020856,
    "date": "2027-01-28",
    "dayOfWeek": "Thursday",
@@ -1965,7 +1930,7 @@
    "moon": "waning gibbous"
   },
   {
-   "game": 57,
+   "game": 56,
    "gameId": 2026020874,
    "date": "2027-01-30",
    "dayOfWeek": "Saturday",
@@ -2000,7 +1965,7 @@
    "moon": "waning crescent"
   },
   {
-   "game": 58,
+   "game": 57,
    "gameId": 2026020892,
    "date": "2027-02-03",
    "dayOfWeek": "Wednesday",
@@ -2035,7 +2000,7 @@
    "moon": "waning crescent"
   },
   {
-   "game": 59,
+   "game": 58,
    "gameId": 2026020910,
    "date": "2027-02-12",
    "dayOfWeek": "Friday",
@@ -2070,7 +2035,7 @@
    "moon": "waxing crescent"
   },
   {
-   "game": 60,
+   "game": 59,
    "gameId": 2026020922,
    "date": "2027-02-13",
    "dayOfWeek": "Saturday",
@@ -2105,7 +2070,7 @@
    "moon": "waxing crescent"
   },
   {
-   "game": 61,
+   "game": 60,
    "gameId": 2026020949,
    "date": "2027-02-17",
    "dayOfWeek": "Wednesday",
@@ -2140,7 +2105,7 @@
    "moon": "waxing gibbous"
   },
   {
-   "game": 62,
+   "game": 61,
    "gameId": 2026020965,
    "date": "2027-02-19",
    "dayOfWeek": "Friday",
@@ -2175,7 +2140,7 @@
    "moon": "waxing gibbous"
   },
   {
-   "game": 63,
+   "game": 62,
    "gameId": 2026020988,
    "date": "2027-02-22",
    "dayOfWeek": "Monday",
@@ -2210,7 +2175,7 @@
    "moon": "waning gibbous"
   },
   {
-   "game": 64,
+   "game": 63,
    "gameId": 2026021009,
    "date": "2027-02-25",
    "dayOfWeek": "Thursday",
@@ -2245,7 +2210,7 @@
    "moon": "waning gibbous"
   },
   {
-   "game": 65,
+   "game": 64,
    "gameId": 2026021020,
    "date": "2027-02-27",
    "dayOfWeek": "Saturday",
@@ -2280,7 +2245,7 @@
    "moon": "last quarter"
   },
   {
-   "game": 66,
+   "game": 65,
    "gameId": 2026021040,
    "date": "2027-03-01",
    "dayOfWeek": "Monday",
@@ -2315,7 +2280,7 @@
    "moon": "waning crescent"
   },
   {
-   "game": 67,
+   "game": 66,
    "gameId": 2026021052,
    "date": "2027-03-03",
    "dayOfWeek": "Wednesday",
@@ -2350,7 +2315,7 @@
    "moon": "waning crescent"
   },
   {
-   "game": 68,
+   "game": 67,
    "gameId": 2026021078,
    "date": "2027-03-06",
    "dayOfWeek": "Saturday",
@@ -2385,7 +2350,7 @@
    "moon": "waning crescent"
   },
   {
-   "game": 69,
+   "game": 68,
    "gameId": 2026021100,
    "date": "2027-03-09",
    "dayOfWeek": "Tuesday",
@@ -2420,7 +2385,7 @@
    "moon": "waxing crescent"
   },
   {
-   "game": 70,
+   "game": 69,
    "gameId": 2026021113,
    "date": "2027-03-11",
    "dayOfWeek": "Thursday",
@@ -2455,7 +2420,7 @@
    "moon": "waxing crescent"
   },
   {
-   "game": 71,
+   "game": 70,
    "gameId": 2026021133,
    "date": "2027-03-13",
    "dayOfWeek": "Saturday",
@@ -2490,7 +2455,7 @@
    "moon": "waxing crescent"
   },
   {
-   "game": 72,
+   "game": 71,
    "gameId": 2026021143,
    "date": "2027-03-15",
    "dayOfWeek": "Monday",
@@ -2525,7 +2490,7 @@
    "moon": "first quarter"
   },
   {
-   "game": 73,
+   "game": 72,
    "gameId": 2026021168,
    "date": "2027-03-18",
    "dayOfWeek": "Thursday",
@@ -2560,7 +2525,7 @@
    "moon": "waxing gibbous"
   },
   {
-   "game": 74,
+   "game": 73,
    "gameId": 2026021177,
    "date": "2027-03-20",
    "dayOfWeek": "Saturday",
@@ -2595,7 +2560,7 @@
    "moon": "waxing gibbous"
   },
   {
-   "game": 75,
+   "game": 74,
    "gameId": 2026021192,
    "date": "2027-03-21",
    "dayOfWeek": "Sunday",
@@ -2630,7 +2595,7 @@
    "moon": "waxing gibbous"
   },
   {
-   "game": 76,
+   "game": 75,
    "gameId": 2026021205,
    "date": "2027-03-23",
    "dayOfWeek": "Tuesday",
@@ -2665,7 +2630,7 @@
    "moon": "waning gibbous"
   },
   {
-   "game": 77,
+   "game": 76,
    "gameId": 2026021220,
    "date": "2027-03-25",
    "dayOfWeek": "Thursday",
@@ -2700,7 +2665,7 @@
    "moon": "waning gibbous"
   },
   {
-   "game": 78,
+   "game": 77,
    "gameId": 2026021227,
    "date": "2027-03-27",
    "dayOfWeek": "Saturday",
@@ -2735,7 +2700,7 @@
    "moon": "waning gibbous"
   },
   {
-   "game": 79,
+   "game": 78,
    "gameId": 2026021260,
    "date": "2027-03-31",
    "dayOfWeek": "Wednesday",
@@ -2770,7 +2735,7 @@
    "moon": "waning crescent"
   },
   {
-   "game": 80,
+   "game": 79,
    "gameId": 2026021276,
    "date": "2027-04-02",
    "dayOfWeek": "Friday",
@@ -2805,7 +2770,7 @@
    "moon": "waning crescent"
   },
   {
-   "game": 81,
+   "game": 80,
    "gameId": 2026021288,
    "date": "2027-04-03",
    "dayOfWeek": "Saturday",
@@ -2840,7 +2805,7 @@
    "moon": "waning crescent"
   },
   {
-   "game": 82,
+   "game": 81,
    "gameId": 2026021301,
    "date": "2027-04-05",
    "dayOfWeek": "Monday",
@@ -2875,7 +2840,7 @@
    "moon": "waning crescent"
   },
   {
-   "game": 83,
+   "game": 82,
    "gameId": 2026021314,
    "date": "2027-04-07",
    "dayOfWeek": "Wednesday",
@@ -2910,7 +2875,7 @@
    "moon": "waxing crescent"
   },
   {
-   "game": 84,
+   "game": 83,
    "gameId": 2026021343,
    "date": "2027-04-10",
    "dayOfWeek": "Saturday",
