@@ -79,6 +79,11 @@ select:focus-visible{outline:2px solid var(--orange);outline-offset:1px}
 /* splits */
 .splits{margin-top:44px}
 .splits-head p,.sched-head p{margin:4px 0 0;color:var(--steel);font-size:13.5px}
+.preseason-note{
+  margin:18px 0 0;padding:18px 20px;background:var(--panel);
+  border:1px solid var(--line);border-left:3px solid var(--orange);
+  border-radius:var(--radius);color:var(--steel);font-size:14px;max-width:640px;
+}
 .split-group{margin-top:22px}
 .split-group h3{
   margin:0 0 10px;color:var(--steel);font:600 13px/1 "Barlow Condensed",sans-serif;

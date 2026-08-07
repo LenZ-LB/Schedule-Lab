@@ -99,6 +99,16 @@ function renderHeader() {
   const s = state.season;
   $("#seasonTitle").textContent = s.label;
   const r = record(s.games);
+  if (r.gp === 0) {
+    const first = s.games[0];
+    const opener = first
+      ? `Opener ${first.date} ${first.homeAway === "h" ? "vs" : "@"} ${first.opponent}`
+      : "";
+    $("#recordLine").innerHTML =
+      `<strong>Season not started</strong> &nbsp;\u00B7&nbsp; ${s.games.length} games scheduled` +
+      (opener ? ` &nbsp;\u00B7&nbsp; ${opener}` : "");
+    return;
+  }
   const remaining = s.games.length - r.gp;
   $("#recordLine").innerHTML =
     `<strong>${fmtRec(r)}</strong> &nbsp;\u00B7&nbsp; ${r.pts} PTS &nbsp;\u00B7&nbsp; ` +
@@ -201,10 +211,19 @@ function renderGrind() {
   if (callout) {
     const form = `${s.l10.w}-${s.l10.l}-${s.l10.otl + s.l10.sol}`;
     const cur = s.curType === "W" ? `W${s.curStreak}` : s.curType === "L" ? `L${s.curStreak}` : "\u2014";
-    callout.innerHTML = played.length
-      ? `<span><b>${cur}</b> current</span><span><b>${s.bestW}</b> best win streak</span>` +
-        `<span><b>${form}</b> last 10</span><span><b>${played.length ? pts[lastPlayedIdx] : 0}</b> pts in ${played.length} GP</span>`
-      : "<span>No games played yet.</span>";
+    if (played.length) {
+      callout.innerHTML =
+        `<span><b>${cur}</b> current</span><span><b>${s.bestW}</b> best win streak</span>` +
+        `<span><b>${form}</b> last 10</span><span><b>${pts[lastPlayedIdx]}</b> pts in ${played.length} GP</span>`;
+    } else {
+      const homeCt = games.filter(g => g.homeAway === "h").length;
+      const b2bCt = games.filter(g => g.b2b).length;
+      callout.innerHTML =
+        `<span><b>${games.length}</b> games scheduled</span>` +
+        `<span><b>${homeCt}</b> home / <b>${games.length - homeCt}</b> away</span>` +
+        `<span><b>${b2bCt}</b> back-to-backs</span>` +
+        `<span><b>The pace line fills in as games are played.</b></span>`;
+    }
   }
 
   const tip = $("#tooltip");
@@ -232,6 +251,13 @@ function renderSplits() {
   const grid = $("#splitsGrid");
   grid.innerHTML = "";
   const base = record(games).ptsPct;
+  if (record(games).gp === 0) {
+    grid.innerHTML =
+      `<p class="preseason-note">Situational splits appear once games are played. ` +
+      `The full schedule is below \u2014 rest, back-to-backs, travel and moon phases ` +
+      `are already computed for every game.</p>`;
+    return;
+  }
   for (const grp of SPLITS) {
     const sec = document.createElement("div");
     sec.className = "split-group";
