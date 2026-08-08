@@ -10,9 +10,11 @@ Usage:
     python scripts/update_data.py 20262027       # explicit season
     python scripts/update_data.py 20262027 --team EDM
 
-Manual flags (MDO, morning skate, early arrival, 11F/7D, faceoff-ties)
-live in data/manual_flags/<seasonId>.json keyed by game date — they are
-merged in on every run, so re-running never wipes your hand-entered data.
+Manual/hand-tracked fields (MDO, morning skate, day-before skate, early
+arrival, special teams Win/Tie, contested faceoffs, 11F/7D) are NOT written
+by this script. They live in docs/data/manual/<seasonId>.json and are
+merged into the page live, in the browser — edit that file directly, or
+use the site's editor page (docs/editor.html).
 """
 import argparse
 import json
@@ -152,8 +154,10 @@ def classify_result(us, them, last_period):
 
 
 def linescore_fields(game_id, team, home_away):
-    """Fetch gamecenter landing for period leads, first goal, and the
-    special-teams goal battle (PP + SH goals for vs against)."""
+    """Fetch gamecenter landing for period leads and first goal.
+    Special-teams (Win ST/Tie ST) is entered by hand — see the editor —
+    since the API's goal-strength tagging doesn't reliably match how
+    special-teams goals are scored by eye (delayed penalties, 4-on-3, etc)."""
     out = {}
     try:
         landing = fetch(f"{API}/gamecenter/{game_id}/landing")
@@ -180,28 +184,15 @@ def linescore_fields(game_id, team, home_away):
     if len(per) >= 3:
         out["wonThird"] = (per[2][0] - per[1][0]) > (per[2][1] - per[1][1])
 
-    # first goal + special-teams battle, from scoring plays
-    st_for = st_against = 0
-    first_done = False
     try:
         for period in (summ.get("scoring") or []):
-            for goal in (period.get("goals") or []):
-                ab = goal.get("teamAbbrev")
+            goals = period.get("goals") or []
+            if goals:
+                ab = goals[0].get("teamAbbrev")
                 if isinstance(ab, dict):
                     ab = ab.get("default")
-                ours = (ab == team)
-                if not first_done:
-                    out["scoredFirst"] = ours
-                    first_done = True
-                strength = (goal.get("strength") or goal.get("goalModifier") or "").lower()
-                # NHL API marks non-even goals as "pp" / "sh"; even as "ev"/"even"
-                if strength in ("pp", "powerplay", "power-play", "sh", "shorthanded", "short-handed"):
-                    if ours:
-                        st_for += 1
-                    else:
-                        st_against += 1
-        out["specialTeamsWin"] = st_for > st_against
-        out["specialTeamsTie"] = st_for == st_against and (st_for + st_against) > 0
+                out["scoredFirst"] = (ab == team)
+                break
     except Exception:
         pass
     return out
@@ -342,27 +333,6 @@ def build_season(season_id, team):
     return games
 
 
-def merge_manual(games, season_id):
-    path = ROOT / "data" / "manual_flags" / f"{season_id}.json"
-    if not path.exists():
-        return 0
-    flags = json.loads(path.read_text())
-    by_date = {g["date"]: g for g in games}
-    n = 0
-    for date_str, fields in flags.items():
-        if date_str.startswith("_"):
-            continue  # comment/metadata keys
-        g = by_date.get(date_str)
-        if not g:
-            print(f"  ! manual flag date {date_str} not on schedule", file=sys.stderr)
-            continue
-        for k, v in fields.items():
-            if k in MANUAL_FIELDS:
-                g[k] = v
-                n += 1
-    return n
-
-
 def update_index(season_id):
     """Keep docs/data/index.json listing all available seasons."""
     idx_path = ROOT / "docs" / "data" / "index.json"
@@ -418,9 +388,11 @@ def main():
         print("No regular-season games published yet for this season — nothing to write.")
         return
 
-    n = merge_manual(games, season_id)
     played = sum(1 for g in games if g["result"])
-    print(f"  {played} completed games, {n} manual flag values merged")
+    print(f"  {played} completed games")
+    print(f"  Manual flags (MDO, skates, ST, etc.) live separately in "
+          f"docs/data/manual/{season_id}.json and merge in the browser — "
+          f"use the site's editor page or edit that file directly.")
 
     out = {
         "seasonId": season_id,

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Game Editor · Schedule Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="editor.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-left">
+    <p class="eyebrow">Schedule Lab · Editor</p>
+    <h1 class="season-title" style="font-size:44px">Game Info</h1>
+    <p class="record-line">Enter hand-tracked details before or after a game. Saves go straight to the site.</p>
+  </div>
+  <div class="masthead-right">
+    <a href="index.html" class="editor-link">← Back to site</a>
+  </div>
+</header>
+
+<section class="ed-connect">
+  <button id="settingsBtn" type="button" class="ed-settings-btn">⚙ Connection settings</button>
+  <span id="connStatus" class="ed-status">Not connected — you can still fill the form and download the file to commit yourself.</span>
+</section>
+
+<div id="settingsPanel" class="ed-panel" hidden>
+  <h3>GitHub connection</h3>
+  <p class="ed-help">
+    To save directly to your repo, create a
+    <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">fine-grained personal access token</a>
+    scoped only to this repository, with <strong>Contents: Read and write</strong> permission. It's stored only in
+    this browser (localStorage) and used only to talk directly to <code>api.github.com</code> — it is never sent anywhere else.
+  </p>
+  <div class="ed-row">
+    <label>Repo owner<input id="cfgOwner" type="text" placeholder="Lenz-LB"></label>
+    <label>Repo name<input id="cfgRepo" type="text" placeholder="schedule-lab"></label>
+    <label>Branch<input id="cfgBranch" type="text" placeholder="main" value="main"></label>
+  </div>
+  <div class="ed-row">
+    <label class="ed-grow">Personal access token<input id="cfgToken" type="password" placeholder="github_pat_..."></label>
+  </div>
+  <div class="ed-row">
+    <button id="saveSettingsBtn" type="button" class="btn btn-primary">Save connection</button>
+    <button id="clearSettingsBtn" type="button" class="btn btn-ghost">Clear stored token</button>
+  </div>
+</div>
+
+<section class="ed-picker">
+  <label class="select-label" for="seasonSelect">Season</label>
+  <select id="seasonSelect"></select>
+  <label class="select-label" for="gameSelect">Game</label>
+  <select id="gameSelect"></select>
+</section>
+
+<section id="formSection" class="ed-form" hidden>
+  <div class="ed-form-head">
+    <h2 id="gameHeading">—</h2>
+    <p id="gameSub" class="ed-help"></p>
+  </div>
+
+  <div class="ed-grid">
+    <label class="ed-field"><span>Mandatory day off (MDO)</span>
+      <select id="f_mdo"><option value="">— unknown</option><option value="true">Yes</option><option value="false">No</option></select>
+    </label>
+    <label class="ed-field"><span>Full team morning skate</span>
+      <select id="f_ms"><option value="">— unknown</option><option value="true">Yes</option><option value="false">No</option></select>
+    </label>
+    <label class="ed-field"><span>Skated as a team day before</span>
+      <select id="f_dbs"><option value="">— unknown</option><option value="true">Yes</option><option value="false">No</option></select>
+    </label>
+    <label class="ed-field" id="f_ea_wrap"><span>Early arrival (away games only)</span>
+      <select id="f_ea"><option value="">— unknown</option><option value="true">Yes</option><option value="false">No</option></select>
+    </label>
+    <label class="ed-field"><span>11 forwards / 7 defencemen</span>
+      <select id="f_11f"><option value="">— unknown</option><option value="true">Yes</option><option value="false">No</option></select>
+    </label>
+    <label class="ed-field"><span>Special teams goal battle</span>
+      <select id="f_st"><option value="">— unknown</option><option value="win">Won</option><option value="tie">Tied</option><option value="loss">Lost</option></select>
+    </label>
+    <label class="ed-field"><span>Won more contested (50/50) faceoffs</span>
+      <select id="f_cfo"><option value="">— unknown</option><option value="true">Yes</option><option value="false">No</option></select>
+    </label>
+    <label class="ed-field ed-grow"><span>Notes</span>
+      <input id="f_notes" type="text" placeholder="optional">
+    </label>
+  </div>
+
+  <div class="ed-row">
+    <button id="saveGameBtn" type="button" class="btn btn-primary">Save to GitHub</button>
+    <button id="downloadBtn" type="button" class="btn btn-ghost">Download manual/&lt;season&gt;.json</button>
+    <span id="saveStatus" class="ed-status"></span>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <p>Only the fields above are hand-entered. Everything else on the schedule is pulled automatically from the NHL API.</p>
+</footer>
+
+<script src="shared.js"></script>
+<script src="editor.js"></script>
+</body>
+</html>

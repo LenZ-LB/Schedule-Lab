@@ -21,6 +21,7 @@
   <div class="masthead-right">
     <label class="select-label" for="seasonSelect">Season</label>
     <select id="seasonSelect" aria-label="Choose season"></select>
+    <a href="editor.html" class="editor-link">Enter game info →</a>
   </div>
 </header>
 
@@ -56,20 +57,26 @@
     <table id="schedTable">
       <thead>
         <tr>
-          <th class="num">#</th><th>Date</th><th>Day</th><th>Time</th><th>Opp</th><th>H/A</th>
-          <th>Result</th><th class="num">Rest</th>
-          <th class="num" title="Back-to-back">B2B</th>
+          <th class="num" title="Game number this season">#</th>
+          <th title="Game date">Date</th>
+          <th title="Day of the week">Day</th>
+          <th title="Puck drop, converted to the club's home timezone">Time</th>
+          <th title="Opponent (team tri-code)">Opp</th>
+          <th title="Home or away">H/A</th>
+          <th title="Final result and score (SO-deciding goal excluded from GF/GA)">Result</th>
+          <th class="num" title="Full days off since the previous game">Rest</th>
+          <th class="num" title="Back-to-back (no days off)">B2B</th>
           <th class="num" title="3 games in 4 nights">3n4</th>
           <th class="num" title="Timezone change from previous game's venue (hours)">TZ&Delta;</th>
-          <th class="num" title="Early arrival (away games only)">EA</th>
-          <th class="num" title="Special teams goal battle: + won, = tied, &minus; lost">ST</th>
-          <th class="num" title="Mandatory day off before this game">MDO</th>
-          <th class="num" title="Full team morning skate">MS</th>
-          <th class="num" title="Full team skate the day before">DBS</th>
-          <th class="num" title="11 forwards / 7 defencemen lineup">11F</th>
-          <th class="num" title="Faceoff win %">FO%</th>
-          <th class="num" title="Won more of the contested (50/50) draws">Ties</th>
-          <th>Moon</th>
+          <th class="num" title="Arrived in the away city more than 1 day early (away games only) — hand-entered">EA</th>
+          <th class="num" title="Special teams goal battle (PP/PK goals for vs against): + won, = tied, – lost — hand-entered">ST</th>
+          <th class="num" title="Mandatory day off before this game (coaching decision) — hand-entered">MDO</th>
+          <th class="num" title="Full team morning skate — hand-entered">MS</th>
+          <th class="num" title="Full team skate the day before — hand-entered">DBS</th>
+          <th class="num" title="11 forwards / 7 defencemen lineup — hand-entered">11F</th>
+          <th class="num" title="Faceoff win % (from NHL API team stats)">FO%</th>
+          <th class="num" title="Won more of the contested (50/50) draws — hand-entered">Ties</th>
+          <th title="Moon phase that night">Moon</th>
         </tr>
       </thead>
       <tbody></tbody>
@@ -84,6 +91,7 @@
 </footer>
 
 <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+<script src="shared.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

@@ -1,0 +1,4 @@
+{
+  "_comment": "Hand-entered fields the NHL API can't provide. Keyed by game date (YYYY-MM-DD). Fields: mdo, morningSkate, dayBeforeSkate, earlyArrival, specialTeamsWin, specialTeamsTie, contestedFoWin, elevenF7D, notes. This file merges into the page live in the browser \u2014 edit it via docs/editor.html, or by hand here. No pipeline run needed for changes here to show up.",
+  "2026-10-07": { "mdo": false, "morningSkate": true, "dayBeforeSkate": true }
+}

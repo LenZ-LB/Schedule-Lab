@@ -369,6 +369,13 @@ async function loadSeason(id) {
   const res = await fetch(`data/${id}.json`);
   if (!res.ok) throw new Error(`data/${id}.json not found`);
   state.season = await res.json();
+  // Manual (hand-entered) fields live separately and merge in live, so
+  // edits made in the editor show up on next page load with no pipeline
+  // run required. A season with no manual file yet is fine — 404 is normal.
+  try {
+    const mres = await fetch(`data/manual/${id}.json?t=${Date.now()}`, { cache: "no-store" });
+    if (mres.ok) mergeManualFlags(state.season.games, await mres.json());
+  } catch (e) { /* no manual flags yet for this season — fine */ }
   state.filter = null;
   renderAll();
 }
