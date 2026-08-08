@@ -108,14 +108,15 @@ select:focus-visible{outline:2px solid var(--orange);outline-offset:1px}
 /* schedule table */
 .sched{margin-top:46px}
 .table-wrap{margin-top:14px;overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius)}
-table{border-collapse:collapse;width:100%;min-width:860px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:1300px;background:var(--panel)}
 th{
-  text-align:left;padding:10px 12px;color:var(--steel);
-  font:600 12.5px/1 "Barlow Condensed",sans-serif;letter-spacing:.14em;text-transform:uppercase;
+  text-align:left;padding:10px 10px;color:var(--steel);
+  font:600 12px/1 "Barlow Condensed",sans-serif;letter-spacing:.1em;text-transform:uppercase;
   border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--panel-2);
+  cursor:default;
 }
-th.num,td.num{text-align:right}
-td{padding:8px 12px;border-bottom:1px solid #10294A;font-size:14px;white-space:nowrap}
+th.num,td.num{text-align:center}
+td{padding:7px 10px;border-bottom:1px solid #10294A;font-size:13.5px;white-space:nowrap}
 tbody tr:hover{background:#0D2A4C}
 tbody tr.hl{background:#12325A}
 .res{
@@ -131,6 +132,12 @@ tbody tr.hl{background:#12325A}
   border:1px solid var(--line);color:var(--steel);font-size:11.5px;background:#0A2140;
 }
 .chip.warn{border-color:#7A3A17;color:var(--orange-soft)}
+.bc{display:inline-block;min-width:16px;font:600 13px "Barlow Condensed",sans-serif}
+.bc-yes{color:var(--orange-soft)}
+.bc-yes.warn{color:#FF6A2B}
+.bc-no{color:#3F5A7C}
+.bc-no.warn{color:#C4522A}
+.bc-na{color:#2A4666}
 td.moon{font-size:15px}
 .opp-a{color:var(--steel)}
 

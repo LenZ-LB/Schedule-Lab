@@ -294,19 +294,28 @@ function renderFilterNote() {
   $("#filterNote").textContent = sp ? `Filtered: ${sp.name} \u00D7 (click card again to clear)` : "";
 }
 
-function chips(g) {
-  const c = [];
-  if (g.b2b) c.push(["B2B", true]);
-  if (g.threeIn4) c.push(["3in4", true]);
-  if (g.tzChange) c.push([`TZ ${g.tzChange > 0 ? "+" : ""}${g.tzChange}`, g.tzChange < 0]);
-  if (g.earlyArrival) c.push(["EA", false]);
-  if (g.specialTeamsWin) c.push(["ST+", false]);
-  else if (g.specialTeamsTie) c.push(["ST=", false]);
-  if (g.mdo) c.push(["MDO", false]);
-  if (g.morningSkate) c.push(["MS", false]);
-  if (g.dayBeforeSkate) c.push(["DBS", false]);
-  if (g.elevenF7D) c.push(["11F/7D", false]);
-  return c.map(([t, warn]) => `<span class="chip${warn ? " warn" : ""}">${t}</span>`).join("");
+function boolCell(v, { warnTrue = false } = {}) {
+  // true -> check, false -> dash, null/undefined -> em dash (unknown/n-a)
+  if (v === true) return `<span class="bc bc-yes${warnTrue ? " warn" : ""}">\u2713</span>`;
+  if (v === false) return `<span class="bc bc-no">\u2013</span>`;
+  return `<span class="bc bc-na">\u2014</span>`;
+}
+
+function tzCell(g) {
+  if (g.tzChange === null || g.tzChange === undefined || g.tzChange === 0) {
+    return `<span class="bc bc-no">0</span>`;
+  }
+  const warn = g.tzChange < 0;
+  const sign = g.tzChange > 0 ? "+" : "";
+  return `<span class="bc bc-yes${warn ? " warn" : ""}">${sign}${g.tzChange}</span>`;
+}
+
+function stCell(g) {
+  if (g.specialTeamsWin === true) return `<span class="bc bc-yes">+</span>`;
+  if (g.specialTeamsTie === true) return `<span class="bc bc-na">=</span>`;
+  if (g.specialTeamsWin === false && g.specialTeamsTie === false)
+    return `<span class="bc bc-no warn">\u2013</span>`;
+  return `<span class="bc bc-na">\u2014</span>`;
 }
 
 function renderTable() {
@@ -321,17 +330,29 @@ function renderTable() {
     const oc = outcomeClass(g);
     const res = g.result
       ? `<span class="res res-${oc === "w" ? "w" : oc}">${g.result} ${g.gf}\u2013${g.ga}</span>`
-      : `<span class="res res-fut">${g.timeLocal || ""}</span>`;
+      : `<span class="res res-fut">\u2014</span>`;
+    const foCell = g.foPct != null ? (g.foPct * 100).toFixed(1)
+      : (g.fo50 === true ? "50+" : g.fo50 === false ? "<50" : "\u2014");
     return `<tr data-game="${g.game}">
       <td class="num">${g.game}</td>
       <td>${g.date}</td>
       <td>${(g.dayOfWeek || "").slice(0, 3)}</td>
+      <td>${g.timeLocal || "\u2014"}</td>
       <td>${g.homeAway === "h" ? `<strong>${g.opponent}</strong>` : `<span class="opp-a">@ ${g.opponent}</span>`}</td>
       <td>${g.homeAway === "h" ? "Home" : "Away"}</td>
       <td>${res}</td>
       <td class="num">${g.restDays === null ? "\u2014" : g.restDays}</td>
-      <td>${chips(g) || "\u2014"}</td>
-      <td class="num">${g.foPct != null ? (g.foPct * 100).toFixed(1) : (g.fo50 === true ? "50+" : g.fo50 === false ? "<50" : "\u2014")}</td>
+      <td class="num">${boolCell(g.b2b, { warnTrue: true })}</td>
+      <td class="num">${boolCell(g.threeIn4, { warnTrue: true })}</td>
+      <td class="num">${tzCell(g)}</td>
+      <td class="num">${g.homeAway === "h" ? `<span class="bc bc-na">\u2014</span>` : boolCell(g.earlyArrival)}</td>
+      <td class="num">${stCell(g)}</td>
+      <td class="num">${boolCell(g.mdo)}</td>
+      <td class="num">${boolCell(g.morningSkate)}</td>
+      <td class="num">${boolCell(g.dayBeforeSkate)}</td>
+      <td class="num">${boolCell(g.elevenF7D)}</td>
+      <td class="num">${foCell}</td>
+      <td class="num">${boolCell(g.contestedFoWin)}</td>
       <td class="moon" title="${g.moon || ""}">${moonIcon(g.moon)}</td>
     </tr>`;
   }).join("");

@@ -16,16 +16,16 @@ merged in on every run, so re-running never wipes your hand-entered data.
 """
 import argparse
 import json
-from datetime import timedelta
 import sys
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 API = "https://api-web.nhle.com/v1"
 ROOT = Path(__file__).resolve().parent.parent
 
-# venue timezone by home team (regular-season arenas)
+# venue timezone LABEL by home team — for display chips/grouping only.
 TEAM_TZ = {
     "BOS": "ET", "BUF": "ET", "CAR": "ET", "CBJ": "ET", "DET": "ET", "FLA": "ET",
     "MTL": "ET", "NJD": "ET", "NYI": "ET", "NYR": "ET", "OTT": "ET", "PHI": "ET",
@@ -34,7 +34,27 @@ TEAM_TZ = {
     "CGY": "MT", "COL": "MT", "EDM": "MT", "ARI": "MT", "UTA": "MT", "UTM": "MT",
     "ANA": "PT", "LAK": "PT", "SJS": "PT", "SEA": "PT", "VAN": "PT", "VGK": "PT",
 }
-TZ_OFFSET = {"ET": 0, "CT": -1, "MT": -2, "PT": -3}  # relative hours vs ET
+
+# Real IANA zone per team's arena — the source of truth for all time-of-day
+# math. Converting a UTC timestamp through this handles daylight saving
+# correctly on its own, with no dependence on any offset field the API
+# returns. Arizona doesn't observe DST; every other NHL market does, on the
+# same dates, so this is exact everywhere it matters.
+TEAM_IANA = {
+    "BOS": "America/New_York", "BUF": "America/New_York", "CAR": "America/New_York",
+    "CBJ": "America/New_York", "DET": "America/Detroit", "FLA": "America/New_York",
+    "MTL": "America/Toronto", "NJD": "America/New_York", "NYI": "America/New_York",
+    "NYR": "America/New_York", "OTT": "America/Toronto", "PHI": "America/New_York",
+    "PIT": "America/New_York", "TBL": "America/New_York", "TOR": "America/Toronto",
+    "WSH": "America/New_York",
+    "CHI": "America/Chicago", "DAL": "America/Chicago", "MIN": "America/Chicago",
+    "NSH": "America/Chicago", "STL": "America/Chicago", "WPG": "America/Winnipeg",
+    "CGY": "America/Edmonton", "COL": "America/Denver", "EDM": "America/Edmonton",
+    "ARI": "America/Phoenix", "UTA": "America/Denver", "UTM": "America/Denver",
+    "ANA": "America/Los_Angeles", "LAK": "America/Los_Angeles", "SJS": "America/Los_Angeles",
+    "SEA": "America/Los_Angeles", "VAN": "America/Vancouver", "VGK": "America/Los_Angeles",
+}
+TZ_OFFSET = {"ET": 0, "CT": -1, "MT": -2, "PT": -3}  # relative hours vs ET (display grouping only)
 
 MANUAL_FIELDS = ("mdo", "morningSkate", "dayBeforeSkate", "earlyArrival",
                  "elevenF7D", "contestedFoWin", "specialTeamsWin",
@@ -222,7 +242,8 @@ def build_season(season_id, team):
 
     games = []
     prev_date = None
-    prev_venue_tz = TEAM_TZ.get(team)  # season starts from home base
+    home_iana = TEAM_IANA.get(team, "America/New_York")
+    prev_venue_iana = home_iana  # season starts from home base
     recent_dates = []
 
     for i, g in enumerate(raw, start=1):
@@ -234,29 +255,34 @@ def build_season(season_id, team):
         is_home = h_ab == team
         opp = away.get("abbrev") if is_home else h_ab
         venue_tz = TEAM_TZ.get(h_ab, "ET")
+        venue_iana = TEAM_IANA.get(h_ab, "America/New_York")
 
         rest = None if prev_date is None else (d - prev_date).days - 1
         recent_dates.append(d)
         recent_dates = [x for x in recent_dates if (d - x).days <= 3]
         three_in4 = len(recent_dates) >= 3
 
-        # local start time in the club's home timezone
+        # local start time in the club's home timezone — converted straight
+        # from the UTC timestamp via the IANA database, so DST is handled
+        # correctly for the actual game date without trusting any offset
+        # field from the API.
         time_local = None
+        utc_dt = None
         st = g.get("startTimeUTC")
         if st:
             try:
-                utc = datetime.fromisoformat(st.replace("Z", "+00:00"))
-                offset = g.get("venueUTCOffset")  # e.g. "-06:00" (venue local)
-                # show in club home tz: ET base offset unknown from API alone,
-                # so use venue offset then shift venue->home tz difference
-                if offset:
-                    sign = -1 if offset.startswith("-") else 1
-                    hh, mm = offset.lstrip("+-").split(":")
-                    venue_off = sign * (int(hh) + int(mm) / 60)
-                    home_off = venue_off + (TZ_OFFSET[TEAM_TZ.get(team, "ET")]
-                                            - TZ_OFFSET.get(venue_tz, 0))
-                    lt = utc.timestamp() + home_off * 3600
-                    time_local = datetime.fromtimestamp(lt, tz=timezone.utc).strftime("%H:%M")
+                utc_dt = datetime.fromisoformat(st.replace("Z", "+00:00"))
+                time_local = utc_dt.astimezone(ZoneInfo(home_iana)).strftime("%H:%M")
+            except Exception:
+                pass
+
+        # TZ change vs the previous game's venue, in real (DST-aware) hours
+        tz_change = 0
+        if utc_dt is not None:
+            try:
+                cur_off = utc_dt.astimezone(ZoneInfo(venue_iana)).utcoffset().total_seconds() / 3600
+                prev_off = utc_dt.astimezone(ZoneInfo(prev_venue_iana)).utcoffset().total_seconds() / 3600
+                tz_change = round(cur_off - prev_off)
             except Exception:
                 pass
 
@@ -275,7 +301,7 @@ def build_season(season_id, team):
             "b2b": rest == 0 if rest is not None else False,
             "threeIn4": three_in4,
             "earlyArrival": None,
-            "tzChange": TZ_OFFSET.get(venue_tz, 0) - TZ_OFFSET.get(prev_venue_tz, 0),
+            "tzChange": tz_change,
             "venueTz": venue_tz,
             "leadAfter1": None, "leadAfter2": None,
             "scoredFirst": None, "wonThird": None,
@@ -311,7 +337,7 @@ def build_season(season_id, team):
 
         games.append(game)
         prev_date = d
-        prev_venue_tz = venue_tz
+        prev_venue_iana = venue_iana
 
     return games
 
