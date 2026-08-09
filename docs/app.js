@@ -364,6 +364,37 @@ function renderAll() {
     ? `Last data update: ${state.season.updated.slice(0, 10)}.` : "";
 }
 
+/* ---- header tooltips ------------------------------------------------------
+   Column headers use data-tip instead of the browser's plain native title
+   tooltip (which is unstyled, slow to appear, and doesn't work on touch).
+   This shows the same styled box the pace chart already uses, on hover
+   AND on tap, so it works on phones/tablets too. */
+function bindHeaderTooltips() {
+  const tip = $("#tooltip");
+  let openEl = null;
+  const place = e => {
+    tip.style.left = Math.min(e.clientX + 14, innerWidth - 280) + "px";
+    tip.style.top = (e.clientY + 14) + "px";
+  };
+  document.querySelectorAll("th[data-tip]").forEach(th => {
+    th.addEventListener("mouseenter", e => {
+      tip.hidden = false; tip.textContent = th.dataset.tip; place(e);
+    });
+    th.addEventListener("mousemove", place);
+    th.addEventListener("mouseleave", () => { tip.hidden = true; });
+    th.addEventListener("click", e => {
+      e.stopPropagation();
+      if (openEl === th) { tip.hidden = true; openEl = null; return; }
+      tip.hidden = false; tip.textContent = th.dataset.tip;
+      const r = th.getBoundingClientRect();
+      tip.style.left = Math.min(r.left, innerWidth - 280) + "px";
+      tip.style.top = (r.bottom + 8) + "px";
+      openEl = th;
+    });
+  });
+  document.addEventListener("click", () => { if (openEl) { tip.hidden = true; openEl = null; } });
+}
+
 /* ---- boot ---------------------------------------------------------------- */
 async function loadSeason(id) {
   const res = await fetch(`data/${id}.json`);
@@ -381,6 +412,7 @@ async function loadSeason(id) {
 }
 
 async function boot() {
+  bindHeaderTooltips();
   try {
     const res = await fetch("data/index.json");
     state.index = await res.json();

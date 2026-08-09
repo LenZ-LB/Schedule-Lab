@@ -115,6 +115,11 @@ th{
   border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--panel-2);
   cursor:default;
 }
+th[data-tip]{
+  cursor:help;
+  text-decoration:underline;text-decoration-style:dotted;text-decoration-color:#2C5788;
+  text-underline-offset:3px;
+}
 th.num,td.num{text-align:center}
 td{padding:7px 10px;border-bottom:1px solid #10294A;font-size:13.5px;white-space:nowrap}
 tbody tr:hover{background:#0D2A4C}
