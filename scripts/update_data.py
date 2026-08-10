@@ -228,19 +228,21 @@ def faceoff_fields(game_id, home_away):
 
 def build_season(season_id, team):
     sched = fetch(f"{API}/club-schedule-season/{team}/{season_id}")
-    # gameType 2 = regular season, but some feeds include preseason exhibition
-    # games tagged as 2. Filter to Oct-Apr using the season year as anchor.
-    start_year = int(season_id[:4])
-    # regular season runs Oct of start_year through Apr of start_year+1
-    season_start = f"{start_year}-09-30"   # nothing before Oct 1
-    season_end   = f"{start_year + 1}-05-01"  # nothing after Apr 30
-    raw = [
-        g for g in sched.get("games", [])
-        if g.get("gameType") == 2
-        and season_start < g.get("gameDate", "") < season_end
-    ]
+    # gameType 1 = preseason, 2 = regular season, 3 = playoffs. This is the
+    # NHL API's own authoritative field for this distinction -- trust it
+    # rather than guessing at a calendar window. (An earlier version of this
+    # filter also required the date to fall within Oct-Apr, on the
+    # assumption that regular seasons always start in October. That's wrong:
+    # some seasons start in late September, and that filter would silently
+    # drop real regular-season games. Confirmed with the 2026-27 season,
+    # whose Sept 29 home opener is real and was being cut by that filter.)
+    raw = [g for g in sched.get("games", []) if g.get("gameType") == 2]
     raw.sort(key=lambda g: g.get("gameDate", ""))
-    print(f"{season_id}: {len(raw)} regular-season games (Oct–Apr)")
+    if raw:
+        print(f"{season_id}: {len(raw)} regular-season games, "
+              f"{raw[0]['gameDate']} to {raw[-1]['gameDate']}")
+    else:
+        print(f"{season_id}: 0 regular-season games found")
 
     games = []
     prev_date = None
