@@ -75,7 +75,7 @@ FULL_MOON_NAMES = {1: "full wolf moon", 2: "full snow moon", 3: "full worm moon"
                    10: "full hunter's moon", 11: "full beaver moon", 12: "full cold moon"}
 
 
-def moon_phase(date_str, tz_offset_hours=-7):
+def moon_phase(date_str, home_iana="America/Edmonton"):
     """Moon phase for a local calendar date.
 
     Convention (matches the original spreadsheets): a date is a principal
@@ -84,8 +84,19 @@ def moon_phase(date_str, tz_offset_hours=-7):
     intermediate phase (crescent / gibbous). Full moons get their
     traditional monthly names. Uses ephem when available, else a
     synodic approximation (may drift +/- 1 day near principal events).
+
+    The moon's phase is the same everywhere on Earth at a given instant —
+    what changes by location is which *calendar date* that instant falls
+    on. So this uses the club's real local offset for that specific date
+    (via zoneinfo, DST-aware) rather than a fixed number, to get the
+    calendar-day boundary right year-round.
     """
     d0 = datetime.strptime(date_str, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+    local_noon_naive = d0.replace(hour=12)
+    try:
+        tz_offset_hours = local_noon_naive.replace(tzinfo=ZoneInfo(home_iana)).utcoffset().total_seconds() / 3600
+    except Exception:
+        tz_offset_hours = -7  # fallback if zoneinfo/ephem data is unavailable
     day_start = d0 - timedelta(hours=tz_offset_hours)
     day_end = day_start + timedelta(days=1)
     noon = day_start + timedelta(hours=12)
@@ -300,7 +311,7 @@ def build_season(season_id, team):
             "fo50": None, "foPct": None, "contestedFoWin": None,
             "elevenF7D": None, "mdo": None, "morningSkate": None,
             "dayBeforeSkate": None,
-            "moon": moon_phase(date_str),
+            "moon": moon_phase(date_str, home_iana),
         }
 
         # completed games: results + linescore + faceoffs
