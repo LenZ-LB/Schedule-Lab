@@ -310,6 +310,7 @@ def build_season(season_id, team):
             "earlyArrival": None,
             "hotelFar": None,
             "tzChange": tz_change,
+            "oppRestDays": None, "oppB2B": None, "oppThreeIn4": None, "restAdvantage": None,
             "venueTz": venue_tz,
             "leadAfter1": None, "leadAfter2": None,
             "scoredFirst": None, "wonThird": None,
@@ -347,7 +348,49 @@ def build_season(season_id, team):
         prev_date = d
         prev_venue_iana = venue_iana
 
+    add_opponent_rest(games, season_id)
     return games
+
+
+def add_opponent_rest(games, season_id):
+    """For each of our games, compute the opponent's own rest/B2B/3-in-4
+    entering that matchup, and our rest advantage vs theirs. Requires one
+    extra API call per unique opponent (their own season schedule) -- worth
+    it because it's real, mechanical schedule data no analyst-side judgment
+    is involved in, unlike a subjective "trap game" flag."""
+    opponents = sorted(set(g["opponent"] for g in games))
+    opp_schedules = {}
+    for opp in opponents:
+        try:
+            sched = fetch(f"{API}/club-schedule-season/{opp}/{season_id}")
+            dates = sorted(
+                g2.get("gameDate") for g2 in sched.get("games", [])
+                if g2.get("gameType") == 2 and g2.get("gameDate")
+            )
+            opp_schedules[opp] = dates
+        except Exception as e:
+            print(f"  ! could not fetch {opp}'s schedule for opponent-rest calc: {e}", file=sys.stderr)
+            opp_schedules[opp] = []
+
+    for g in games:
+        opp = g["opponent"]
+        dates = opp_schedules.get(opp, [])
+        if not dates or g["date"] not in dates:
+            continue
+        idx = dates.index(g["date"])
+        d = datetime.strptime(g["date"], "%Y-%m-%d")
+        if idx == 0:
+            continue  # opponent's own season opener -- no prior game to rest from
+        prev_opp_date = datetime.strptime(dates[idx - 1], "%Y-%m-%d")
+        opp_rest = (d - prev_opp_date).days - 1
+        g["oppRestDays"] = opp_rest
+        g["oppB2B"] = (opp_rest == 0)
+        # opponent 3-in-4: how many of their games fall in the 4 nights up to and including this one
+        recent = [datetime.strptime(x, "%Y-%m-%d") for x in dates
+                  if 0 <= (d - datetime.strptime(x, "%Y-%m-%d")).days <= 3]
+        g["oppThreeIn4"] = len(recent) >= 3
+        if g["restDays"] is not None:
+            g["restAdvantage"] = g["restDays"] - opp_rest
 
 
 def update_index(season_id):

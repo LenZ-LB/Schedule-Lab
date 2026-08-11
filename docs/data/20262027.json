@@ -40,7 +40,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": null,
+   "oppB2B": null,
+   "oppThreeIn4": null,
+   "restAdvantage": null
   },
   {
    "game": 2,
@@ -77,7 +81,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 3,
@@ -114,7 +122,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "last quarter",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 4,
@@ -151,7 +163,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 2,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 1
   },
   {
    "game": 5,
@@ -188,7 +204,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "new moon",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 1
   },
   {
    "game": 6,
@@ -225,7 +245,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 2,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 7,
@@ -262,7 +286,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 8,
@@ -299,7 +327,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 9,
@@ -336,7 +368,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 1
   },
   {
    "game": 10,
@@ -373,7 +409,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 11,
@@ -410,7 +450,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 12,
@@ -447,7 +491,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 13,
@@ -484,7 +532,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 14,
@@ -521,7 +573,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 1
   },
   {
    "game": 15,
@@ -558,7 +614,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "last quarter",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 5,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": -5
   },
   {
    "game": 16,
@@ -595,7 +655,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 3,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": -2
   },
   {
    "game": 17,
@@ -632,7 +696,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 18,
@@ -669,7 +737,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 19,
@@ -706,7 +778,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "new moon",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 20,
@@ -743,7 +819,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": true,
+   "restAdvantage": 0
   },
   {
    "game": 21,
@@ -780,7 +860,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 1
   },
   {
    "game": 22,
@@ -817,7 +901,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 0,
+   "oppB2B": true,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 23,
@@ -854,7 +942,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "first quarter",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": true,
+   "restAdvantage": 0
   },
   {
    "game": 24,
@@ -891,7 +983,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 25,
@@ -928,7 +1024,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 26,
@@ -965,7 +1065,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 0,
+   "oppB2B": true,
+   "oppThreeIn4": true,
+   "restAdvantage": 0
   },
   {
    "game": 27,
@@ -1002,7 +1106,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "full beaver moon",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 2,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": -1
   },
   {
    "game": 28,
@@ -1039,7 +1147,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 1
   },
   {
    "game": 29,
@@ -1076,7 +1188,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 0,
+   "oppB2B": true,
+   "oppThreeIn4": true,
+   "restAdvantage": 0
   },
   {
    "game": 30,
@@ -1113,7 +1229,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 3,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": -1
   },
   {
    "game": 31,
@@ -1150,7 +1270,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 32,
@@ -1187,7 +1311,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": true,
+   "restAdvantage": 1
   },
   {
    "game": 33,
@@ -1224,7 +1352,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "new moon",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 2,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": -1
   },
   {
    "game": 34,
@@ -1261,7 +1393,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 3,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": -2
   },
   {
    "game": 35,
@@ -1298,7 +1434,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 36,
@@ -1335,7 +1475,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 37,
@@ -1372,7 +1516,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 1
   },
   {
    "game": 38,
@@ -1409,7 +1557,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 39,
@@ -1446,7 +1598,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": -1
   },
   {
    "game": 40,
@@ -1483,7 +1639,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 0,
+   "oppB2B": true,
+   "oppThreeIn4": false,
+   "restAdvantage": 6
   },
   {
    "game": 41,
@@ -1520,7 +1680,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": -1
   },
   {
    "game": 42,
@@ -1557,7 +1721,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "last quarter",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 2,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": -1
   },
   {
    "game": 43,
@@ -1594,7 +1762,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 1
   },
   {
    "game": 44,
@@ -1631,7 +1803,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": true,
+   "restAdvantage": -1
   },
   {
    "game": 45,
@@ -1668,7 +1844,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 2,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": -1
   },
   {
    "game": 46,
@@ -1705,7 +1885,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "new moon",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 47,
@@ -1742,7 +1926,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 48,
@@ -1779,7 +1967,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 49,
@@ -1816,7 +2008,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 3,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": -2
   },
   {
    "game": 50,
@@ -1853,7 +2049,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "first quarter",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 2,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": -1
   },
   {
    "game": 51,
@@ -1890,7 +2090,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 0,
+   "oppB2B": true,
+   "oppThreeIn4": true,
+   "restAdvantage": 1
   },
   {
    "game": 52,
@@ -1927,7 +2131,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 2,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 53,
@@ -1964,7 +2172,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": -1
   },
   {
    "game": 54,
@@ -2001,7 +2213,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 4,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": -3
   },
   {
    "game": 55,
@@ -2038,7 +2254,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 1
   },
   {
    "game": 56,
@@ -2075,7 +2295,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 57,
@@ -2112,7 +2336,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 58,
@@ -2149,7 +2377,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 2
   },
   {
    "game": 59,
@@ -2186,7 +2418,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 2,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 6
   },
   {
    "game": 60,
@@ -2223,7 +2459,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 10,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": -10
   },
   {
    "game": 61,
@@ -2260,7 +2500,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 2
   },
   {
    "game": 62,
@@ -2297,7 +2541,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 63,
@@ -2334,7 +2582,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 0,
+   "oppB2B": true,
+   "oppThreeIn4": false,
+   "restAdvantage": 2
   },
   {
    "game": 64,
@@ -2371,7 +2623,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 1
   },
   {
    "game": 65,
@@ -2408,7 +2664,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "last quarter",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 66,
@@ -2445,7 +2705,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 0,
+   "oppB2B": true,
+   "oppThreeIn4": true,
+   "restAdvantage": 1
   },
   {
    "game": 67,
@@ -2482,7 +2746,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 3,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": -2
   },
   {
    "game": 68,
@@ -2519,7 +2787,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 0,
+   "oppB2B": true,
+   "oppThreeIn4": true,
+   "restAdvantage": 2
   },
   {
    "game": 69,
@@ -2556,7 +2828,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 1
   },
   {
    "game": 70,
@@ -2593,7 +2869,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 71,
@@ -2630,7 +2910,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 72,
@@ -2667,7 +2951,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "first quarter",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 73,
@@ -2704,7 +2992,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 2,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 74,
@@ -2741,7 +3033,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 2,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": -1
   },
   {
    "game": 75,
@@ -2778,7 +3074,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 0,
+   "oppB2B": true,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 76,
@@ -2815,7 +3115,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 77,
@@ -2852,7 +3156,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 78,
@@ -2889,7 +3197,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning gibbous",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 79,
@@ -2926,7 +3238,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 2
   },
   {
    "game": 80,
@@ -2963,7 +3279,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 81,
@@ -3000,7 +3320,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": -1
   },
   {
    "game": 82,
@@ -3037,7 +3361,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waning crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 83,
@@ -3074,7 +3402,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 1,
+   "oppB2B": false,
+   "oppThreeIn4": false,
+   "restAdvantage": 0
   },
   {
    "game": 84,
@@ -3111,7 +3443,11 @@
    "morningSkate": null,
    "dayBeforeSkate": null,
    "moon": "waxing crescent",
-   "hotelFar": null
+   "hotelFar": null,
+   "oppRestDays": 0,
+   "oppB2B": true,
+   "oppThreeIn4": true,
+   "restAdvantage": 2
   }
  ]
 }

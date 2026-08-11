@@ -45,6 +45,18 @@ const SPLITS = [
     { id: "r3",    name: "3 days off",        test: g => g.restDays === 3 },
     { id: "r4",    name: "4+ days off",       test: g => g.restDays !== null && g.restDays >= 4 },
   ]},
+  { group: "Opponent rest & density", items: [
+    { id: "oppB2b",  name: "Opponent on B2B",      test: g => g.oppB2B === true },
+    { id: "oppNb2b", name: "Opponent not on B2B",  test: g => g.oppB2B === false },
+    { id: "opp3in4", name: "Opponent 3 in 4",      test: g => g.oppThreeIn4 === true },
+    { id: "oppR1",   name: "Opponent 1 day off",   test: g => g.oppRestDays === 1 },
+    { id: "oppR2",   name: "Opponent 2 days off",  test: g => g.oppRestDays === 2 },
+    { id: "oppR3",   name: "Opponent 3 days off",  test: g => g.oppRestDays === 3 },
+    { id: "oppR4",   name: "Opponent 4+ days off", test: g => g.oppRestDays !== null && g.oppRestDays >= 4 },
+    { id: "radvP",   name: "Rest advantage (us)",  test: g => g.restAdvantage !== null && g.restAdvantage > 0 },
+    { id: "radvN",   name: "Rest disadvantage",    test: g => g.restAdvantage !== null && g.restAdvantage < 0 },
+    { id: "radv0",   name: "Equal rest",           test: g => g.restAdvantage === 0 },
+  ]},
   { group: "Venue & travel", items: [
     { id: "home",  name: "Home",              test: g => g.homeAway === "h" },
     { id: "away",  name: "Away",              test: g => g.homeAway === "a" },
@@ -311,6 +323,14 @@ function tzCell(g) {
   return `<span class="bc bc-yes${warn ? " warn" : ""}">${sign}${g.tzChange}</span>`;
 }
 
+function restAdvCell(v) {
+  if (v === null || v === undefined) return `<span class="bc bc-na">\u2014</span>`;
+  if (v === 0) return `<span class="bc bc-no">0</span>`;
+  const sign = v > 0 ? "+" : "";
+  // positive = we're more rested (good, no warn); negative = disadvantage (warn)
+  return `<span class="bc ${v > 0 ? "bc-yes" : "bc-yes warn"}">${sign}${v}</span>`;
+}
+
 function stCell(g) {
   if (g.specialTeamsWin === true) return `<span class="bc bc-yes">+</span>`;
   if (g.specialTeamsTie === true) return `<span class="bc bc-na">=</span>`;
@@ -346,6 +366,9 @@ function renderTable() {
       <td class="num">${g.restDays === null ? "\u2014" : g.restDays}</td>
       <td class="num">${boolCell(g.b2b, { warnTrue: true })}</td>
       <td class="num">${boolCell(g.threeIn4, { warnTrue: true })}</td>
+      <td class="num">${g.oppRestDays === null || g.oppRestDays === undefined ? "\u2014" : g.oppRestDays}</td>
+      <td class="num">${boolCell(g.oppB2B, { warnTrue: true })}</td>
+      <td class="num">${restAdvCell(g.restAdvantage)}</td>
       <td class="num">${tzCell(g)}</td>
       <td class="num">${g.homeAway === "h" ? `<span class="bc bc-na">\u2014</span>` : boolCell(g.earlyArrival)}</td>
       <td class="num">${g.homeAway === "h" ? `<span class="bc bc-na">\u2014</span>` : boolCell(g.hotelFar)}</td>
