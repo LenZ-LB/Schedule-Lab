@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Overview · Schedule Lab</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<link rel="stylesheet" href="fontfaces.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="league.css">
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+      <circle cx="20" cy="20" r="18" fill="none" stroke="#ffffff" stroke-width="2.5"/>
+      <path d="M20 8 L30 26 L10 26 Z" fill="var(--brand-orange)"/>
+    </svg>
+    <div class="brand-text">
+      <h1>Schedule Lab</h1>
+      <span class="subtitle">League Overview</span>
+    </div>
+  </div>
+  <a href="index.html" class="header-btn">Schedule</a>
+  <a href="editor.html" class="header-btn">Enter game info</a>
+  <button class="header-btn active" type="button">Overview</button>
+  <a href="team-explorer.html" class="header-btn">Team Explorer</a>
+</header>
+
+<div class="wrap">
+<h2 class="page-title" id="pageTitle">—</h2>
+<p class="record-line" id="recordLine">Loading league data…</p>
+
+<section class="panel">
+  <div class="panel-label">League at a glance</div>
+  <div class="stat-row" id="statRow"></div>
+</section>
+
+<section class="panel">
+  <div class="panel-label">Key Dates</div>
+  <p class="panel-sub">Special events and league milestones this season — hand-curated, not derived from the schedule pipeline.</p>
+  <div class="event-cards" id="eventCards"></div>
+</section>
+
+<section class="panel">
+  <div class="panel-label">Games by Month</div>
+  <p class="panel-sub">League-wide team-games per month (each game counts once per team, so this is roughly double the true game count).</p>
+  <div class="chart-holder"><canvas id="monthChart"></canvas></div>
+</section>
+
+<section class="panel">
+  <div class="panel-label">Games by Day of Week</div>
+  <div class="chart-holder"><canvas id="dowChart"></canvas></div>
+</section>
+
+<footer class="site-foot">
+  <p>Schedule data from the NHL API, refreshed automatically · Key Dates entered by hand.
+     <span id="updatedStamp"></span></p>
+</footer>
+</div>
+
+<script src="chart.js"></script>
+<script src="shared.js"></script>
+<script src="overview.js"></script>
+</body>
+</html>

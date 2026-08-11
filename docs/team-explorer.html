@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Team Explorer · Schedule Lab</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<link rel="stylesheet" href="fontfaces.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="league.css">
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+      <circle cx="20" cy="20" r="18" fill="none" stroke="#ffffff" stroke-width="2.5"/>
+      <path d="M20 8 L30 26 L10 26 Z" fill="var(--brand-orange)"/>
+    </svg>
+    <div class="brand-text">
+      <h1>Schedule Lab</h1>
+      <span class="subtitle">Team Explorer</span>
+    </div>
+  </div>
+  <a href="index.html" class="header-btn">Schedule</a>
+  <a href="editor.html" class="header-btn">Enter game info</a>
+  <a href="overview.html" class="header-btn">Overview</a>
+  <button class="header-btn active" type="button">Team Explorer</button>
+</header>
+
+<div class="wrap">
+<h2 class="page-title" id="pageTitle">Team Explorer</h2>
+
+<section class="team-select-row">
+  <label for="teamSelect">Team</label>
+  <select id="teamSelect"></select>
+</section>
+
+<section class="panel">
+  <div class="panel-label" id="teamPanelLabel">Season at a glance</div>
+  <div class="stat-row" id="statRow"></div>
+</section>
+
+<section class="panel" id="toughestPanel">
+  <div class="panel-label">Toughest Stretch</div>
+  <p class="panel-sub">The 5-game window with the fewest average rest days \u2014 a plain, transparent ranking (no fabricated "fatigue" score involved).</p>
+  <div id="toughestBody"></div>
+</section>
+
+<section class="panel">
+  <div class="panel-label">Season Segments</div>
+  <p class="panel-sub">Rolling 5-game windows across the season. Click a block for details.</p>
+  <div class="segment-strip" id="segmentStrip"></div>
+  <div id="segmentDetail"></div>
+</section>
+
+<section class="panel">
+  <div class="panel-label">Opponents</div>
+  <div class="table-wrap">
+    <table id="oppTable">
+      <thead><tr><th>Opponent</th><th class="num">Total</th><th class="num">Home</th><th class="num">Away</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <p><span id="updatedStamp"></span></p>
+</footer>
+</div>
+
+<div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+<script src="shared.js"></script>
+<script src="team-explorer.js"></script>
+</body>
+</html>

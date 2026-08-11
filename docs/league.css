@@ -1,0 +1,185 @@
+.chart-holder { position: relative; height: 250px; }
+
+.chart-holder.tall { height: 330px; }
+
+/* ==========================================================================
+   CALENDAR HEAT STRIP
+   ========================================================================== */
+
+.heatstrip {
+  display:flex;
+  gap: 2px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.heat-day {
+  width: 8px;
+  min-width:8px;
+  height: 26px;
+  border-radius: 2px;
+  background: var(--grid);
+  cursor: default;
+  transition: transform 0.1s ease;
+}
+
+.heat-day:hover { transform: scaleY(1.15); }
+
+.heat-months {
+  display:flex;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--text3);
+  margin-top: 6px;
+}
+
+.calendar-tooltip {
+  position: fixed;
+  z-index: 100;
+  background: var(--navy);
+  color: #fff;
+  font-family: 'Rubik', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 5px 9px;
+  border-radius: 6px;
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  display: none;
+}
+
+.calendar-tooltip.visible { display: block; }
+
+/* ==========================================================================
+   TAB PANELS (content sections switched by header nav)
+   ========================================================================== */
+
+.tab-panel { display:none; }
+
+.tab-panel.active { display:block; animation: fadein 0.2s ease; }
+
+/* ==========================================================================
+   SPECIAL EVENT CARDS
+   ========================================================================== */
+
+.event-group { margin-bottom: 24px; }
+
+.event-group-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--event);
+  margin-bottom: 10px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.event-group-title::before {
+  content:"";
+  width:7px; height:7px; border-radius:50%;
+  background: var(--event);
+  display:inline-block;
+}
+
+.event-cards { display:grid; grid-template-columns: repeat(auto-fill, minmax(250px,1fr)); gap: 12px; }
+
+.event-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--event);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.event-card .ev-date {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  color: var(--brand-orange);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+
+.event-card .ev-matchup {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--text);
+}
+
+.event-card .ev-time {
+  font-size: 10.5px;
+  color: var(--text2);
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   TEAM EXPLORER
+   ========================================================================== */
+
+.team-select-row {
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.team-select-row label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color: var(--text3);
+}
+
+.segment-strip {
+  display:flex;
+  gap: 3px;
+}
+
+.segment-block {
+  flex: 1;
+  height: 44px;
+  border-radius: 4px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  cursor: default;
+  transition: transform 0.1s ease;
+}
+
+.segment-block:hover { transform: scaleY(1.08); }
+
+.segment-tag-pill {
+  display:inline-block;
+  font-size: 0.62rem;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: #ece6f5;
+  color: var(--event);
+  border: 1px solid #d9cbef;
+  margin: 1px;
+}
+
+.segment-row { cursor: pointer; }
+
+.segment-row:hover { background: var(--highlight-bg); }
+
+.opp-row { cursor: pointer; }
+
+.opp-row:hover { background: var(--highlight-bg); }
+
+/* travel map */
+svg.travelmap { width:100%; height:auto; }
+
+.city-dot { transition: r 0.15s ease; }
+
+.city-dot:hover { r:7; }

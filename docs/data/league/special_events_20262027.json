@@ -1,0 +1,23 @@
+{
+ "_comment": "Curated league-wide calendar milestones for 2026-27 -- hand-verified, not derived from the schedule pipeline. Edit directly to add/correct entries.",
+ "events": [
+  {"date": "2026-09-29", "endDate": null, "title": "Opening Night",
+   "detail": "Five games, including Carolina raising its championship banner."},
+  {"date": "2026-10-13", "endDate": null, "title": "All 32 teams in action",
+   "detail": "A 16-game league-wide slate."},
+  {"date": "2026-10-25", "endDate": null, "title": "2026 Heritage Classic",
+   "detail": "Montreal at Winnipeg, Princess Auto Stadium."},
+  {"date": "2026-11-12", "endDate": "2026-11-14", "title": "Global Series Finland",
+   "detail": "Carolina and Seattle play twice in Helsinki."},
+  {"date": "2026-12-18", "endDate": "2026-12-20", "title": "Global Series Germany",
+   "detail": "Chicago and Ottawa play twice in Dusseldorf."},
+  {"date": "2026-12-31", "endDate": null, "title": "2027 Winter Classic",
+   "detail": "Colorado at Utah, Rice-Eccles Stadium."},
+  {"date": "2027-02-05", "endDate": "2027-02-06", "title": "NHL All-Star Weekend",
+   "detail": "Skills and All-Star Game at UBS Arena on Long Island."},
+  {"date": "2027-02-20", "endDate": null, "title": "2027 Stadium Series",
+   "detail": "Vegas at Dallas, AT&T Stadium in Arlington."},
+  {"date": "2027-04-10", "endDate": null, "title": "Regular-season finale",
+   "detail": "All 32 teams close the season on a 16-game slate."}
+ ]
+}
