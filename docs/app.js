@@ -175,24 +175,29 @@ function renderGrind() {
 
   // y gridlines every 20 pts
   for (let p = 0; p <= yMaxPts; p += 20) {
-    svg += `<line x1="${padL}" y1="${y(p).toFixed(1)}" x2="${W - padR}" y2="${y(p).toFixed(1)}" stroke="#12314F" stroke-width="1"/>`;
-    svg += `<text x="${padL - 8}" y="${(y(p) + 4).toFixed(1)}" text-anchor="end" fill="#5E7B9C" font-size="11" font-family="Barlow Condensed">${p}</text>`;
+    svg += `<line x1="${padL}" y1="${y(p).toFixed(1)}" x2="${W - padR}" y2="${y(p).toFixed(1)}" stroke="var(--grid)" stroke-width="1"/>`;
+    svg += `<text x="${padL - 8}" y="${(y(p) + 4).toFixed(1)}" text-anchor="end" fill="var(--text3)" font-size="11" font-family="Rubik">${p}</text>`;
   }
   // x ticks every ~10 games
   for (let i = 9; i < N; i += 10) {
-    svg += `<text x="${x(i).toFixed(1)}" y="${H - 14}" text-anchor="middle" fill="#5E7B9C" font-size="11" font-family="Barlow Condensed">${i + 1}</text>`;
+    svg += `<text x="${x(i).toFixed(1)}" y="${H - 14}" text-anchor="middle" fill="var(--text3)" font-size="11" font-family="Rubik">${i + 1}</text>`;
   }
-  svg += `<text x="${(padL + plotW / 2).toFixed(1)}" y="${H - 2}" text-anchor="middle" fill="#5E7B9C" font-size="10.5" font-family="Barlow Condensed" letter-spacing="1.5">GAME</text>`;
+  svg += `<text x="${(padL + plotW / 2).toFixed(1)}" y="${H - 2}" text-anchor="middle" fill="var(--text3)" font-size="10.5" font-family="Rubik" letter-spacing="1.5">GAME</text>`;
 
-  // reference pace lines: 96 pts (typical playoff cut) and 100 pts
-  const pace = (target, color, dash, label, labelDy) => {
-    const x2 = x(N - 1), y2 = y(target);
-    let s = `<line x1="${x(0)}" y1="${y(0).toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${color}" stroke-width="1.5" stroke-dasharray="${dash}" opacity="0.55"/>`;
-    s += `<text x="${(x2 - 2).toFixed(1)}" y="${(y2 + labelDy).toFixed(1)}" text-anchor="end" fill="${color}" font-size="10.5" font-family="Barlow Condensed" letter-spacing="1" opacity="0.9">${label}</text>`;
-    return s;
-  };
-  svg += pace(96, "#7FB2E5", "3 3", "96-PT PACE", -6);
-  svg += pace(100, "#4D6B8C", "1 4", "100-PT", 13);
+  // reference pace lines: 96 pts (typical playoff cut) and 100 pts.
+  // Labels live in a small fixed legend in the top-left corner instead of
+  // at the line's endpoint -- anchoring text to the endpoint means it
+  // collides with real result dots by season's end, since a competitive
+  // team's actual point total ends up right around 96-100 anyway.
+  const paceLine = (target, color, dash) =>
+    `<line x1="${x(0)}" y1="${y(0).toFixed(1)}" x2="${x(N - 1).toFixed(1)}" y2="${y(target).toFixed(1)}" stroke="${color}" stroke-width="1.5" stroke-dasharray="${dash}" opacity="0.7"/>`;
+  svg += paceLine(96, "var(--accent)", "3 3");
+  svg += paceLine(100, "var(--text3)", "1 4");
+  const legendX = padL + 14, legendY = padT + 4;
+  svg += `<line x1="${legendX}" y1="${legendY}" x2="${legendX + 16}" y2="${legendY}" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="3 3"/>`;
+  svg += `<text x="${legendX + 21}" y="${legendY + 3.5}" fill="var(--accent)" font-size="10.5" font-family="Rubik" font-weight="600" letter-spacing=".02em">96-PT PACE</text>`;
+  svg += `<line x1="${legendX}" y1="${legendY + 15}" x2="${legendX + 16}" y2="${legendY + 15}" stroke="var(--text3)" stroke-width="1.5" stroke-dasharray="1 4"/>`;
+  svg += `<text x="${legendX + 21}" y="${legendY + 18.5}" fill="var(--text3)" font-size="10.5" font-family="Rubik" font-weight="600" letter-spacing=".02em">100 PTS</text>`;
 
   // the cumulative points line (played games only)
   if (played.length) {
@@ -202,17 +207,17 @@ function renderGrind() {
     const areaD = d + ` L ${x(lastPlayedIdx).toFixed(1)} ${y(0).toFixed(1)} L ${x(0).toFixed(1)} ${y(0).toFixed(1)} Z`;
     svg += `<path d="${areaD}" fill="url(#paceFill)" opacity="0.5"/>`;
     svg += `<defs><linearGradient id="paceFill" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#FF4C00" stop-opacity="0.35"/>
-      <stop offset="1" stop-color="#FF4C00" stop-opacity="0"/></linearGradient></defs>`;
-    svg += `<path d="${d}" fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linejoin="round"/>`;
+      <stop offset="0" stop-color="#D14520" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#D14520" stop-opacity="0"/></linearGradient></defs>`;
+    svg += `<path d="${d}" fill="none" stroke="var(--brand-orange)" stroke-width="2.5" stroke-linejoin="round"/>`;
 
     // result dots — color shows how each point was earned; streaks read as slope
     games.forEach((g, i) => {
       if (!g.result) return;
       const dim = active && !active.test(g) ? 0.16 : 1;
-      const col = isWin(g) ? "var(--orange)" : (g.result === "OTL" || g.result === "SOL") ? "var(--otl)" : "var(--loss)";
+      const col = isWin(g) ? "var(--brand-orange)" : (g.result === "OTL" || g.result === "SOL") ? "var(--accent)" : "var(--text3)";
       const r = isWin(g) ? 3.6 : 3;
-      svg += `<circle class="pt" data-game="${g.game}" cx="${x(i).toFixed(1)}" cy="${y(pts[i]).toFixed(1)}" r="${r}" fill="${col}" opacity="${dim}" stroke="#061729" stroke-width="1"/>`;
+      svg += `<circle class="pt" data-game="${g.game}" cx="${x(i).toFixed(1)}" cy="${y(pts[i]).toFixed(1)}" r="${r}" fill="${col}" opacity="${dim}" stroke="var(--surface)" stroke-width="1"/>`;
     });
   }
   svg += "</svg>";

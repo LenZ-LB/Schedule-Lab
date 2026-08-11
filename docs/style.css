@@ -7,7 +7,7 @@ html,body{margin:0;padding:0}
 h1,h2,h3{margin:0}
 .num,td.num,.record-line,#schedTable td{font-variant-numeric:tabular-nums}
 
-.wrap{max-width:1400px}
+.wrap{max-width:1400px;margin:0 auto}
 
 /* header extras beyond tokens.css */
 .header-right{display:flex;align-items:center;gap:10px;margin-left:auto}
