@@ -116,7 +116,7 @@ header select{min-width:140px;font-size:13px;padding:6px 10px}
 }
 .chip.warn{border-color:var(--bad-text);color:var(--bad-text)}
 .bc{display:inline-block;min-width:16px;font:600 12.5px 'DM Mono',monospace}
-.bc-yes{color:var(--good-text)}
+.bc-yes{color:var(--good-text);font-size:15px;font-weight:700}
 .bc-yes.warn{color:var(--bad-text)}
 .bc-no{color:var(--text3)}
 .bc-no.warn{color:var(--bad-text)}

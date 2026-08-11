@@ -168,7 +168,7 @@ function renderGrind() {
   const W = 1000, H = 300, padL = 44, padR = 16, padT = 18, padB = 40;
   const plotW = W - padL - padR, plotH = H - padT - padB;
   const x = i => padL + (N <= 1 ? 0 : i / (N - 1) * plotW);       // i = 0-based game index
-  const yMaxPts = Math.max(60, Math.ceil((played.length ? pts[lastPlayedIdx] : 0) / 20) * 20 + 20, 100);
+  const yMaxPts = Math.max(60, Math.ceil((played.length ? pts[lastPlayedIdx] : 0) / 20) * 20 + 20, 140);
   const y = p => padT + plotH - (p / yMaxPts) * plotH;
 
   let svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Points pace over the season">`;
@@ -191,13 +191,13 @@ function renderGrind() {
   // team's actual point total ends up right around 96-100 anyway.
   const paceLine = (target, color, dash) =>
     `<line x1="${x(0)}" y1="${y(0).toFixed(1)}" x2="${x(N - 1).toFixed(1)}" y2="${y(target).toFixed(1)}" stroke="${color}" stroke-width="1.5" stroke-dasharray="${dash}" opacity="0.7"/>`;
-  svg += paceLine(96, "var(--accent)", "3 3");
-  svg += paceLine(100, "var(--text3)", "1 4");
+  svg += paceLine(102, "var(--accent)", "3 3");
+  svg += paceLine(120, "var(--text3)", "1 4");
   const legendX = padL + 14, legendY = padT + 4;
   svg += `<line x1="${legendX}" y1="${legendY}" x2="${legendX + 16}" y2="${legendY}" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="3 3"/>`;
-  svg += `<text x="${legendX + 21}" y="${legendY + 3.5}" fill="var(--accent)" font-size="10.5" font-family="Rubik" font-weight="600" letter-spacing=".02em">96-PT PACE</text>`;
+  svg += `<text x="${legendX + 21}" y="${legendY + 3.5}" fill="var(--accent)" font-size="10.5" font-family="Rubik" font-weight="600" letter-spacing=".02em">102-PT PACE</text>`;
   svg += `<line x1="${legendX}" y1="${legendY + 15}" x2="${legendX + 16}" y2="${legendY + 15}" stroke="var(--text3)" stroke-width="1.5" stroke-dasharray="1 4"/>`;
-  svg += `<text x="${legendX + 21}" y="${legendY + 18.5}" fill="var(--text3)" font-size="10.5" font-family="Rubik" font-weight="600" letter-spacing=".02em">100 PTS</text>`;
+  svg += `<text x="${legendX + 21}" y="${legendY + 18.5}" fill="var(--text3)" font-size="10.5" font-family="Rubik" font-weight="600" letter-spacing=".02em">120 PTS</text>`;
 
   // the cumulative points line (played games only)
   if (played.length) {
@@ -315,7 +315,7 @@ function renderFilterNote() {
 
 function boolCell(v, { warnTrue = false } = {}) {
   // true -> check, false -> dash, null/undefined -> em dash (unknown/n-a)
-  if (v === true) return `<span class="bc bc-yes${warnTrue ? " warn" : ""}">\u2713</span>`;
+  if (v === true) return `<span class="bc bc-yes${warnTrue ? " warn" : ""}">\u2714</span>`;
   if (v === false) return `<span class="bc bc-no">\u2013</span>`;
   return `<span class="bc bc-na">\u2014</span>`;
 }
