@@ -271,12 +271,14 @@ def build_season(season_id, team):
         # correctly for the actual game date without trusting any offset
         # field from the API.
         time_local = None
+        venue_time_local = None
         utc_dt = None
         st = g.get("startTimeUTC")
         if st:
             try:
                 utc_dt = datetime.fromisoformat(st.replace("Z", "+00:00"))
                 time_local = utc_dt.astimezone(ZoneInfo(home_iana)).strftime("%H:%M")
+                venue_time_local = utc_dt.astimezone(ZoneInfo(venue_iana)).strftime("%H:%M")
             except Exception:
                 pass
 
@@ -299,6 +301,7 @@ def build_season(season_id, team):
             "opponent": opp,
             "opponentName": opp,
             "timeLocal": time_local,
+            "venueTimeLocal": venue_time_local,
             "result": None, "gf": None, "ga": None, "diff": None,
             "marginBucket": None,
             "restDays": rest,

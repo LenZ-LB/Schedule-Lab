@@ -338,6 +338,7 @@ function renderTable() {
       <td>${g.date}</td>
       <td>${(g.dayOfWeek || "").slice(0, 3)}</td>
       <td>${g.timeLocal || "\u2014"}</td>
+      <td>${g.venueTimeLocal || "\u2014"}</td>
       <td>${g.homeAway === "h" ? `<strong>${g.opponent}</strong>` : `<span class="opp-a">@ ${g.opponent}</span>`}</td>
       <td>${g.homeAway === "h" ? "Home" : "Away"}</td>
       <td>${res}</td>

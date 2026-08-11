@@ -43,11 +43,34 @@
 .btn-ghost{background:transparent;border-color:var(--line);color:var(--ice)}
 .btn-ghost:hover{border-color:#2C5788}
 
+.ed-view-toggle{display:flex;gap:8px;margin-left:auto}
+.ed-view-toggle .btn{padding:8px 14px;font-size:13px}
+.ed-view-toggle .view-active{background:var(--orange);border-color:var(--orange);color:#1a0900}
+
 .ed-picker{
   display:flex;gap:16px;align-items:end;margin-top:28px;flex-wrap:wrap;
   padding-bottom:20px;border-bottom:1px solid var(--line);
 }
 .ed-picker select{min-width:220px}
+
+.ed-bulk{margin-top:24px}
+.ed-bulk-head{margin-bottom:14px}
+#bulkTable{min-width:1000px;border-collapse:collapse;width:100%;background:var(--panel)}
+#bulkTable th{
+  text-align:left;padding:8px 8px;color:var(--steel);
+  font:600 11.5px "Barlow Condensed",sans-serif;letter-spacing:.06em;text-transform:uppercase;
+  border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--panel-2);
+}
+#bulkTable td{padding:5px 8px;border-bottom:1px solid #10294A;font-size:13px;white-space:nowrap}
+#bulkTable td.num,#bulkTable th.num{text-align:center}
+#bulkTable select,#bulkTable input{
+  background:#0A2140;color:var(--ice);border:1px solid var(--line);border-radius:6px;
+  padding:4px 6px;font:400 12.5px "Barlow",sans-serif;width:100%;min-width:60px;
+}
+#bulkTable input[type="text"]{min-width:110px}
+#bulkTable tr.edited{background:#0F2A1E}
+#bulkTable tr.edited td:first-child{box-shadow:inset 3px 0 0 var(--orange)}
+
 
 .ed-form{margin-top:26px}
 .ed-form-head h2{font-size:24px;text-transform:uppercase;letter-spacing:.03em}

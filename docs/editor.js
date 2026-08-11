@@ -150,6 +150,7 @@ async function loadSeason(seasonId) {
   ).join("");
   gsel.onchange = () => showGame(gsel.value);
   showGame(state.season.games[0].date);
+  renderBulkTable();
 }
 
 function findGame(date) { return state.season.games.find(g => g.date === date); }
@@ -250,6 +251,9 @@ $("#saveGameBtn").addEventListener("click", async () => {
 
 $("#downloadBtn").addEventListener("click", () => {
   const updated = buildUpdatedManual();
+  state.manual = updated; // keep in-memory state in sync so further edits this
+                           // session accumulate instead of being lost on the
+                           // next download
   const blob = new Blob([JSON.stringify(updated, null, 1)], { type: "application/json" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
@@ -258,6 +262,148 @@ $("#downloadBtn").addEventListener("click", () => {
   const statusEl = $("#saveStatus");
   statusEl.textContent = `Downloaded. Replace docs/data/manual/${state.season.seasonId}.json with this file and push.`;
   statusEl.className = "ed-status ok";
+});
+
+/* ---- bulk (mass) edit ------------------------------------------------------
+   One row per game, all editable inline. Save once for the whole batch --
+   one GitHub commit instead of one per game -- and Download always exports
+   every row's current value, so nothing gets lost between edits. */
+const SEL = (id, opts) =>
+  `<select data-f="${id}"><option value="">\u2014</option>${opts.map(([v,l]) => `<option value="${v}">${l}</option>`).join("")}</select>`;
+const YN = [["true","Y"],["false","N"]];
+const STOPTS = [["win","Win"],["tie","Tie"],["loss","Loss"]];
+
+function bulkRowHtml(g) {
+  const m = state.manual[g.date] || {};
+  const sel = (field, opts, key) => {
+    const cur = key in m ? String(m[key]) : "";
+    return SEL(field, opts).replace("<select", `<select data-current="${cur}"`);
+  };
+  const eaCell = g.homeAway === "h"
+    ? `<span class="bc-na">\u2014</span>`
+    : sel("earlyArrival", YN, "earlyArrival");
+  const stCur = m.specialTeamsWin === true ? "win" : m.specialTeamsTie === true ? "tie"
+    : (m.specialTeamsWin === false && m.specialTeamsTie === false) ? "loss" : "";
+  return `<tr data-date="${g.date}">
+    <td class="num">${g.game}</td>
+    <td>${g.date}</td>
+    <td>${g.homeAway === "h" ? "" : "@"}${g.opponent}</td>
+    <td>${g.homeAway === "h" ? "Home" : "Away"}</td>
+    <td>${sel("mdo", YN, "mdo")}</td>
+    <td>${sel("morningSkate", YN, "morningSkate")}</td>
+    <td>${sel("dayBeforeSkate", YN, "dayBeforeSkate")}</td>
+    <td>${eaCell}</td>
+    <td>${SEL("specialTeam", STOPTS).replace("<select", `<select data-current="${stCur}"`)}</td>
+    <td>${sel("contestedFoWin", YN, "contestedFoWin")}</td>
+    <td>${sel("elevenF7D", YN, "elevenF7D")}</td>
+    <td><input type="text" data-f="notes" value="${(m.notes || "").replace(/"/g, "&quot;")}"></td>
+  </tr>`;
+}
+
+function renderBulkTable() {
+  const tb = $("#bulkTable tbody");
+  tb.innerHTML = state.season.games.map(bulkRowHtml).join("");
+  // apply each select's saved current value (can't do via HTML `selected`
+  // attribute cleanly with dynamic option lists, so set .value directly)
+  tb.querySelectorAll("select[data-current]").forEach(sel => {
+    sel.value = sel.dataset.current || "";
+  });
+  tb.querySelectorAll("select, input").forEach(el => {
+    el.addEventListener("input", () => {
+      el.closest("tr").classList.add("edited");
+    });
+  });
+}
+
+function readBulkTable() {
+  const updated = JSON.parse(JSON.stringify(state.manual));
+  $("#bulkTable tbody").querySelectorAll("tr").forEach(row => {
+    // Only rows the user actually interacted with this session are eligible
+    // to change. This is a deliberate safety choice: if it applied to every
+    // row regardless, a save/download would silently overwrite or delete
+    // other games' data based on whatever the <select> pre-fill happened to
+    // show, with no explicit user action behind it. Skipping untouched rows
+    // means existing data can only ever be changed by a real edit.
+    if (!row.classList.contains("edited")) return;
+    const date = row.dataset.date;
+    const fields = {};
+    row.querySelectorAll("select[data-f], input[data-f]").forEach(el => {
+      const key = el.dataset.f;
+      const v = el.value;
+      if (v === "" || v == null) return;
+      if (key === "notes") { fields.notes = v.trim(); return; }
+      if (key === "specialTeam") {
+        if (v === "win") { fields.specialTeamsWin = true; fields.specialTeamsTie = false; }
+        else if (v === "tie") { fields.specialTeamsWin = false; fields.specialTeamsTie = true; }
+        else if (v === "loss") { fields.specialTeamsWin = false; fields.specialTeamsTie = false; }
+        return;
+      }
+      fields[key] = v === "true" ? true : v === "false" ? false : v;
+    });
+    if (Object.keys(fields).length === 0) delete updated[date];
+    else updated[date] = fields;
+  });
+  return updated;
+}
+
+$("#bulkSaveBtn").addEventListener("click", async () => {
+  const cfg = loadCfg();
+  const statusEl = $("#bulkStatus");
+  if (!cfg.token || !cfg.owner || !cfg.repo) {
+    statusEl.textContent = "Not connected. Use \u2699 Connection settings, or Download instead.";
+    statusEl.className = "ed-status err";
+    return;
+  }
+  statusEl.textContent = "Saving\u2026";
+  statusEl.className = "ed-status";
+  try {
+    const path = `docs/data/manual/${state.season.seasonId}.json`;
+    const fresh = await ghGet(path);
+    // Merge the freshly-fetched remote copy underneath our in-progress edits
+    // rather than overwriting them, in case something else changed the file
+    // since this page loaded.
+    state.manual = fresh.json; state.manualSha = fresh.sha;
+    const updated = readBulkTable();
+    await ghPut(path, updated, state.manualSha, `Manual flags: bulk update (${Object.keys(updated).length} games)`);
+    state.manual = updated;
+    document.querySelectorAll("#bulkTable tr.edited").forEach(tr => tr.classList.remove("edited"));
+    statusEl.textContent = `Saved \u2014 committed to ${cfg.branch}. ${Object.keys(updated).length} games have manual data.`;
+    statusEl.className = "ed-status ok";
+  } catch (e) {
+    console.error(e);
+    statusEl.textContent = "Save failed: " + e.message + " \u2014 try Download instead.";
+    statusEl.className = "ed-status err";
+  }
+});
+
+$("#bulkDownloadBtn").addEventListener("click", () => {
+  const updated = readBulkTable();
+  state.manual = updated;
+  const blob = new Blob([JSON.stringify(updated, null, 1)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `${state.season.seasonId}.json`;
+  a.click();
+  document.querySelectorAll("#bulkTable tr.edited").forEach(tr => tr.classList.remove("edited"));
+  const statusEl = $("#bulkStatus");
+  statusEl.textContent = `Downloaded all ${Object.keys(updated).length} games with data. Replace docs/data/manual/${state.season.seasonId}.json and push.`;
+  statusEl.className = "ed-status ok";
+});
+
+/* ---- view toggle --------------------------------------------------------- */
+$("#viewBulkBtn").addEventListener("click", () => {
+  $("#bulkSection").hidden = false;
+  $("#singlePickerRow").hidden = true;
+  $("#formSection").hidden = true;
+  $("#viewBulkBtn").classList.add("view-active");
+  $("#viewSingleBtn").classList.remove("view-active");
+});
+$("#viewSingleBtn").addEventListener("click", () => {
+  $("#bulkSection").hidden = true;
+  $("#singlePickerRow").hidden = false;
+  $("#formSection").hidden = false;
+  $("#viewSingleBtn").classList.add("view-active");
+  $("#viewBulkBtn").classList.remove("view-active");
 });
 
 refreshConnStatus();

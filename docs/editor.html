@@ -54,6 +54,36 @@
 <section class="ed-picker">
   <label class="select-label" for="seasonSelect">Season</label>
   <select id="seasonSelect"></select>
+  <span class="ed-view-toggle">
+    <button id="viewBulkBtn" type="button" class="btn btn-ghost view-active">Bulk edit (all games)</button>
+    <button id="viewSingleBtn" type="button" class="btn btn-ghost">Single game</button>
+  </span>
+</section>
+
+<section id="bulkSection" class="ed-bulk">
+  <div class="ed-bulk-head">
+    <p class="ed-help">Edit as many games as you like, then save once. Faster than one commit per game, and nothing gets overwritten between edits.</p>
+    <div class="ed-row">
+      <button id="bulkSaveBtn" type="button" class="btn btn-primary">Save all to GitHub</button>
+      <button id="bulkDownloadBtn" type="button" class="btn btn-ghost">Download all</button>
+      <span id="bulkStatus" class="ed-status"></span>
+    </div>
+  </div>
+  <div class="table-wrap">
+    <table id="bulkTable">
+      <thead>
+        <tr>
+          <th class="num">#</th><th>Date</th><th>Opp</th><th>H/A</th>
+          <th>MDO</th><th>MS</th><th>DBS</th><th>EA</th><th>ST</th>
+          <th>CFO</th><th>11F</th><th>Notes</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="ed-picker" id="singlePickerRow" hidden>
   <label class="select-label" for="gameSelect">Game</label>
   <select id="gameSelect"></select>
 </section>
