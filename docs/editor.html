@@ -5,26 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <title>Game Editor · Schedule Lab</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fontfaces.css">
+<link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="editor.css">
 </head>
 <body>
 
-<header class="masthead">
-  <div class="masthead-left">
-    <p class="eyebrow">Schedule Lab · Editor</p>
-    <h1 class="season-title" style="font-size:44px">Game Info</h1>
-    <p class="record-line">Enter hand-tracked details before or after a game. Saves go straight to the site.</p>
+<header>
+  <div class="brand">
+    <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+      <circle cx="20" cy="20" r="18" fill="none" stroke="#ffffff" stroke-width="2.5"/>
+      <path d="M20 8 L30 26 L10 26 Z" fill="var(--brand-orange)"/>
+    </svg>
+    <div class="brand-text">
+      <h1>Schedule Lab</h1>
+      <span class="subtitle">Game Editor</span>
+    </div>
   </div>
-  <div class="masthead-right">
-    <a href="index.html" class="editor-link">← Back to site</a>
-  </div>
+  <a href="index.html" class="header-btn">Schedule</a>
+  <button class="header-btn active" type="button">Enter game info</button>
 </header>
 
-<section class="ed-connect">
+<div class="wrap">
+<p class="record-line">Enter hand-tracked details before or after a game. Saves go straight to the site.</p>
+
+<section class="ed-connect panel">
   <button id="settingsBtn" type="button" class="ed-settings-btn">⚙ Connection settings</button>
   <span id="connStatus" class="ed-status">Not connected — you can still fill the form and download the file to commit yourself.</span>
 </section>
@@ -51,7 +57,7 @@
   </div>
 </div>
 
-<section class="ed-picker">
+<section class="ed-picker panel">
   <label class="select-label" for="seasonSelect">Season</label>
   <select id="seasonSelect"></select>
   <span class="ed-view-toggle">
@@ -60,7 +66,7 @@
   </span>
 </section>
 
-<section id="bulkSection" class="ed-bulk">
+<section id="bulkSection" class="ed-bulk panel">
   <div class="ed-bulk-head">
     <p class="ed-help">Edit as many games as you like, then save once. Faster than one commit per game, and nothing gets overwritten between edits.</p>
     <div class="ed-row">
@@ -83,12 +89,12 @@
   </div>
 </section>
 
-<section class="ed-picker" id="singlePickerRow" hidden>
+<section class="ed-picker panel" id="singlePickerRow" hidden>
   <label class="select-label" for="gameSelect">Game</label>
   <select id="gameSelect"></select>
 </section>
 
-<section id="formSection" class="ed-form" hidden>
+<section id="formSection" class="ed-form panel" hidden>
   <div class="ed-form-head">
     <h2 id="gameHeading">—</h2>
     <p id="gameSub" class="ed-help"></p>
@@ -134,6 +140,7 @@
 <footer class="site-foot">
   <p>Only the fields above are hand-entered. Everything else on the schedule is pulled automatically from the NHL API.</p>
 </footer>
+</div>
 
 <script src="shared.js"></script>
 <script src="editor.js"></script>

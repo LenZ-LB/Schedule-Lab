@@ -282,7 +282,8 @@ function renderSplits() {
       const r = record(subset);
       const btn = document.createElement("button");
       btn.type = "button";
-      btn.className = "split-card" + (r.gp === 0 ? " empty" : "") +
+      const judged = r.gp > 0 ? (r.ptsPct >= base ? " sc-good" : " sc-bad") : "";
+      btn.className = "split-card" + (r.gp === 0 ? " empty" : "") + judged +
         (state.filter === sp.id ? " active" : "");
       btn.dataset.split = sp.id;
       btn.innerHTML = r.gp === 0

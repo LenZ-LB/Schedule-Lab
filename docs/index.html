@@ -5,31 +5,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Schedule Lab</title>
 <meta name="robots" content="noindex, nofollow, noarchive">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fontfaces.css">
+<link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="masthead">
-  <div class="masthead-left">
-    <p class="eyebrow">Schedule Lab · Situational Analytics</p>
-    <h1 class="season-title" id="seasonTitle">—</h1>
-    <p class="record-line" id="recordLine">Loading season data…</p>
+<header>
+  <div class="brand">
+    <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+      <circle cx="20" cy="20" r="18" fill="none" stroke="#ffffff" stroke-width="2.5"/>
+      <path d="M20 8 L30 26 L10 26 Z" fill="var(--brand-orange)"/>
+    </svg>
+    <div class="brand-text">
+      <h1>Schedule Lab</h1>
+      <span class="subtitle">Situational Analytics</span>
+    </div>
   </div>
-  <div class="masthead-right">
+  <button class="header-btn active" type="button">Schedule</button>
+  <a href="editor.html" class="header-btn">Enter game info</a>
+  <div class="header-right">
     <label class="select-label" for="seasonSelect">Season</label>
     <select id="seasonSelect" aria-label="Choose season"></select>
-    <a href="editor.html" class="editor-link">Enter game info →</a>
   </div>
 </header>
 
-<section class="grind" aria-label="Points pace">
-  <div class="grind-head">
-    <h2>The Grind</h2>
-    <p class="grind-note">Cumulative points across the season — steep stretches are win streaks, flat stretches are slumps. <span id="filterNote"></span></p>
-  </div>
+<div class="wrap">
+<h2 class="page-title" id="seasonTitle">—</h2>
+<p class="record-line" id="recordLine">Loading season data…</p>
+
+<section class="grind panel" aria-label="Points pace">
+  <div class="panel-label">The Grind</div>
+  <p class="panel-sub">Cumulative points across the season — steep stretches are win streaks, flat stretches are slumps. <span id="filterNote"></span></p>
   <div id="grindStats" class="grind-stats"></div>
   <div id="grindStrip" class="grind-strip"></div>
   <div class="grind-legend">
@@ -40,19 +47,15 @@
   </div>
 </section>
 
-<section class="splits" aria-label="Situational splits">
-  <div class="splits-head">
-    <h2>Situational splits</h2>
-    <p>Record · points percentage in each situation. Select a card to filter the timeline and schedule.</p>
-  </div>
+<section class="splits panel" aria-label="Situational splits">
+  <div class="panel-label">Situational Splits</div>
+  <p class="panel-sub">Record · points percentage in each situation. Select a card to filter the timeline and schedule.</p>
   <div id="splitsGrid"></div>
 </section>
 
-<section class="sched" aria-label="Schedule">
-  <div class="sched-head">
-    <h2>Schedule</h2>
-    <p id="schedCount"></p>
-  </div>
+<section class="sched panel" aria-label="Schedule">
+  <div class="panel-label">Schedule</div>
+  <p class="panel-sub" id="schedCount"></p>
   <div class="table-wrap">
     <table id="schedTable">
       <thead>
@@ -94,6 +97,7 @@
      team-ops flags (MDO, skates, arrivals) entered by hand.
      <span id="updatedStamp"></span></p>
 </footer>
+</div>
 
 <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
 <script src="shared.js"></script>
