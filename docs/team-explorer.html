@@ -49,10 +49,27 @@
 </section>
 
 <section class="panel">
+  <div class="panel-label">Season Calendar</div>
+  <p class="panel-sub">Every game, in order. Hover a bar for details; taller/darker means less rest.</p>
+  <div class="heatstrip" id="calendarStrip"></div>
+  <div class="heat-months" id="calendarMonths"></div>
+</section>
+
+<section class="panel">
   <div class="panel-label">Season Segments</div>
-  <p class="panel-sub">Rolling 5-game windows across the season. Click a block for details.</p>
+  <p class="panel-sub">Rolling 5-game windows. Strip is shaded by this team's own range across the season; table cells are shaded against the league average for that same segment number. Click a block or row for its opponents.</p>
   <div class="segment-strip" id="segmentStrip"></div>
   <div id="segmentDetail"></div>
+  <div class="table-wrap" style="margin-top:14px">
+    <table id="segmentTable">
+      <thead><tr>
+        <th class="num">Seg</th><th>Games</th><th>Dates</th><th class="num">Days</th>
+        <th class="num">Road</th><th class="num">B2B</th><th class="num">TZ Hrs</th>
+        <th class="num">Miles</th><th class="num">Rest vs</th><th>Tags</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
 </section>
 
 <section class="panel">
@@ -63,6 +80,12 @@
       <tbody></tbody>
     </table>
   </div>
+</section>
+
+<section class="panel">
+  <div class="panel-label">Road Trip Map</div>
+  <p class="panel-sub">Every road city visited this season, in order. Home city in orange; other cities sized by how often this team plays there.</p>
+  <div id="mapHolder"></div>
 </section>
 
 <footer class="site-foot">

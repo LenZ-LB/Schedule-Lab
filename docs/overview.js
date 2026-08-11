@@ -21,6 +21,11 @@ function fmtDateShort(iso) {
   return new Date(y, m - 1, d).toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
 }
 
+function avgOf(league, key) {
+  const vals = Object.values(league.teamSummary).map(s => s[key]);
+  return Math.round((vals.reduce((a, b) => a + b, 0) / vals.length) * 10) / 10;
+}
+
 function renderStats(league) {
   const teamCount = Object.keys(league.teamSummary).length;
   $("#statRow").innerHTML = [
@@ -30,6 +35,19 @@ function renderStats(league) {
     statCard("Season end", fmtDate(league.seasonEnd)),
     statCard("Total B2B team-games", league.totalB2bTeamGames,
       "Each team's own back-to-backs, summed league-wide"),
+  ].join("");
+
+  $("#avgRow").innerHTML = [
+    statCard("Avg B2B", avgOf(league, "b2bCount")),
+    statCard("Avg 3-in-4", avgOf(league, "threeInFourCount")),
+    statCard("Avg 4-in-6", avgOf(league, "fourInSixCount")),
+    statCard("Avg 5-in-8", avgOf(league, "fiveInEightCount")),
+    statCard("Avg Waiting", avgOf(league, "tiredCount")),   // swapped label -- see team-explorer.js note
+    statCard("Avg Tired", avgOf(league, "waitingCount")),
+    statCard("Avg longest road trip", avgOf(league, "longestRoadtrip") + " gm"),
+    statCard("Avg longest home stand", avgOf(league, "longestHomestand") + " gm"),
+    statCard("Avg miles", Math.round(avgOf(league, "totalTravelMiles")).toLocaleString()),
+    statCard("Avg TZ hours", avgOf(league, "tzHours")),
   ].join("");
 }
 
@@ -84,6 +102,63 @@ function renderCharts(league) {
   });
 }
 
+/* ---- league comparison table --------------------------------------------
+   Columns and whether a LOWER value is the favorable direction for that
+   column (fewer B2Bs/travel/etc is good; more rest is good).
+   One shared rank/shading implementation (shared.js) used here and
+   wherever else a "vs league" comparison shows up, per the design system. */
+const TABLE_COLS = [
+  { key: "games", lowerIsBetter: null },
+  { key: "b2bCount", lowerIsBetter: true },
+  { key: "threeInFourCount", lowerIsBetter: true },
+  { key: "fourInSixCount", lowerIsBetter: true },
+  { key: "fiveInEightCount", lowerIsBetter: true },
+  { key: "avgRestDays", lowerIsBetter: false },
+  { key: "tiredCount", lowerIsBetter: false },   // displayed as "Waiting" -- see README note
+  { key: "waitingCount", lowerIsBetter: true },  // displayed as "Tired"
+  { key: "restVs", lowerIsBetter: false },
+  { key: "longestRoadtrip", lowerIsBetter: true },
+  { key: "longestHomestand", lowerIsBetter: false },
+  { key: "totalTravelMiles", lowerIsBetter: true },
+  { key: "tzHours", lowerIsBetter: true },
+];
+let sortState = { key: "team", dir: 1 };
+
+function renderLeagueTable(league) {
+  const teams = Object.keys(league.teamSummary);
+  const rows = teams.map(name => ({ team: name, ...league.teamSummary[name] }));
+
+  rows.sort((a, b) => {
+    const k = sortState.key;
+    if (k === "team") return sortState.dir * a.team.localeCompare(b.team);
+    return sortState.dir * (a[k] - b[k]);
+  });
+
+  const colValues = {};
+  for (const col of TABLE_COLS) colValues[col.key] = rows.map(r => r[col.key]);
+
+  $("#leagueTable tbody").innerHTML = rows.map(r => {
+    const cells = TABLE_COLS.map(col => {
+      if (col.lowerIsBetter === null) return `<td class="num">${r[col.key]}</td>`;
+      const bg = deltaBg(r[col.key], colValues[col.key], col.lowerIsBetter);
+      const val = col.key === "totalTravelMiles" ? Math.round(r[col.key]).toLocaleString() : r[col.key];
+      return `<td class="num" style="${bg}">${rankChip(val, colValues[col.key].map(v =>
+        col.key === "totalTravelMiles" ? Math.round(v).toLocaleString() : v), col.lowerIsBetter)}</td>`;
+    }).join("");
+    return `<tr><td>${r.team}</td>${cells}</tr>`;
+  }).join("");
+}
+
+function wireSortHeaders(league) {
+  document.querySelectorAll("#leagueTable th[data-key]").forEach(th => {
+    th.addEventListener("click", () => {
+      const key = th.dataset.key;
+      sortState = { key, dir: sortState.key === key ? -sortState.dir : 1 };
+      renderLeagueTable(league);
+    });
+  });
+}
+
 async function boot() {
   try {
     const [leagueRes, eventsRes] = await Promise.all([
@@ -104,6 +179,8 @@ async function boot() {
       : "Placeholder data \u2014 pending the first live pipeline run.";
 
     renderStats(league);
+    renderLeagueTable(league);
+    wireSortHeaders(league);
     renderEvents(events);
     renderCharts(league);
   } catch (e) {

@@ -268,6 +268,12 @@ def compute_team_summary(team, games, all_dates_for_opp):
     scored = [s for s in segments if s["avgRestDays"] is not None]
     toughest = min(scored, key=lambda s: s["avgRestDays"]) if scored else None
 
+    game_log = [{
+        "date": g["date"], "opponent": g["opponent"], "isHome": g["isHome"],
+        "restDays": rest_days[i], "b2b": rest_days[i] == 0,
+        "venueCity": g["venueCity"],
+    } for i, g in enumerate(games)]
+
     return {
         "games": n, "home": sum(home_flags), "away": n - sum(home_flags),
         "b2bCount": b2b_count,
@@ -279,6 +285,7 @@ def compute_team_summary(team, games, all_dates_for_opp):
         "restVs": rest_vs_sum, "tiredCount": tired_count, "waitingCount": waiting_count,
         "toughestStretch": toughest,
         "segments": segments,
+        "gameLog": game_log,
         "opponentCounts": opponent_counts, "opponentMatchups": opponent_matchups,
         "monthCounts": month_counts, "dowCounts": dow_counts,
     }

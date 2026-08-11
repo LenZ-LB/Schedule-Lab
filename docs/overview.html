@@ -39,6 +39,37 @@
 </section>
 
 <section class="panel">
+  <div class="panel-label">League Averages</div>
+  <div class="stat-row" id="avgRow"></div>
+</section>
+
+<section class="panel">
+  <div class="panel-label">Team Comparison</div>
+  <p class="panel-sub">Click a column to sort. Shaded cells show how each team compares to the league \u2014 blue for favorable, red for unfavorable, recomputed from the current data. Top/bottom ~19% of the field gets a colored chip.</p>
+  <div class="table-wrap">
+    <table id="leagueTable">
+      <thead><tr>
+        <th data-key="team">Team</th>
+        <th class="num" data-key="games">GP</th>
+        <th class="num" data-key="b2bCount">B2B</th>
+        <th class="num" data-key="threeInFourCount">3-in-4</th>
+        <th class="num" data-key="fourInSixCount">4-in-6</th>
+        <th class="num" data-key="fiveInEightCount">5-in-8</th>
+        <th class="num" data-key="avgRestDays">Avg Rest</th>
+        <th class="num" data-key="tiredCount">Waiting</th>
+        <th class="num" data-key="waitingCount">Tired</th>
+        <th class="num" data-key="restVs">Rest vs</th>
+        <th class="num" data-key="longestRoadtrip">Longest Trip</th>
+        <th class="num" data-key="longestHomestand">Longest Home Stand</th>
+        <th class="num" data-key="totalTravelMiles">Travel Mi</th>
+        <th class="num" data-key="tzHours">TZ Hrs</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="panel">
   <div class="panel-label">Key Dates</div>
   <p class="panel-sub">Special events and league milestones this season — hand-curated, not derived from the schedule pipeline.</p>
   <div class="event-cards" id="eventCards"></div>
