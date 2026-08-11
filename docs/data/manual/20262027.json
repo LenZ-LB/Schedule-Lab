@@ -11,5 +11,9 @@
  "2026-10-03": {
   "mdo": true,
   "dayBeforeSkate": false
+ },
+ "2026-10-07": {
+  "mdo": false,
+  "earlyArrival": false
  }
 }
