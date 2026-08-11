@@ -179,14 +179,19 @@ function showGame(date) {
     : m.specialTeamsTie === true ? "tie"
     : (m.specialTeamsWin === false && m.specialTeamsTie === false) ? "loss" : "";
 
-  // early arrival only meaningful on away games
+  // early arrival and hotel distance are only meaningful on away games
   const eaWrap = $("#f_ea_wrap");
+  const hfWrap = $("#f_hf_wrap");
   if (g.homeAway === "h") {
     eaWrap.classList.add("disabled");
     $("#f_ea").value = "";
+    hfWrap.classList.add("disabled");
+    $("#f_hf").value = "";
   } else {
     eaWrap.classList.remove("disabled");
     setSel("#f_ea", "earlyArrival");
+    hfWrap.classList.remove("disabled");
+    setSel("#f_hf", "hotelFar");
   }
   $("#saveStatus").textContent = "";
   $("#saveStatus").className = "ed-status";
@@ -204,6 +209,7 @@ function readFormFields() {
   const g = findGame(state.currentDate);
   if (g && g.homeAway !== "h") {
     const ea = val("#f_ea"); if (ea !== undefined) out.earlyArrival = ea;
+    const hf = val("#f_hf"); if (hf !== undefined) out.hotelFar = hf;
   }
   const st = $("#f_st").value;
   if (st === "win") { out.specialTeamsWin = true; out.specialTeamsTie = false; }
@@ -282,6 +288,9 @@ function bulkRowHtml(g) {
   const eaCell = g.homeAway === "h"
     ? `<span class="bc-na">\u2014</span>`
     : sel("earlyArrival", YN, "earlyArrival");
+  const hfCell = g.homeAway === "h"
+    ? `<span class="bc-na">\u2014</span>`
+    : sel("hotelFar", YN, "hotelFar");
   const stCur = m.specialTeamsWin === true ? "win" : m.specialTeamsTie === true ? "tie"
     : (m.specialTeamsWin === false && m.specialTeamsTie === false) ? "loss" : "";
   return `<tr data-date="${g.date}">
@@ -293,6 +302,7 @@ function bulkRowHtml(g) {
     <td>${sel("morningSkate", YN, "morningSkate")}</td>
     <td>${sel("dayBeforeSkate", YN, "dayBeforeSkate")}</td>
     <td>${eaCell}</td>
+    <td>${hfCell}</td>
     <td>${SEL("specialTeam", STOPTS).replace("<select", `<select data-current="${stCur}"`)}</td>
     <td>${sel("contestedFoWin", YN, "contestedFoWin")}</td>
     <td>${sel("elevenF7D", YN, "elevenF7D")}</td>

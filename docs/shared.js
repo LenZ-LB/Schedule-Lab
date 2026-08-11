@@ -4,7 +4,7 @@
 // The fields a human enters by hand — everything else is computed from the
 // NHL API. Keep this list identical to what the editor form offers.
 const MANUAL_FIELDS = [
-  "mdo", "morningSkate", "dayBeforeSkate", "earlyArrival",
+  "mdo", "morningSkate", "dayBeforeSkate", "earlyArrival", "hotelFar",
   "specialTeamsWin", "specialTeamsTie", "contestedFoWin", "elevenF7D", "notes",
 ];
 

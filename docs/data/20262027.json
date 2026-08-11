@@ -39,7 +39,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning gibbous"
+   "moon": "waning gibbous",
+   "hotelFar": null
   },
   {
    "game": 2,
@@ -75,7 +76,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning gibbous"
+   "moon": "waning gibbous",
+   "hotelFar": null
   },
   {
    "game": 3,
@@ -111,7 +113,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "last quarter"
+   "moon": "last quarter",
+   "hotelFar": null
   },
   {
    "game": 4,
@@ -147,7 +150,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning crescent"
+   "moon": "waning crescent",
+   "hotelFar": null
   },
   {
    "game": 5,
@@ -183,7 +187,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "new moon"
+   "moon": "new moon",
+   "hotelFar": null
   },
   {
    "game": 6,
@@ -219,7 +224,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing crescent"
+   "moon": "waxing crescent",
+   "hotelFar": null
   },
   {
    "game": 7,
@@ -255,7 +261,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing crescent"
+   "moon": "waxing crescent",
+   "hotelFar": null
   },
   {
    "game": 8,
@@ -291,7 +298,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing crescent"
+   "moon": "waxing crescent",
+   "hotelFar": null
   },
   {
    "game": 9,
@@ -327,7 +335,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing gibbous"
+   "moon": "waxing gibbous",
+   "hotelFar": null
   },
   {
    "game": 10,
@@ -363,7 +372,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing gibbous"
+   "moon": "waxing gibbous",
+   "hotelFar": null
   },
   {
    "game": 11,
@@ -399,7 +409,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing gibbous"
+   "moon": "waxing gibbous",
+   "hotelFar": null
   },
   {
    "game": 12,
@@ -435,7 +446,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning gibbous"
+   "moon": "waning gibbous",
+   "hotelFar": null
   },
   {
    "game": 13,
@@ -471,7 +483,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning gibbous"
+   "moon": "waning gibbous",
+   "hotelFar": null
   },
   {
    "game": 14,
@@ -507,7 +520,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning gibbous"
+   "moon": "waning gibbous",
+   "hotelFar": null
   },
   {
    "game": 15,
@@ -543,7 +557,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "last quarter"
+   "moon": "last quarter",
+   "hotelFar": null
   },
   {
    "game": 16,
@@ -579,7 +594,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning crescent"
+   "moon": "waning crescent",
+   "hotelFar": null
   },
   {
    "game": 17,
@@ -615,7 +631,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning crescent"
+   "moon": "waning crescent",
+   "hotelFar": null
   },
   {
    "game": 18,
@@ -651,7 +668,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning crescent"
+   "moon": "waning crescent",
+   "hotelFar": null
   },
   {
    "game": 19,
@@ -687,7 +705,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "new moon"
+   "moon": "new moon",
+   "hotelFar": null
   },
   {
    "game": 20,
@@ -723,7 +742,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing crescent"
+   "moon": "waxing crescent",
+   "hotelFar": null
   },
   {
    "game": 21,
@@ -759,7 +779,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing crescent"
+   "moon": "waxing crescent",
+   "hotelFar": null
   },
   {
    "game": 22,
@@ -795,7 +816,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing crescent"
+   "moon": "waxing crescent",
+   "hotelFar": null
   },
   {
    "game": 23,
@@ -831,7 +853,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "first quarter"
+   "moon": "first quarter",
+   "hotelFar": null
   },
   {
    "game": 24,
@@ -867,7 +890,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing gibbous"
+   "moon": "waxing gibbous",
+   "hotelFar": null
   },
   {
    "game": 25,
@@ -903,7 +927,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing gibbous"
+   "moon": "waxing gibbous",
+   "hotelFar": null
   },
   {
    "game": 26,
@@ -939,7 +964,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing gibbous"
+   "moon": "waxing gibbous",
+   "hotelFar": null
   },
   {
    "game": 27,
@@ -975,7 +1001,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "full beaver moon"
+   "moon": "full beaver moon",
+   "hotelFar": null
   },
   {
    "game": 28,
@@ -1011,7 +1038,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning gibbous"
+   "moon": "waning gibbous",
+   "hotelFar": null
   },
   {
    "game": 29,
@@ -1047,7 +1075,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning gibbous"
+   "moon": "waning gibbous",
+   "hotelFar": null
   },
   {
    "game": 30,
@@ -1083,7 +1112,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning crescent"
+   "moon": "waning crescent",
+   "hotelFar": null
   },
   {
    "game": 31,
@@ -1119,7 +1149,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning crescent"
+   "moon": "waning crescent",
+   "hotelFar": null
   },
   {
    "game": 32,
@@ -1155,7 +1186,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning crescent"
+   "moon": "waning crescent",
+   "hotelFar": null
   },
   {
    "game": 33,
@@ -1191,7 +1223,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "new moon"
+   "moon": "new moon",
+   "hotelFar": null
   },
   {
    "game": 34,
@@ -1227,7 +1260,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing crescent"
+   "moon": "waxing crescent",
+   "hotelFar": null
   },
   {
    "game": 35,
@@ -1263,7 +1297,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing crescent"
+   "moon": "waxing crescent",
+   "hotelFar": null
   },
   {
    "game": 36,
@@ -1299,7 +1334,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing crescent"
+   "moon": "waxing crescent",
+   "hotelFar": null
   },
   {
    "game": 37,
@@ -1335,7 +1371,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing gibbous"
+   "moon": "waxing gibbous",
+   "hotelFar": null
   },
   {
    "game": 38,
@@ -1371,7 +1408,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing gibbous"
+   "moon": "waxing gibbous",
+   "hotelFar": null
   },
   {
    "game": 39,
@@ -1407,7 +1445,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing gibbous"
+   "moon": "waxing gibbous",
+   "hotelFar": null
   },
   {
    "game": 40,
@@ -1443,7 +1482,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning gibbous"
+   "moon": "waning gibbous",
+   "hotelFar": null
   },
   {
    "game": 41,
@@ -1479,7 +1519,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning gibbous"
+   "moon": "waning gibbous",
+   "hotelFar": null
   },
   {
    "game": 42,
@@ -1515,7 +1556,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "last quarter"
+   "moon": "last quarter",
+   "hotelFar": null
   },
   {
    "game": 43,
@@ -1551,7 +1593,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning crescent"
+   "moon": "waning crescent",
+   "hotelFar": null
   },
   {
    "game": 44,
@@ -1587,7 +1630,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning crescent"
+   "moon": "waning crescent",
+   "hotelFar": null
   },
   {
    "game": 45,
@@ -1623,7 +1667,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning crescent"
+   "moon": "waning crescent",
+   "hotelFar": null
   },
   {
    "game": 46,
@@ -1659,7 +1704,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "new moon"
+   "moon": "new moon",
+   "hotelFar": null
   },
   {
    "game": 47,
@@ -1695,7 +1741,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing crescent"
+   "moon": "waxing crescent",
+   "hotelFar": null
   },
   {
    "game": 48,
@@ -1731,7 +1778,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing crescent"
+   "moon": "waxing crescent",
+   "hotelFar": null
   },
   {
    "game": 49,
@@ -1767,7 +1815,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing crescent"
+   "moon": "waxing crescent",
+   "hotelFar": null
   },
   {
    "game": 50,
@@ -1803,7 +1852,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "first quarter"
+   "moon": "first quarter",
+   "hotelFar": null
   },
   {
    "game": 51,
@@ -1839,7 +1889,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing gibbous"
+   "moon": "waxing gibbous",
+   "hotelFar": null
   },
   {
    "game": 52,
@@ -1875,7 +1926,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing gibbous"
+   "moon": "waxing gibbous",
+   "hotelFar": null
   },
   {
    "game": 53,
@@ -1911,7 +1963,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing gibbous"
+   "moon": "waxing gibbous",
+   "hotelFar": null
   },
   {
    "game": 54,
@@ -1947,7 +2000,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning gibbous"
+   "moon": "waning gibbous",
+   "hotelFar": null
   },
   {
    "game": 55,
@@ -1983,7 +2037,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning gibbous"
+   "moon": "waning gibbous",
+   "hotelFar": null
   },
   {
    "game": 56,
@@ -2019,7 +2074,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning gibbous"
+   "moon": "waning gibbous",
+   "hotelFar": null
   },
   {
    "game": 57,
@@ -2055,7 +2111,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning crescent"
+   "moon": "waning crescent",
+   "hotelFar": null
   },
   {
    "game": 58,
@@ -2091,7 +2148,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning crescent"
+   "moon": "waning crescent",
+   "hotelFar": null
   },
   {
    "game": 59,
@@ -2127,7 +2185,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing crescent"
+   "moon": "waxing crescent",
+   "hotelFar": null
   },
   {
    "game": 60,
@@ -2163,7 +2222,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing crescent"
+   "moon": "waxing crescent",
+   "hotelFar": null
   },
   {
    "game": 61,
@@ -2199,7 +2259,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing gibbous"
+   "moon": "waxing gibbous",
+   "hotelFar": null
   },
   {
    "game": 62,
@@ -2235,7 +2296,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing gibbous"
+   "moon": "waxing gibbous",
+   "hotelFar": null
   },
   {
    "game": 63,
@@ -2271,7 +2333,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning gibbous"
+   "moon": "waning gibbous",
+   "hotelFar": null
   },
   {
    "game": 64,
@@ -2307,7 +2370,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning gibbous"
+   "moon": "waning gibbous",
+   "hotelFar": null
   },
   {
    "game": 65,
@@ -2343,7 +2407,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "last quarter"
+   "moon": "last quarter",
+   "hotelFar": null
   },
   {
    "game": 66,
@@ -2379,7 +2444,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning crescent"
+   "moon": "waning crescent",
+   "hotelFar": null
   },
   {
    "game": 67,
@@ -2415,7 +2481,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning crescent"
+   "moon": "waning crescent",
+   "hotelFar": null
   },
   {
    "game": 68,
@@ -2451,7 +2518,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning crescent"
+   "moon": "waning crescent",
+   "hotelFar": null
   },
   {
    "game": 69,
@@ -2487,7 +2555,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing crescent"
+   "moon": "waxing crescent",
+   "hotelFar": null
   },
   {
    "game": 70,
@@ -2523,7 +2592,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing crescent"
+   "moon": "waxing crescent",
+   "hotelFar": null
   },
   {
    "game": 71,
@@ -2559,7 +2629,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing crescent"
+   "moon": "waxing crescent",
+   "hotelFar": null
   },
   {
    "game": 72,
@@ -2595,7 +2666,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "first quarter"
+   "moon": "first quarter",
+   "hotelFar": null
   },
   {
    "game": 73,
@@ -2631,7 +2703,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing gibbous"
+   "moon": "waxing gibbous",
+   "hotelFar": null
   },
   {
    "game": 74,
@@ -2667,7 +2740,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing gibbous"
+   "moon": "waxing gibbous",
+   "hotelFar": null
   },
   {
    "game": 75,
@@ -2703,7 +2777,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing gibbous"
+   "moon": "waxing gibbous",
+   "hotelFar": null
   },
   {
    "game": 76,
@@ -2739,7 +2814,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning gibbous"
+   "moon": "waning gibbous",
+   "hotelFar": null
   },
   {
    "game": 77,
@@ -2775,7 +2851,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning gibbous"
+   "moon": "waning gibbous",
+   "hotelFar": null
   },
   {
    "game": 78,
@@ -2811,7 +2888,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning gibbous"
+   "moon": "waning gibbous",
+   "hotelFar": null
   },
   {
    "game": 79,
@@ -2847,7 +2925,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning crescent"
+   "moon": "waning crescent",
+   "hotelFar": null
   },
   {
    "game": 80,
@@ -2883,7 +2962,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning crescent"
+   "moon": "waning crescent",
+   "hotelFar": null
   },
   {
    "game": 81,
@@ -2919,7 +2999,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning crescent"
+   "moon": "waning crescent",
+   "hotelFar": null
   },
   {
    "game": 82,
@@ -2955,7 +3036,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waning crescent"
+   "moon": "waning crescent",
+   "hotelFar": null
   },
   {
    "game": 83,
@@ -2991,7 +3073,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing crescent"
+   "moon": "waxing crescent",
+   "hotelFar": null
   },
   {
    "game": 84,
@@ -3027,7 +3110,8 @@
    "mdo": null,
    "morningSkate": null,
    "dayBeforeSkate": null,
-   "moon": "waxing crescent"
+   "moon": "waxing crescent",
+   "hotelFar": null
   }
  ]
 }

@@ -308,6 +308,7 @@ def build_season(season_id, team):
             "b2b": rest == 0 if rest is not None else False,
             "threeIn4": three_in4,
             "earlyArrival": None,
+            "hotelFar": None,
             "tzChange": tz_change,
             "venueTz": venue_tz,
             "leadAfter1": None, "leadAfter2": None,

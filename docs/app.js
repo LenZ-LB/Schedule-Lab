@@ -55,6 +55,7 @@ const SPLITS = [
     { id: "tzLost",name: "Lost hours (tz \u2212)", test: g => g.tzChange !== null && g.tzChange < 0 },
     { id: "tzGain",name: "Gained hours (tz +)",    test: g => g.tzChange !== null && g.tzChange > 0 },
     { id: "ea",    name: "Early arrival",     test: g => g.earlyArrival === true },
+    { id: "hf",    name: "Hotel 25+ min away", test: g => g.hotelFar === true },
   ]},
   { group: "Game states", items: [
     { id: "sf",    name: "Scored first",      test: g => g.scoredFirst === true },
@@ -347,6 +348,7 @@ function renderTable() {
       <td class="num">${boolCell(g.threeIn4, { warnTrue: true })}</td>
       <td class="num">${tzCell(g)}</td>
       <td class="num">${g.homeAway === "h" ? `<span class="bc bc-na">\u2014</span>` : boolCell(g.earlyArrival)}</td>
+      <td class="num">${g.homeAway === "h" ? `<span class="bc bc-na">\u2014</span>` : boolCell(g.hotelFar)}</td>
       <td class="num">${stCell(g)}</td>
       <td class="num">${boolCell(g.mdo)}</td>
       <td class="num">${boolCell(g.morningSkate)}</td>
