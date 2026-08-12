@@ -183,3 +183,17 @@ svg.travelmap { width:100%; height:auto; }
 .city-dot { transition: r 0.15s ease; }
 
 .city-dot:hover { r:7; }
+/* key grid */
+.key-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin-top:4px}
+.key-card{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:16px 18px}
+.key-card-label{font:700 11.5px 'Rubik',sans-serif;letter-spacing:.07em;text-transform:uppercase;color:var(--text3);margin-bottom:10px}
+.key-card p{margin:0 0 8px;font-size:13.5px;line-height:1.55;color:var(--text2)}
+.key-card p:last-child{margin-bottom:0}
+.key-card strong{color:var(--text);font-weight:600}
+.key-card em{font-style:italic}
+
+/* compact averages row */
+.avg-row-single{overflow-x:auto}
+.avg-table{width:100%;border-collapse:collapse;white-space:nowrap}
+.avg-table th{text-align:center;padding:7px 14px;color:var(--text3);font:700 11px 'Rubik',sans-serif;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid var(--border);background:var(--surface2)}
+.avg-table td{text-align:center;padding:10px 14px;color:var(--text);font-variant-numeric:tabular-nums;font-family:'DM Mono',monospace;font-size:15px;font-weight:600;border-bottom:1px solid var(--border)}

@@ -37,18 +37,26 @@ function renderStats(league) {
       "Each team's own back-to-backs, summed league-wide"),
   ].join("");
 
-  $("#avgRow").innerHTML = [
-    statCard("Avg B2B", avgOf(league, "b2bCount")),
-    statCard("Avg 3-in-4", avgOf(league, "threeInFourCount")),
-    statCard("Avg 4-in-6", avgOf(league, "fourInSixCount")),
-    statCard("Avg 5-in-8", avgOf(league, "fiveInEightCount")),
-    statCard("Avg Waiting", avgOf(league, "waitingCount")),
-    statCard("Avg Tired", avgOf(league, "tiredCount")),
-    statCard("Avg longest road trip", avgOf(league, "longestRoadtrip") + " gm"),
-    statCard("Avg longest home stand", avgOf(league, "longestHomestand") + " gm"),
-    statCard("Avg miles", Math.round(avgOf(league, "totalTravelMiles")).toLocaleString()),
-    statCard("Avg TZ hours", avgOf(league, "tzHours")),
-  ].join("");
+  $("#avgRow").innerHTML = `
+    <table class="avg-table">
+      <thead><tr>
+        <th>Avg B2B</th><th>Avg 3-in-4</th><th>Avg 4-in-6</th><th>Avg 5-in-8</th>
+        <th>Avg Waiting</th><th>Avg Tired</th><th>Avg Longest Trip</th>
+        <th>Avg Longest Home Stand</th><th>Avg Miles</th><th>Avg TZ Hrs</th>
+      </tr></thead>
+      <tbody><tr>
+        <td>${avgOf(league,"b2bCount")}</td>
+        <td>${avgOf(league,"threeInFourCount")}</td>
+        <td>${avgOf(league,"fourInSixCount")}</td>
+        <td>${avgOf(league,"fiveInEightCount")}</td>
+        <td>${avgOf(league,"waitingCount")}</td>
+        <td>${avgOf(league,"tiredCount")}</td>
+        <td>${avgOf(league,"longestRoadtrip")} gm</td>
+        <td>${avgOf(league,"longestHomestand")} gm</td>
+        <td>${Math.round(avgOf(league,"totalTravelMiles")).toLocaleString()}</td>
+        <td>${avgOf(league,"tzHours")}</td>
+      </tr></tbody>
+    </table>`;
 }
 
 function renderEvents(events) {
@@ -73,34 +81,6 @@ function sortMonthKeys(keys) {
   });
 }
 const DOW_ORDER = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-
-function renderCharts(league) {
-  const monthKeys = sortMonthKeys(Object.keys(league.leagueMonthCounts));
-  new Chart($("#monthChart"), {
-    type: "bar",
-    data: {
-      labels: monthKeys,
-      datasets: [{ data: monthKeys.map(k => league.leagueMonthCounts[k]), backgroundColor: "#0066cc" }],
-    },
-    options: {
-      plugins: { legend: { display: false } },
-      scales: { y: { beginAtZero: true, grid: { color: "#e8e8e3" } }, x: { grid: { display: false } } },
-    },
-  });
-
-  const dowKeys = DOW_ORDER.filter(d => d in league.leagueDowCounts);
-  new Chart($("#dowChart"), {
-    type: "bar",
-    data: {
-      labels: dowKeys,
-      datasets: [{ data: dowKeys.map(k => league.leagueDowCounts[k]), backgroundColor: "#D14520" }],
-    },
-    options: {
-      plugins: { legend: { display: false } },
-      scales: { y: { beginAtZero: true, grid: { color: "#e8e8e3" } }, x: { grid: { display: false } } },
-    },
-  });
-}
 
 /* ---- league comparison table --------------------------------------------
    Columns and whether a LOWER value is the favorable direction for that
@@ -182,7 +162,6 @@ async function boot() {
     renderLeagueTable(league);
     wireSortHeaders(league);
     renderEvents(events);
-    renderCharts(league);
   } catch (e) {
     console.error(e);
     $("#recordLine").textContent = "Couldn't load league data. If you opened this file directly, serve the folder instead: python -m http.server";
