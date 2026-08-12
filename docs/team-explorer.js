@@ -319,6 +319,77 @@ function renderMonthChart(monthCounts, leagueMonthCounts) {
   $("#monthChart").innerHTML = svg;
 }
 
+/* ---- full schedule table ----------------------------------------------- */
+function renderFullSchedule(gameLog, teamSummary) {
+  // gameLog uses tri-codes for opponent; teamSummary keys are city names.
+  // Build code -> city lookup from teamCodes (city -> code) in league data.
+  const codeToCity = {};
+  for (const [city, code] of Object.entries(state.league.teamCodes)) {
+    codeToCity[code] = city;
+  }
+
+  // Build opponent rest lookup: date -> opponent's restDays on that date
+  const oppRestByDate = {};
+  gameLog.forEach(g => {
+    const oppCity = codeToCity[g.opponent];
+    const oppLog = oppCity ? teamSummary[oppCity]?.gameLog : null;
+    if (!oppLog) return;
+    const oppGame = oppLog.find(og => og.date === g.date);
+    if (oppGame) oppRestByDate[g.date] = oppGame.restDays;
+  });
+
+  function fmtTime(iso24) {
+    // iso24 like "20:00" from schedule -- format as "8 PM"
+    if (!iso24) return "—";
+    const [h, m] = iso24.split(":").map(Number);
+    const ampm = h >= 12 ? "PM" : "AM";
+    const h12 = h % 12 || 12;
+    return m === 0 ? `${h12} ${ampm}` : `${h12}:${String(m).padStart(2,"0")} ${ampm}`;
+  }
+
+  // Get game times from opponentMatchups — we don't have them in gameLog directly.
+  // The official schedule has times but the league dataset stores them in the
+  // pipeline's per-game record, not in the summary gameLog. Use the schedule
+  // data from docs/data/20262027.json for our own team's times; for other teams
+  // we just show "—". This is filled in below if available from the own-team file.
+  const ownSchedule = state.ownSchedule || {};  // keyed by date, set in boot
+
+  $("#fullSchedTable tbody").innerHTML = gameLog.map(g => {
+    const oppRest = oppRestByDate[g.date];
+    const ourRest = g.restDays;
+    const time = ownSchedule[g.date] ? fmtTime(ownSchedule[g.date]) : "—";
+
+    // Advantage: ✓ if we had more rest, ✗ if they had more, — if even or opener
+    let advHtml = `<span class="rest-even">\u2014</span>`;
+    if (ourRest !== null && ourRest !== undefined && oppRest !== null && oppRest !== undefined) {
+      if (ourRest > oppRest) advHtml = `<span class="rest-adv">\u2713</span>`;
+      else if (ourRest < oppRest) advHtml = `<span class="rest-dis">\u2717</span>`;
+      else advHtml = `<span class="rest-even">\u2014</span>`;
+    }
+
+    const oppCity = codeToCity[g.opponent] || g.opponent;
+    const oppDisplay = g.isHome
+      ? oppCity
+      : `<span class="opp-away">@ ${oppCity}</span>`;
+
+    const [yr, mo, da] = g.date.split("-").map(Number);
+    const dateLabel = new Date(yr, mo - 1, da)
+      .toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+    const dayLabel = new Date(yr, mo - 1, da)
+      .toLocaleDateString("en-US", { weekday: "short" });
+
+    return `<tr>
+      <td>${dateLabel}</td>
+      <td>${dayLabel}</td>
+      <td>${oppDisplay}</td>
+      <td class="num">${time}</td>
+      <td class="num">${ourRest !== null && ourRest !== undefined ? ourRest : ""}</td>
+      <td class="num">${oppRest !== null && oppRest !== undefined ? oppRest : ""}</td>
+      <td class="num">${advHtml}</td>
+    </tr>`;
+  }).join("");
+}
+
 /* ---- main render ------------------------------------------------------- */
 function showTeam(teamName) {
   state.team = teamName;
@@ -329,6 +400,7 @@ function showTeam(teamName) {
   renderSegments(s.segments, state.league);
   renderOpponents(s.opponentMatchups, s.gameLog);
   renderMonthChart(s.monthCounts, state.league.leagueMonthCounts);
+  renderFullSchedule(s.gameLog, state.league.teamSummary);
 }
 
 async function boot() {
@@ -336,6 +408,35 @@ async function boot() {
     const res = await fetch("data/league/20262027.json");
     if (!res.ok) throw new Error("league data not found");
     state.league = await res.json();
+
+    // Try to load our own team's detailed schedule for local game times.
+    // This file exists for the home team only (docs/data/20262027.json).
+    // For other teams we just show "—" in the time column.
+    try {
+      const ownRes = await fetch("data/20262027.json");
+      if (ownRes.ok) {
+        const ownData = await ownRes.json();
+        state.ownSchedule = {};
+        state.ownTeamCity = null;
+        // Detect which city this schedule belongs to by checking the team code
+        // against the league's teamCodes map
+        if (ownData.games && ownData.games.length) {
+          // Find our team by checking who has a home game on the opener date
+          const openerDate = ownData.games[0].date;
+          const opener = ownData.games[0];
+          // Use the season's home team as "our" team — first home game gives the city
+          for (const [city, code] of Object.entries(state.league.teamCodes)) {
+            if (code === "EDM") { state.ownTeamCity = city; break; } // fallback
+          }
+          // Build time lookup: date -> timeLocal (venue local time)
+          ownData.games.forEach(g => {
+            if (g.venueTimeLocal) state.ownSchedule[g.date] = g.venueTimeLocal;
+            else if (g.timeLocal) state.ownSchedule[g.date] = g.timeLocal;
+          });
+        }
+      }
+    } catch (e) { /* fine, times just show as — */ }
+
     const sel = $("#teamSelect");
     sel.innerHTML = state.league.teams.map(t => `<option value="${t}">${t}</option>`).join("");
     sel.addEventListener("change", () => showTeam(sel.value));
