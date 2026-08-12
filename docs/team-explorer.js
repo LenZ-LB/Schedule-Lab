@@ -187,67 +187,6 @@ function renderOpponents(matchups) {
   ).join("");
 }
 
-/* Schematic (not geographically precise) map: simple lat/lon -> x/y scale,
-   good enough to show relative positions and routes at a glance. */
-function renderMap(teamName, gameLog, cityCoords) {
-  const W = 640, H = 360, pad = 20;
-  const lats = Object.values(cityCoords).map(c => c[0]);
-  const lons = Object.values(cityCoords).map(c => c[1]);
-  const latMin = Math.min(...lats), latMax = Math.max(...lats);
-  const lonMin = Math.min(...lons), lonMax = Math.max(...lons);
-  const project = ([lat, lon]) => [
-    pad + (lon - lonMin) / (lonMax - lonMin) * (W - 2 * pad),
-    pad + (latMax - lat) / (latMax - latMin) * (H - 2 * pad),
-  ];
-
-  const visitCounts = {};
-  gameLog.forEach(g => { visitCounts[g.venueCity] = (visitCounts[g.venueCity] || 0) + 1; });
-
-  let svg = `<svg class="travelmap" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Road trip map">`;
-
-  // road route: consecutive away-game cities, in chronological order,
-  // collapsing consecutive duplicates (same city back-to-back)
-  const roadCities = [];
-  gameLog.forEach(g => {
-    if (!g.isHome && (roadCities.length === 0 || roadCities[roadCities.length - 1] !== g.venueCity)) {
-      roadCities.push(g.venueCity);
-    }
-  });
-  const homeCoord = cityCoords[teamName];
-  const routePts = [teamName, ...roadCities].map(c => cityCoords[c] ? project(cityCoords[c]) : null).filter(Boolean);
-  if (routePts.length > 1) {
-    const d = routePts.map((p, i) => `${i === 0 ? "M" : "L"} ${p[0].toFixed(1)} ${p[1].toFixed(1)}`).join(" ");
-    svg += `<path d="${d}" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="2 3" opacity="0.6"/>`;
-  }
-
-  // every city as a dot, sized by visit frequency; home city in brand orange
-  for (const [city, coord] of Object.entries(cityCoords)) {
-    const [x, y] = project(coord);
-    const visits = visitCounts[city] || 0;
-    const isHome = city === teamName;
-    const r = isHome ? 8 : Math.max(3, Math.min(9, 3 + visits * 1.3));
-    const fill = isHome ? "var(--brand-orange)" : (visits > 0 ? "var(--accent)" : "var(--text3)");
-    const opacity = isHome || visits > 0 ? 1 : 0.35;
-    svg += `<circle class="city-dot" data-city="${city}" data-visits="${visits}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r}" fill="${fill}" opacity="${opacity}"/>`;
-  }
-  svg += "</svg>";
-  $("#mapHolder").innerHTML = svg;
-
-  const tip = $("#tooltip");
-  $("#mapHolder").querySelectorAll(".city-dot").forEach(el => {
-    el.addEventListener("mouseenter", () => {
-      tip.hidden = false;
-      const city = el.dataset.city, visits = el.dataset.visits;
-      tip.innerHTML = city === teamName ? `${city} (home)` : `${city} \u2014 ${visits} game${visits === "1" ? "" : "s"} played there`;
-    });
-    el.addEventListener("mousemove", e => {
-      tip.style.left = Math.min(e.clientX + 12, innerWidth - 220) + "px";
-      tip.style.top = (e.clientY + 12) + "px";
-    });
-    el.addEventListener("mouseleave", () => { tip.hidden = true; });
-  });
-}
-
 function showTeam(teamName) {
   state.team = teamName;
   const s = state.league.teamSummary[teamName];
@@ -258,7 +197,6 @@ function showTeam(teamName) {
   renderCalendar(s.gameLog);
   renderSegments(s.segments, state.league);
   renderOpponents(s.opponentMatchups);
-  renderMap(teamName, s.gameLog, state.league.cityCoords);
 }
 
 async function boot() {

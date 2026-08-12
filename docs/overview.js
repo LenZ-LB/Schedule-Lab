@@ -26,17 +26,7 @@ function avgOf(league, key) {
   return Math.round((vals.reduce((a, b) => a + b, 0) / vals.length) * 10) / 10;
 }
 
-function renderStats(league) {
-  const teamCount = Object.keys(league.teamSummary).length;
-  $("#statRow").innerHTML = [
-    statCard("Total games", league.totalGames),
-    statCard("Teams", teamCount),
-    statCard("Season start", fmtDate(league.seasonStart)),
-    statCard("Season end", fmtDate(league.seasonEnd)),
-    statCard("Total B2B team-games", league.totalB2bTeamGames,
-      "Each team's own back-to-backs, summed league-wide"),
-  ].join("");
-
+function renderAvgRow(league) {
   $("#avgRow").innerHTML = `
     <table class="avg-table">
       <thead><tr>
@@ -158,9 +148,9 @@ async function boot() {
       ? `Last updated: ${league.generated.slice(0, 10)}.`
       : "Placeholder data \u2014 pending the first live pipeline run.";
 
-    renderStats(league);
     renderLeagueTable(league);
     wireSortHeaders(league);
+    renderAvgRow(league);
     renderEvents(events);
   } catch (e) {
     console.error(e);
