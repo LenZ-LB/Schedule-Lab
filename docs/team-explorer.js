@@ -145,10 +145,10 @@ function renderSegments(segments, league, gameLog) {
   });
   const byDate = {};
   gameLog.forEach(g => { byDate[g.date] = g; });
-  const ownSchedule = state.ownSchedule || {};
 
   function fmtTime(t) {
     if (!t) return "—";
+    if (t.includes("AM") || t.includes("PM")) return t.replace(/:00\s/, " ");
     const [h, m] = t.split(":").map(Number);
     const ap = h >= 12 ? "PM" : "AM";
     const h12 = h % 12 || 12;
@@ -188,7 +188,7 @@ function renderSegments(segments, league, gameLog) {
       const oppRest = oppRestByDate[sg.date];
       const ourRest = sg.restDays;
       const gNum = gameNumByDate[sg.date] || "—";
-      const time = ownSchedule[sg.date] ? fmtTime(ownSchedule[sg.date]) : "—";
+      const time = byDate[sg.date]?.timeLocal ? fmtTime(byDate[sg.date].timeLocal) : "—";
       const oppCity = codeToCity[sg.opp] || sg.opp;
       const oppDisplay = sg.isHome ? oppCity : `@ ${oppCity}`;
       const [yr, mo, da] = sg.date.split("-").map(Number);
@@ -408,26 +408,28 @@ function renderFullSchedule(gameLog, teamSummary) {
     if (oppGame) oppRestByDate[g.date] = oppGame.restDays;
   });
 
-  function fmtTime(iso24) {
-    // iso24 like "20:00" from schedule -- format as "8 PM"
-    if (!iso24) return "—";
-    const [h, m] = iso24.split(":").map(Number);
-    const ampm = h >= 12 ? "PM" : "AM";
+  function fmtTime(t) {
+    // Times from the league dataset are already in "8:00 PM" format from the PDF
+    if (!t) return "—";
+    // If already formatted (contains AM/PM), return as-is but trim :00 minutes
+    if (t.includes("AM") || t.includes("PM")) {
+      return t.replace(/:00\s/, " ");
+    }
+    // Fallback: parse HH:MM 24h format
+    const [h, m] = t.split(":").map(Number);
+    const ap = h >= 12 ? "PM" : "AM";
     const h12 = h % 12 || 12;
-    return m === 0 ? `${h12} ${ampm}` : `${h12}:${String(m).padStart(2,"0")} ${ampm}`;
+    return m === 0 ? `${h12} ${ap}` : `${h12}:${String(m).padStart(2,"0")} ${ap}`;
   }
 
-  // Get game times from opponentMatchups — we don't have them in gameLog directly.
-  // The official schedule has times but the league dataset stores them in the
-  // pipeline's per-game record, not in the summary gameLog. Use the schedule
-  // data from docs/data/20262027.json for our own team's times; for other teams
-  // we just show "—". This is filled in below if available from the own-team file.
-  const ownSchedule = state.ownSchedule || {};  // keyed by date, set in boot
+  // times come from g.timeLocal in the gameLog (all 32 teams populated from PDF)
+  const timeByDate = {};
+  gameLog.forEach(g => { if (g.timeLocal) timeByDate[g.date] = g.timeLocal; });
 
   $("#fullSchedTable tbody").innerHTML = gameLog.map(g => {
     const oppRest = oppRestByDate[g.date];
     const ourRest = g.restDays;
-    const time = ownSchedule[g.date] ? fmtTime(ownSchedule[g.date]) : "—";
+    const time = timeByDate[g.date] ? fmtTime(timeByDate[g.date]) : "—";
 
     // Advantage: ✓ if we had more rest, ✗ if they had more, — if even or opener
     let advHtml = `<span class="rest-even">\u2014</span>`;

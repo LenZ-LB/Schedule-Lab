@@ -277,3 +277,11 @@ svg.travelmap { width:100%; height:auto; }
 .seg-game-table tbody tr:last-child td { border-bottom:none }
 .seg-opp-cell { color:var(--text) }
 .seg-detail-cell { padding:0 !important; border-top:none !important }
+
+/* scrollable table wrappers */
+.table-scroll { overflow-y:auto; border:1px solid var(--border); border-radius:8px }
+.table-scroll table { width:100% }
+.opp-table-wrap { max-height:380px }
+.full-sched-wrap { max-height:480px }
+/* sticky header inside scroll */
+.table-scroll thead th { position:sticky; top:0; z-index:1; background:var(--surface2) }
