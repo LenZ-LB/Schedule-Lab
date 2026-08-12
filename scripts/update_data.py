@@ -427,6 +427,11 @@ def main():
                     help="fetch + compute, write to /tmp instead of docs/data")
     ap.add_argument("--force", action="store_true",
                     help="allow overwriting a hand-imported season")
+    ap.add_argument("--api-url", default=None,
+                    help="if set, POST the result to this API (Fly.io) instead of "
+                         "writing docs/data/<season>.json. Needs SCHEDULE_API_ADMIN_KEY "
+                         "in the environment. Falls back to SCHEDULE_API_URL env var "
+                         "if not passed explicitly.")
     args = ap.parse_args()
 
     import os
@@ -450,6 +455,26 @@ def main():
 
     played = sum(1 for g in games if g["result"])
     print(f"  {played} completed games")
+
+    api_url = args.api_url or os.environ.get("SCHEDULE_API_URL")
+    if api_url and not args.dry_run:
+        api_key = os.environ.get("SCHEDULE_API_ADMIN_KEY")
+        if not api_key:
+            sys.exit("SCHEDULE_API_ADMIN_KEY must be set when using --api-url.")
+        import urllib.request as urlreq
+        payload = json.dumps({"games": games}).encode()
+        req = urlreq.Request(
+            f"{api_url.rstrip('/')}/api/admin/season/{season_id}",
+            data=payload, method="POST",
+            headers={"Content-Type": "application/json", "X-API-Key": api_key},
+        )
+        with urlreq.urlopen(req, timeout=30) as resp:
+            result = json.loads(resp.read())
+        print(f"Posted to {api_url}: {result}")
+        print("Manual flags (MDO, skates, ST, etc.) are untouched by this — "
+              "they live in a separate table and are never overwritten by this script.")
+        return
+
     print(f"  Manual flags (MDO, skates, ST, etc.) live separately in "
           f"docs/data/manual/{season_id}.json and merge in the browser — "
           f"use the site's editor page or edit that file directly.")

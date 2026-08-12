@@ -1,0 +1,22 @@
+# Fly.io config. After `fly launch` generates its own version of this file,
+# make sure these settings carry over -- fly launch sometimes overwrites
+# hand-written config, so double check after running it.
+app = "schedule-lab-api"  # fly launch will prompt to change this if taken
+primary_region = "ord"    # pick whatever's closest to you; run `fly platform regions` to see options
+
+[build]
+
+[env]
+  ALLOWED_ORIGIN = "https://lenz-lb.github.io"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 256

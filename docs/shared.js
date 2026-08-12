@@ -79,3 +79,27 @@ function rankInfo(value, allValues, lowerIsBetter) {
   const round1 = Math.round(avg * 10) / 10;
   return { rank, n: allValues.length, avg: round1, cls: rankClass(value, allValues, lowerIsBetter) };
 }
+
+/* ---- data source: static JSON files (default) or a live API ------------
+   SCHEDULE_API_URL is set in config.js. Empty string (the default) means
+   "keep using the static JSON files" -- nothing here changes behavior until
+   that's actually pointed at a deployed Fly API. This is the one place
+   that decision lives, so app.js and editor.js don't need to know which
+   mode they're in. */
+async function fetchSeasonData(seasonId) {
+  const apiUrl = window.SCHEDULE_API_URL;
+  if (apiUrl) {
+    const res = await fetch(`${apiUrl.replace(/\/$/, "")}/api/season/${seasonId}`);
+    if (!res.ok) throw new Error(`API returned ${res.status} for season ${seasonId}`);
+    const data = await res.json();
+    return { season: data, manualAlreadyMerged: true };
+  }
+  const res = await fetch(`data/${seasonId}.json`);
+  if (!res.ok) throw new Error(`data/${seasonId}.json not found`);
+  const season = await res.json();
+  try {
+    const mres = await fetch(`data/manual/${seasonId}.json?t=${Date.now()}`, { cache: "no-store" });
+    if (mres.ok) mergeManualFlags(season.games, await mres.json());
+  } catch (e) { /* no manual flags yet for this season — fine */ }
+  return { season, manualAlreadyMerged: false };
+}

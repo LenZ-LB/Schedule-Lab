@@ -25,13 +25,21 @@ jobs:
       - name: Update season data
         env:
           # Repo secret (Settings -> Secrets -> Actions -> TEAM_CODE).
-          # Secrets are masked in public workflow logs; plain variables are not.
           TEAM_CODE: ${{ secrets.TEAM_CODE }}
+          # Once the Fly API is set up, add these two secrets and this step
+          # writes straight to Postgres -- no git commit for data anymore.
+          # Leave them unset and this falls back to the old file-based
+          # behavior below, so nothing breaks mid-migration.
+          SCHEDULE_API_URL: ${{ secrets.SCHEDULE_API_URL }}
+          SCHEDULE_API_ADMIN_KEY: ${{ secrets.SCHEDULE_API_ADMIN_KEY }}
         run: python scripts/update_data.py ${{ github.event.inputs.season }}
       - name: Commit if changed
+        # Only relevant in the file-based fallback path -- if SCHEDULE_API_URL
+        # is set, update_data.py already posted to the API and returned
+        # before touching any files, so this diff will just be empty.
         run: |
           git config user.name "schedule-bot"
           git config user.email "actions@github.com"
           git add docs/data
           git diff --cached --quiet || git commit -m "Data update $(date -u +%F)"
-          git push
+          git diff --cached --quiet || git push
