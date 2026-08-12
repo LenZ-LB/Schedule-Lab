@@ -50,9 +50,10 @@ function renderStats(s, league) {
 
 /* ---- season calendar (month-grid) -------------------------------------- */
 function renderCalendar(gameLog) {
-  // Build a lookup: date string -> game
+  // Build a lookup: date string -> game and game number
   const byDate = {};
-  gameLog.forEach(g => { byDate[g.date] = g; });
+  const gameNumByDate = {};
+  gameLog.forEach((g, i) => { byDate[g.date] = g; gameNumByDate[g.date] = i + 1; });
 
   // Determine full date range: first game date to last, padded to week boundaries
   const dates = gameLog.map(g => g.date).sort();
@@ -85,7 +86,7 @@ function renderCalendar(gameLog) {
         if (g.b2b) cls = "cal-b2b";
         else if (g.isHome) cls = "cal-home";
         else cls = "cal-away";
-        title = `${fmtDateShort(iso)} · ${g.isHome ? "vs" : "@"} ${g.opponent}` +
+        title = `Game ${gameNumByDate[iso]} · ${fmtDateShort(iso)} · ${g.isHome ? "vs" : "@"} ${g.opponent}` +
           (g.restDays === null ? "" : ` · ${g.restDays}d rest${g.b2b ? " (B2B)" : ""}`);
       }
       const dayNum = new Date(iso).getDate();
@@ -124,8 +125,35 @@ function segmentLeagueValues(league, index, key) {
     .map(s => s.segments[index - 1]).filter(Boolean).map(seg => seg[key]);
 }
 
-function renderSegments(segments, league) {
+function renderSegments(segments, league, gameLog) {
   const ownRest = segments.map(s => s.avgRestDays).filter(v => v !== null);
+
+  // Build per-game lookup for the expand rows (same logic as full schedule table)
+  const codeToCity = {};
+  for (const [city, code] of Object.entries(state.league.teamCodes)) {
+    codeToCity[code] = city;
+  }
+  const oppRestByDate = {};
+  const gameNumByDate = {};
+  gameLog.forEach((g, i) => {
+    gameNumByDate[g.date] = i + 1;
+    const oppCity = codeToCity[g.opponent];
+    const oppLog = oppCity ? league.teamSummary[oppCity]?.gameLog : null;
+    if (!oppLog) return;
+    const oppGame = oppLog.find(og => og.date === g.date);
+    if (oppGame) oppRestByDate[g.date] = oppGame.restDays;
+  });
+  const byDate = {};
+  gameLog.forEach(g => { byDate[g.date] = g; });
+  const ownSchedule = state.ownSchedule || {};
+
+  function fmtTime(t) {
+    if (!t) return "—";
+    const [h, m] = t.split(":").map(Number);
+    const ap = h >= 12 ? "PM" : "AM";
+    const h12 = h % 12 || 12;
+    return m === 0 ? `${h12} ${ap}` : `${h12}:${String(m).padStart(2,"0")} ${ap}`;
+  }
 
   $("#segmentStrip").innerHTML = segments.map(seg => {
     const bg = seg.avgRestDays === null ? "var(--grid)" :
@@ -142,14 +170,59 @@ function renderSegments(segments, league) {
   ];
 
   function makeDetailRow(seg) {
-    const opponents = seg.opponents.map((o, i) => `${seg.isHome[i] ? "" : "@"}${o}`).join(", ");
+    // Build a mini full-schedule table for this segment's games
+    const segGames = seg.opponents.map((opp, i) => ({
+      opp, isHome: seg.isHome[i],
+      // find date for this game by matching opponents in order within segment range
+      ...(() => {
+        const gamesInRange = gameLog.filter(g =>
+          g.date >= seg.startDate && g.date <= seg.endDate && g.opponent === opp
+        );
+        const g = gamesInRange[0] || {};
+        return { date: g.date, restDays: g.restDays, b2b: g.b2b };
+      })(),
+    }));
+
+    const gameRows = segGames.map(sg => {
+      if (!sg.date) return "";
+      const oppRest = oppRestByDate[sg.date];
+      const ourRest = sg.restDays;
+      const gNum = gameNumByDate[sg.date] || "—";
+      const time = ownSchedule[sg.date] ? fmtTime(ownSchedule[sg.date]) : "—";
+      const oppCity = codeToCity[sg.opp] || sg.opp;
+      const oppDisplay = sg.isHome ? oppCity : `@ ${oppCity}`;
+      const [yr, mo, da] = sg.date.split("-").map(Number);
+      const dateLabel = new Date(yr, mo-1, da).toLocaleDateString("en-US",
+        { month:"short", day:"numeric", year:"numeric" });
+      const dayLabel = new Date(yr, mo-1, da).toLocaleDateString("en-US", { weekday:"short" });
+      let adv = `<span class="rest-even">\u2014</span>`;
+      if (ourRest != null && oppRest != null) {
+        if (ourRest > oppRest) adv = `<span class="rest-adv">\u2713</span>`;
+        else if (ourRest < oppRest) adv = `<span class="rest-dis">\u2717</span>`;
+      }
+      const b2bBadge = sg.b2b ? ` <span class="opp-b2b">B2B</span>` : "";
+      return `<tr class="seg-game-row">
+        <td class="num">${gNum}</td>
+        <td>${dateLabel}</td>
+        <td>${dayLabel}</td>
+        <td class="seg-opp-cell">${oppDisplay}${b2bBadge}</td>
+        <td class="num">${time}</td>
+        <td class="num">${ourRest != null ? ourRest : ""}</td>
+        <td class="num">${oppRest != null ? oppRest : ""}</td>
+        <td class="num">${adv}</td>
+      </tr>`;
+    }).join("");
+
     return `<tr class="seg-detail-row" data-detail-for="${seg.index}">
-      <td colspan="10" class="seg-detail-cell">
-        <div class="seg-detail-inner">
-          <strong>Segment ${seg.index}</strong> · ${fmtDateShort(seg.startDate)} – ${fmtDateShort(seg.endDate)}
-          <span class="seg-tags-inline">${seg.tags.map(t => `<span class="segment-tag-pill">${t}</span>`).join("")}</span>
-          <div class="seg-opp">${opponents}</div>
-        </div>
+      <td colspan="9" class="seg-detail-cell">
+        <table class="seg-game-table">
+          <thead><tr>
+            <th class="num">#</th><th>Date</th><th>Day</th><th>Opponent</th>
+            <th class="num">Time</th><th class="num">Rest</th>
+            <th class="num">Opp Rest</th><th class="num">Adv</th>
+          </tr></thead>
+          <tbody>${gameRows}</tbody>
+        </table>
       </td>
     </tr>`;
   }
@@ -174,7 +247,6 @@ function renderSegments(segments, league) {
         <td>${fmtDateShort(seg.startDate)} – ${fmtDateShort(seg.endDate)}</td>
         <td class="num">${daySpan(seg.startDate, seg.endDate)}</td>
         ${cells}
-        <td>${seg.tags.map(t => `<span class="segment-tag-pill">${t}</span>`).join("")}</td>
       </tr>`;
       return mainRow + (isOpen ? makeDetailRow(seg) : "");
     }).join("");
@@ -184,7 +256,6 @@ function renderSegments(segments, league) {
         const idx = +el.dataset.seg;
         openIdx = (openIdx === idx) ? null : idx;
         buildRows();
-        // scroll strip block to match
         const block = $("#segmentStrip .segment-block[data-seg='" + openIdx + "']");
         if (block) block.scrollIntoView({ behavior: "smooth", block: "nearest" });
       });
@@ -192,7 +263,6 @@ function renderSegments(segments, league) {
   }
   buildRows();
 
-  // Strip click syncs with table
   $("#segmentStrip").querySelectorAll(".segment-block").forEach(el => {
     el.addEventListener("click", () => {
       const idx = +el.dataset.seg;
@@ -397,7 +467,7 @@ function showTeam(teamName) {
   if (!s) return;
   renderStats(s, state.league);
   renderCalendar(s.gameLog);
-  renderSegments(s.segments, state.league);
+  renderSegments(s.segments, state.league, s.gameLog);
   renderOpponents(s.opponentMatchups, s.gameLog);
   renderMonthChart(s.monthCounts, state.league.leagueMonthCounts);
   renderFullSchedule(s.gameLog, state.league.teamSummary);
