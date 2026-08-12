@@ -42,8 +42,8 @@ function renderStats(league) {
     statCard("Avg 3-in-4", avgOf(league, "threeInFourCount")),
     statCard("Avg 4-in-6", avgOf(league, "fourInSixCount")),
     statCard("Avg 5-in-8", avgOf(league, "fiveInEightCount")),
-    statCard("Avg Waiting", avgOf(league, "tiredCount")),   // swapped label -- see team-explorer.js note
-    statCard("Avg Tired", avgOf(league, "waitingCount")),
+    statCard("Avg Waiting", avgOf(league, "waitingCount")),
+    statCard("Avg Tired", avgOf(league, "tiredCount")),
     statCard("Avg longest road trip", avgOf(league, "longestRoadtrip") + " gm"),
     statCard("Avg longest home stand", avgOf(league, "longestHomestand") + " gm"),
     statCard("Avg miles", Math.round(avgOf(league, "totalTravelMiles")).toLocaleString()),
@@ -114,8 +114,8 @@ const TABLE_COLS = [
   { key: "fourInSixCount", lowerIsBetter: true },
   { key: "fiveInEightCount", lowerIsBetter: true },
   { key: "avgRestDays", lowerIsBetter: false },
-  { key: "tiredCount", lowerIsBetter: false },   // displayed as "Waiting" -- see README note
-  { key: "waitingCount", lowerIsBetter: true },  // displayed as "Tired"
+  { key: "waitingCount", lowerIsBetter: false },
+  { key: "tiredCount", lowerIsBetter: true },
   { key: "restVs", lowerIsBetter: false },
   { key: "longestRoadtrip", lowerIsBetter: true },
   { key: "longestHomestand", lowerIsBetter: false },

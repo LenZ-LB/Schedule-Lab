@@ -1,6 +1,8 @@
 {
  "seasonId": "20262027",
- "generated": "2026-08-11T22:49:27Z",
+ "generated": "2026-08-12T04:25:13Z",
+ "source": "official-schedule-pdf-2026-07-16",
+ "sourceNote": "Built from the NHL's official 2026-27 regular-season schedule release (dated 2026-07-16). All 32 teams, 84 games each, verified: 32x84=2688 total team-games, every game mirrored by both participants, all teams 42H/42A. B2B counts, segments, and travel computed here; game times from the same source and used for DST-aware timezone math.",
  "teams": [
   "Anaheim",
   "Boston",
@@ -197,6 +199,14 @@
   "Winnipeg": [
    49.9,
    -97.1
+  ],
+  "Helsinki": [
+   60.2,
+   24.9
+  ],
+  "Dusseldorf": [
+   51.2,
+   6.8
   ]
  },
  "totalGames": 1344,
@@ -227,9 +237,9 @@
    "index": 1,
    "roadGames": 2.41,
    "b2bCount": 0.56,
-   "tzHours": 1.56,
+   "tzHours": 1.72,
    "miles": 1893.4,
-   "restVs": 0.19
+   "restVs": 0.09
   },
   {
    "index": 2,
@@ -237,31 +247,31 @@
    "b2bCount": 0.66,
    "tzHours": 1.94,
    "miles": 2084.9,
-   "restVs": 0.22
+   "restVs": 0.16
   },
   {
    "index": 3,
    "roadGames": 2.31,
    "b2bCount": 0.44,
-   "tzHours": 2.66,
+   "tzHours": 2.62,
    "miles": 2275.7,
-   "restVs": 0.25
+   "restVs": 0.09
   },
   {
    "index": 4,
    "roadGames": 2.59,
    "b2bCount": 0.59,
-   "tzHours": 2.72,
-   "miles": 2644.7,
-   "restVs": -0.62
+   "tzHours": 2.88,
+   "miles": 2863.2,
+   "restVs": -0.31
   },
   {
    "index": 5,
    "roadGames": 2.41,
    "b2bCount": 0.56,
-   "tzHours": 1.97,
-   "miles": 1879.0,
-   "restVs": 0.31
+   "tzHours": 2.03,
+   "miles": 2020.7,
+   "restVs": 0.16
   },
   {
    "index": 6,
@@ -269,39 +279,39 @@
    "b2bCount": 0.97,
    "tzHours": 1.69,
    "miles": 1826.2,
-   "restVs": -0.19
+   "restVs": -0.09
   },
   {
    "index": 7,
    "roadGames": 2.72,
    "b2bCount": 0.84,
    "tzHours": 2.19,
-   "miles": 2122.2,
-   "restVs": -0.16
+   "miles": 2233.9,
+   "restVs": -0.19
   },
   {
    "index": 8,
    "roadGames": 2.22,
    "b2bCount": 0.84,
-   "tzHours": 1.66,
-   "miles": 1713.9,
-   "restVs": 0.44
+   "tzHours": 1.47,
+   "miles": 2032.2,
+   "restVs": 0.34
   },
   {
    "index": 9,
    "roadGames": 2.75,
    "b2bCount": 0.78,
-   "tzHours": 2.94,
+   "tzHours": 2.97,
    "miles": 2456.2,
-   "restVs": -0.66
+   "restVs": -0.41
   },
   {
    "index": 10,
    "roadGames": 2.34,
    "b2bCount": 0.75,
-   "tzHours": 2.19,
+   "tzHours": 2.16,
    "miles": 1942.9,
-   "restVs": 0.38
+   "restVs": 0.34
   },
   {
    "index": 11,
@@ -309,31 +319,31 @@
    "b2bCount": 0.72,
    "tzHours": 2.06,
    "miles": 2004.0,
-   "restVs": -0.09
+   "restVs": -0.12
   },
   {
    "index": 12,
    "roadGames": 2.47,
    "b2bCount": 0.84,
-   "tzHours": 2.16,
+   "tzHours": 2.19,
    "miles": 2032.1,
-   "restVs": -0.12
+   "restVs": -0.09
   },
   {
    "index": 13,
    "roadGames": 2.62,
    "b2bCount": 0.75,
-   "tzHours": 1.97,
+   "tzHours": 2.12,
    "miles": 2203.3,
-   "restVs": 0.09
+   "restVs": 0.06
   },
   {
    "index": 14,
    "roadGames": 2.28,
    "b2bCount": 0.62,
-   "tzHours": 2.0,
+   "tzHours": 2.12,
    "miles": 1886.5,
-   "restVs": -0.06
+   "restVs": -0.03
   },
   {
    "index": 15,
@@ -341,7 +351,7 @@
    "b2bCount": 0.69,
    "tzHours": 2.16,
    "miles": 1954.5,
-   "restVs": 0.06
+   "restVs": 0.0
   },
   {
    "index": 16,
@@ -357,7 +367,7 @@
    "b2bCount": 0.66,
    "tzHours": 0.94,
    "miles": 1286.2,
-   "restVs": -0.06
+   "restVs": -0.03
   }
  ],
  "teamSummary": {
@@ -366,7 +376,7 @@
    "home": 42,
    "away": 42,
    "b2bCount": 11,
-   "avgRestDays": 1.29,
+   "avgRestDays": 1.16,
    "longestHomestand": 10,
    "longestRoadtrip": 6,
    "threeInFourCount": 16,
@@ -374,38 +384,32 @@
    "fiveInEightCount": 13,
    "tzHours": 44,
    "totalTravelMiles": 44914,
-   "restVs": -2,
-   "tiredCount": 25,
-   "waitingCount": 22,
+   "restVs": 3,
+   "tiredCount": 6,
+   "waitingCount": 13,
    "toughestStretch": {
-    "index": 5,
-    "startDate": "2026-11-15",
-    "endDate": "2026-11-23",
-    "games": 5,
+    "startDate": "2026-12-13",
+    "endDate": "2026-12-22",
     "opponents": [
-     "CGY",
-     "STL",
-     "COL",
-     "UTA",
-     "SEA"
+     "TOR",
+     "VAN",
+     "MIN",
+     "EDM",
+     "VGK"
     ],
     "isHome": [
+     false,
      true,
      false,
      false,
-     false,
-     false
+     true
     ],
-    "roadGames": 4,
-    "homeGames": 1,
+    "games": 5,
+    "roadGames": 3,
     "b2bCount": 1,
-    "tzHours": 4,
-    "miles": 3437,
-    "restVs": -1,
-    "avgRestDays": 0.8,
-    "tags": [
-     "Road Heavy"
-    ]
+    "tzHours": 7,
+    "miles": 6152,
+    "avgRestDays": 1.0
    },
    "segments": [
     {
@@ -435,7 +439,8 @@
      "restVs": -3,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -462,10 +467,11 @@
      "b2bCount": 1,
      "tzHours": 4,
      "miles": 2488,
-     "restVs": -1,
+     "restVs": 0,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -490,12 +496,13 @@
      "roadGames": 2,
      "homeGames": 3,
      "b2bCount": 0,
-     "tzHours": 4,
+     "tzHours": 3,
      "miles": 3478,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -520,12 +527,13 @@
      "roadGames": 2,
      "homeGames": 3,
      "b2bCount": 1,
-     "tzHours": 1,
+     "tzHours": 2,
      "miles": 1378,
-     "restVs": 3,
+     "restVs": 2,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -555,7 +563,8 @@
      "restVs": -1,
      "avgRestDays": 0.8,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -585,7 +594,8 @@
      "restVs": 1,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -615,7 +625,8 @@
      "restVs": 1,
      "avgRestDays": 0.8,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -642,10 +653,11 @@
      "b2bCount": 0,
      "tzHours": 7,
      "miles": 3990,
-     "restVs": 0,
+     "restVs": 1,
      "avgRestDays": 1.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -705,7 +717,8 @@
      "restVs": 3,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -762,10 +775,11 @@
      "b2bCount": 0,
      "tzHours": 3,
      "miles": 2701,
-     "restVs": -8,
+     "restVs": 0,
      "avgRestDays": 2.6,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -792,10 +806,11 @@
      "b2bCount": 1,
      "tzHours": 3,
      "miles": 3520,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -825,7 +840,8 @@
      "restVs": 1,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -882,7 +898,7 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 2269,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.0,
      "tags": [
       "Balanced"
@@ -910,10 +926,11 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 915,
-     "restVs": 3,
+     "restVs": 2,
      "avgRestDays": 1.75,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     }
    ],
@@ -1805,7 +1822,7 @@
    "home": 42,
    "away": 42,
    "b2bCount": 14,
-   "avgRestDays": 1.33,
+   "avgRestDays": 1.2,
    "longestHomestand": 6,
    "longestRoadtrip": 4,
    "threeInFourCount": 13,
@@ -1813,39 +1830,32 @@
    "fiveInEightCount": 14,
    "tzHours": 26,
    "totalTravelMiles": 40630,
-   "restVs": 1,
-   "tiredCount": 23,
-   "waitingCount": 25,
+   "restVs": -2,
+   "tiredCount": 13,
+   "waitingCount": 7,
    "toughestStretch": {
-    "index": 14,
-    "startDate": "2027-03-04",
-    "endDate": "2027-03-11",
-    "games": 5,
+    "startDate": "2027-01-18",
+    "endDate": "2027-01-26",
     "opponents": [
-     "OTT",
-     "PIT",
-     "SEA",
-     "MTL",
-     "PIT"
+     "TBL",
+     "COL",
+     "VGK",
+     "UTA",
+     "CBJ"
     ],
     "isHome": [
-     false,
-     true,
      true,
      false,
-     false
+     false,
+     false,
+     true
     ],
+    "games": 5,
     "roadGames": 3,
-    "homeGames": 2,
-    "b2bCount": 2,
-    "tzHours": 0,
-    "miles": 1030,
-    "restVs": -1,
-    "avgRestDays": 0.6,
-    "tags": [
-     "Balanced",
-     "B2B Heavy"
-    ]
+    "b2bCount": 1,
+    "tzHours": 6,
+    "miles": 4834,
+    "avgRestDays": 1.0
    },
    "segments": [
     {
@@ -1875,7 +1885,8 @@
      "restVs": 0,
      "avgRestDays": 1.25,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -1902,10 +1913,11 @@
      "b2bCount": 1,
      "tzHours": 5,
      "miles": 4275,
-     "restVs": -3,
+     "restVs": -1,
      "avgRestDays": 1.4,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -1932,7 +1944,7 @@
      "b2bCount": 0,
      "tzHours": 3,
      "miles": 2307,
-     "restVs": -3,
+     "restVs": -1,
      "avgRestDays": 1.2,
      "tags": [
       "Balanced"
@@ -1962,10 +1974,11 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 963,
-     "restVs": 4,
+     "restVs": 2,
      "avgRestDays": 1.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -1992,10 +2005,11 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 1225,
-     "restVs": -2,
+     "restVs": 0,
      "avgRestDays": 1.6,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -2022,7 +2036,7 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 1414,
-     "restVs": 0,
+     "restVs": -1,
      "avgRestDays": 1.6,
      "tags": [
       "Balanced"
@@ -2086,7 +2100,8 @@
      "avgRestDays": 1.2,
      "tags": [
       "Balanced",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -2113,11 +2128,12 @@
      "b2bCount": 2,
      "tzHours": 2,
      "miles": 1687,
-     "restVs": 0,
+     "restVs": -1,
      "avgRestDays": 1.0,
      "tags": [
       "Road Heavy",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -2144,7 +2160,7 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 2142,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 1.2,
      "tags": [
       "Balanced"
@@ -2174,10 +2190,11 @@
      "b2bCount": 1,
      "tzHours": 4,
      "miles": 3070,
-     "restVs": -5,
+     "restVs": -2,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -2204,7 +2221,7 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 2691,
-     "restVs": 10,
+     "restVs": 2,
      "avgRestDays": 3.0,
      "tags": [
       "Balanced"
@@ -2268,7 +2285,8 @@
      "avgRestDays": 0.6,
      "tags": [
       "Balanced",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -2298,7 +2316,8 @@
      "restVs": 2,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -2325,7 +2344,7 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 1580,
-     "restVs": 2,
+     "restVs": 1,
      "avgRestDays": 1.2,
      "tags": [
       "Balanced"
@@ -2356,7 +2375,8 @@
      "restVs": -2,
      "avgRestDays": 0.75,
      "tags": [
-      "All Road"
+      "All Road",
+      "Grinding Through Fatigue"
      ]
     }
    ],
@@ -3249,7 +3269,7 @@
    "home": 42,
    "away": 42,
    "b2bCount": 14,
-   "avgRestDays": 1.3,
+   "avgRestDays": 1.19,
    "longestHomestand": 5,
    "longestRoadtrip": 6,
    "threeInFourCount": 17,
@@ -3257,39 +3277,32 @@
    "fiveInEightCount": 9,
    "tzHours": 24,
    "totalTravelMiles": 32783,
-   "restVs": -4,
-   "tiredCount": 20,
-   "waitingCount": 26,
+   "restVs": -6,
+   "tiredCount": 12,
+   "waitingCount": 8,
    "toughestStretch": {
-    "index": 15,
-    "startDate": "2027-03-14",
-    "endDate": "2027-03-21",
-    "games": 5,
+    "startDate": "2027-01-21",
+    "endDate": "2027-01-30",
     "opponents": [
-     "MIN",
-     "SJS",
-     "WSH",
-     "FLA",
-     "NYI"
+     "SEA",
+     "WPG",
+     "UTA",
+     "VGK",
+     "COL"
     ],
     "isHome": [
+     true,
      false,
-     true,
-     true,
-     true,
+     false,
+     false,
      false
     ],
-    "roadGames": 2,
-    "homeGames": 3,
+    "games": 5,
+    "roadGames": 4,
     "b2bCount": 2,
-    "tzHours": 2,
-    "miles": 1032,
-    "restVs": 0,
-    "avgRestDays": 0.8,
-    "tags": [
-     "Balanced",
-     "B2B Heavy"
-    ]
+    "tzHours": 4,
+    "miles": 2915,
+    "avgRestDays": 1.0
    },
    "segments": [
     {
@@ -3349,7 +3362,8 @@
      "restVs": -1,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -3406,7 +3420,7 @@
      "b2bCount": 1,
      "tzHours": 1,
      "miles": 1256,
-     "restVs": -4,
+     "restVs": -1,
      "avgRestDays": 1.0,
      "tags": [
       "Balanced"
@@ -3436,10 +3450,11 @@
      "b2bCount": 1,
      "tzHours": 1,
      "miles": 2256,
-     "restVs": -3,
+     "restVs": -1,
      "avgRestDays": 1.2,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -3466,10 +3481,11 @@
      "b2bCount": 1,
      "tzHours": 3,
      "miles": 2444,
-     "restVs": -1,
+     "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -3496,10 +3512,11 @@
      "b2bCount": 1,
      "tzHours": 3,
      "miles": 459,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -3526,10 +3543,11 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 1520,
-     "restVs": -1,
+     "restVs": 0,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -3560,7 +3578,8 @@
      "avgRestDays": 1.0,
      "tags": [
       "Balanced",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -3621,7 +3640,8 @@
      "avgRestDays": 1.0,
      "tags": [
       "Road Heavy",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -3648,10 +3668,11 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 1496,
-     "restVs": 12,
+     "restVs": 4,
      "avgRestDays": 3.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -3682,7 +3703,8 @@
      "avgRestDays": 1.0,
      "tags": [
       "Balanced",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -3709,7 +3731,7 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 677,
-     "restVs": -4,
+     "restVs": -3,
      "avgRestDays": 1.0,
      "tags": [
       "Balanced"
@@ -3739,7 +3761,7 @@
      "b2bCount": 2,
      "tzHours": 2,
      "miles": 1032,
-     "restVs": 0,
+     "restVs": -1,
      "avgRestDays": 0.8,
      "tags": [
       "Balanced",
@@ -3770,10 +3792,11 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 1934,
-     "restVs": -1,
+     "restVs": -2,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -3798,10 +3821,11 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 55,
-     "restVs": 2,
+     "restVs": 1,
      "avgRestDays": 1.25,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     }
    ],
@@ -4693,22 +4717,20 @@
    "home": 42,
    "away": 42,
    "b2bCount": 12,
-   "avgRestDays": 1.33,
+   "avgRestDays": 1.2,
    "longestHomestand": 5,
    "longestRoadtrip": 5,
    "threeInFourCount": 15,
    "fourInSixCount": 15,
    "fiveInEightCount": 11,
    "tzHours": 30,
-   "totalTravelMiles": 40051,
-   "restVs": -26,
-   "tiredCount": 16,
-   "waitingCount": 20,
+   "totalTravelMiles": 44406,
+   "restVs": -4,
+   "tiredCount": 10,
+   "waitingCount": 10,
    "toughestStretch": {
-    "index": 2,
     "startDate": "2026-10-10",
     "endDate": "2026-10-18",
-    "games": 5,
     "opponents": [
      "CHI",
      "PHI",
@@ -4723,17 +4745,12 @@
      false,
      false
     ],
+    "games": 5,
     "roadGames": 4,
-    "homeGames": 1,
     "b2bCount": 2,
     "tzHours": 4,
     "miles": 3103,
-    "restVs": 0,
-    "avgRestDays": 1.0,
-    "tags": [
-     "Road Heavy",
-     "B2B Heavy"
-    ]
+    "avgRestDays": 1.0
    },
    "segments": [
     {
@@ -4760,10 +4777,11 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 1457,
-     "restVs": -3,
+     "restVs": -2,
      "avgRestDays": 1.25,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -4794,7 +4812,8 @@
      "avgRestDays": 1.0,
      "tags": [
       "Road Heavy",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -4850,8 +4869,8 @@
      "homeGames": 2,
      "b2bCount": 0,
      "tzHours": 5,
-     "miles": 4025,
-     "restVs": -3,
+     "miles": 6202,
+     "restVs": -1,
      "avgRestDays": 1.8,
      "tags": [
       "Balanced"
@@ -4880,8 +4899,8 @@
      "homeGames": 3,
      "b2bCount": 1,
      "tzHours": 3,
-     "miles": 1443,
-     "restVs": -1,
+     "miles": 5976,
+     "restVs": 0,
      "avgRestDays": 1.6,
      "tags": [
       "Balanced"
@@ -4911,10 +4930,11 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 858,
-     "restVs": 4,
+     "restVs": 2,
      "avgRestDays": 1.6,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -4941,10 +4961,11 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 2254,
-     "restVs": 2,
+     "restVs": 1,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -4971,10 +4992,11 @@
      "b2bCount": 1,
      "tzHours": 4,
      "miles": 2563,
-     "restVs": -1,
+     "restVs": 0,
      "avgRestDays": 1.6,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -5001,10 +5023,11 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 888,
-     "restVs": 1,
+     "restVs": 2,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -5031,7 +5054,7 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 1574,
-     "restVs": 0,
+     "restVs": 1,
      "avgRestDays": 1.2,
      "tags": [
       "Balanced"
@@ -5061,10 +5084,11 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 824,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 2.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -5091,7 +5115,7 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 1085,
-     "restVs": -19,
+     "restVs": -3,
      "avgRestDays": 1.0,
      "tags": [
       "Balanced"
@@ -5124,7 +5148,8 @@
      "restVs": 1,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -5184,7 +5209,8 @@
      "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -5211,10 +5237,11 @@
      "b2bCount": 1,
      "tzHours": 1,
      "miles": 1166,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 1.0,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -5405,7 +5432,7 @@
      "isHome": false,
      "restDays": 4,
      "b2b": false,
-     "venueCity": "Seattle"
+     "venueCity": "Helsinki"
     },
     {
      "date": "2026-11-14",
@@ -5413,7 +5440,7 @@
      "isHome": true,
      "restDays": 1,
      "b2b": false,
-     "venueCity": "Carolina"
+     "venueCity": "Helsinki"
     },
     {
      "date": "2026-11-19",
@@ -6135,7 +6162,7 @@
    "home": 42,
    "away": 42,
    "b2bCount": 13,
-   "avgRestDays": 1.3,
+   "avgRestDays": 1.2,
    "longestHomestand": 5,
    "longestRoadtrip": 4,
    "threeInFourCount": 16,
@@ -6143,39 +6170,32 @@
    "fiveInEightCount": 15,
    "tzHours": 30,
    "totalTravelMiles": 37905,
-   "restVs": -8,
-   "tiredCount": 21,
-   "waitingCount": 19,
+   "restVs": 2,
+   "tiredCount": 11,
+   "waitingCount": 8,
    "toughestStretch": {
-    "index": 9,
-    "startDate": "2027-01-02",
-    "endDate": "2027-01-08",
-    "games": 5,
+    "startDate": "2027-02-13",
+    "endDate": "2027-02-20",
     "opponents": [
      "BOS",
-     "NYR",
-     "NYR",
-     "NJD",
-     "BUF"
+     "COL",
+     "UTA",
+     "VGK",
+     "NSH"
     ],
     "isHome": [
-     true,
      false,
-     true,
+     false,
+     false,
      false,
      true
     ],
-    "roadGames": 2,
-    "homeGames": 3,
-    "b2bCount": 2,
-    "tzHours": 0,
-    "miles": 1885,
-    "restVs": -4,
-    "avgRestDays": 0.6,
-    "tags": [
-     "Balanced",
-     "B2B Heavy"
-    ]
+    "games": 5,
+    "roadGames": 4,
+    "b2bCount": 1,
+    "tzHours": 6,
+    "miles": 4269,
+    "avgRestDays": 0.8
    },
    "segments": [
     {
@@ -6202,7 +6222,7 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 794,
-     "restVs": 5,
+     "restVs": 1,
      "avgRestDays": 2.0,
      "tags": [
       "Balanced"
@@ -6232,7 +6252,7 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 1644,
-     "restVs": 3,
+     "restVs": 2,
      "avgRestDays": 1.8,
      "tags": [
       "Balanced"
@@ -6262,7 +6282,7 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 2257,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.0,
      "tags": [
       "Balanced"
@@ -6292,10 +6312,11 @@
      "b2bCount": 0,
      "tzHours": 1,
      "miles": 1233,
-     "restVs": 2,
+     "restVs": 1,
      "avgRestDays": 1.6,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -6412,11 +6433,12 @@
      "b2bCount": 2,
      "tzHours": 0,
      "miles": 1876,
-     "restVs": -8,
+     "restVs": -2,
      "avgRestDays": 1.0,
      "tags": [
       "Balanced",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -6443,11 +6465,12 @@
      "b2bCount": 2,
      "tzHours": 0,
      "miles": 1885,
-     "restVs": -4,
+     "restVs": -2,
      "avgRestDays": 0.6,
      "tags": [
       "Balanced",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -6477,7 +6500,8 @@
      "restVs": 1,
      "avgRestDays": 1.6,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -6504,10 +6528,11 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 1801,
-     "restVs": -3,
+     "restVs": -2,
      "avgRestDays": 0.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -6534,10 +6559,11 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 3147,
-     "restVs": -10,
+     "restVs": -2,
      "avgRestDays": 2.2,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -6564,10 +6590,11 @@
      "b2bCount": 1,
      "tzHours": 4,
      "miles": 2133,
-     "restVs": -1,
+     "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -6624,7 +6651,7 @@
      "b2bCount": 0,
      "tzHours": 4,
      "miles": 1009,
-     "restVs": 3,
+     "restVs": 2,
      "avgRestDays": 1.6,
      "tags": [
       "Balanced"
@@ -7577,46 +7604,40 @@
    "home": 42,
    "away": 42,
    "b2bCount": 8,
-   "avgRestDays": 1.3,
+   "avgRestDays": 1.2,
    "longestHomestand": 6,
    "longestRoadtrip": 6,
    "threeInFourCount": 10,
    "fourInSixCount": 10,
    "fiveInEightCount": 11,
-   "tzHours": 32,
+   "tzHours": 34,
    "totalTravelMiles": 43208,
-   "restVs": -3,
-   "tiredCount": 19,
-   "waitingCount": 16,
+   "restVs": 3,
+   "tiredCount": 4,
+   "waitingCount": 11,
    "toughestStretch": {
-    "index": 3,
-    "startDate": "2026-10-26",
-    "endDate": "2026-11-02",
-    "games": 5,
+    "startDate": "2027-03-07",
+    "endDate": "2027-03-15",
     "opponents": [
-     "TOR",
-     "EDM",
-     "SEA",
-     "COL",
-     "SJS"
+     "WPG",
+     "WSH",
+     "CAR",
+     "BOS",
+     "NSH"
     ],
     "isHome": [
-     true,
      false,
-     true,
      false,
-     false
+     false,
+     false,
+     true
     ],
-    "roadGames": 3,
-    "homeGames": 2,
+    "games": 5,
+    "roadGames": 4,
     "b2bCount": 1,
-    "tzHours": 1,
-    "miles": 2164,
-    "restVs": -2,
-    "avgRestDays": 0.8,
-    "tags": [
-     "Balanced"
-    ]
+    "tzHours": 4,
+    "miles": 4177,
+    "avgRestDays": 1.0
    },
    "segments": [
     {
@@ -7643,10 +7664,11 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 976,
-     "restVs": 4,
+     "restVs": 2,
      "avgRestDays": 1.25,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -7673,10 +7695,11 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 1251,
-     "restVs": 4,
+     "restVs": 2,
      "avgRestDays": 1.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -7703,10 +7726,11 @@
      "b2bCount": 1,
      "tzHours": 1,
      "miles": 2164,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 0.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -7733,10 +7757,11 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 1631,
-     "restVs": -1,
+     "restVs": 1,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -7823,7 +7848,7 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 2419,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.4,
      "tags": [
       "Balanced"
@@ -7856,7 +7881,8 @@
      "restVs": 0,
      "avgRestDays": 1.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -7916,7 +7942,8 @@
      "restVs": 1,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -7973,7 +8000,7 @@
      "b2bCount": 1,
      "tzHours": 1,
      "miles": 1311,
-     "restVs": -8,
+     "restVs": 0,
      "avgRestDays": 2.2,
      "tags": [
       "Balanced"
@@ -8001,7 +8028,7 @@
      "roadGames": 2,
      "homeGames": 3,
      "b2bCount": 0,
-     "tzHours": 1,
+     "tzHours": 2,
      "miles": 1513,
      "restVs": -1,
      "avgRestDays": 1.4,
@@ -8031,9 +8058,9 @@
      "roadGames": 3,
      "homeGames": 2,
      "b2bCount": 0,
-     "tzHours": 2,
+     "tzHours": 3,
      "miles": 2227,
-     "restVs": 2,
+     "restVs": 1,
      "avgRestDays": 1.6,
      "tags": [
       "Balanced"
@@ -8093,7 +8120,7 @@
      "b2bCount": 0,
      "tzHours": 1,
      "miles": 2077,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 1.2,
      "tags": [
       "Balanced"
@@ -8124,7 +8151,8 @@
      "restVs": 2,
      "avgRestDays": 1.25,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     }
    ],
@@ -9016,47 +9044,40 @@
    "home": 42,
    "away": 42,
    "b2bCount": 12,
-   "avgRestDays": 1.33,
+   "avgRestDays": 1.16,
    "longestHomestand": 7,
    "longestRoadtrip": 6,
    "threeInFourCount": 17,
    "fourInSixCount": 16,
    "fiveInEightCount": 15,
-   "tzHours": 36,
-   "totalTravelMiles": 38064,
-   "restVs": 9,
-   "tiredCount": 22,
-   "waitingCount": 18,
+   "tzHours": 40,
+   "totalTravelMiles": 45214,
+   "restVs": 4,
+   "tiredCount": 8,
+   "waitingCount": 11,
    "toughestStretch": {
-    "index": 6,
-    "startDate": "2026-11-27",
-    "endDate": "2026-12-04",
-    "games": 5,
+    "startDate": "2027-03-01",
+    "endDate": "2027-03-08",
     "opponents": [
-     "NYR",
-     "MIN",
-     "WPG",
-     "NSH",
-     "STL"
+     "EDM",
+     "VAN",
+     "CGY",
+     "EDM",
+     "TBL"
     ],
     "isHome": [
      true,
-     true,
      false,
      false,
-     false
+     false,
+     true
     ],
+    "games": 5,
     "roadGames": 3,
-    "homeGames": 2,
     "b2bCount": 2,
-    "tzHours": 2,
-    "miles": 2040,
-    "restVs": -2,
-    "avgRestDays": 0.8,
-    "tags": [
-     "Balanced",
-     "B2B Heavy"
-    ]
+    "tzHours": 4,
+    "miles": 3788,
+    "avgRestDays": 0.6
    },
    "segments": [
     {
@@ -9081,7 +9102,7 @@
      "roadGames": 4,
      "homeGames": 1,
      "b2bCount": 0,
-     "tzHours": 5,
+     "tzHours": 7,
      "miles": 3254,
      "restVs": 0,
      "avgRestDays": 1.25,
@@ -9113,7 +9134,7 @@
      "b2bCount": 0,
      "tzHours": 1,
      "miles": 0,
-     "restVs": 2,
+     "restVs": 0,
      "avgRestDays": 2.0,
      "tags": [
       "Homestand"
@@ -9146,7 +9167,8 @@
      "restVs": -1,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -9173,7 +9195,7 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 1410,
-     "restVs": 3,
+     "restVs": 0,
      "avgRestDays": 1.4,
      "tags": [
       "Balanced"
@@ -9237,7 +9259,8 @@
      "avgRestDays": 0.8,
      "tags": [
       "Balanced",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -9263,8 +9286,8 @@
      "homeGames": 2,
      "b2bCount": 0,
      "tzHours": 3,
-     "miles": 2827,
-     "restVs": 1,
+     "miles": 6402,
+     "restVs": 0,
      "avgRestDays": 1.8,
      "tags": [
       "Balanced"
@@ -9293,7 +9316,7 @@
      "homeGames": 4,
      "b2bCount": 1,
      "tzHours": 1,
-     "miles": 802,
+     "miles": 5021,
      "restVs": 2,
      "avgRestDays": 2.0,
      "tags": [
@@ -9357,7 +9380,8 @@
      "restVs": -1,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -9414,11 +9438,12 @@
      "b2bCount": 2,
      "tzHours": 2,
      "miles": 1770,
-     "restVs": 2,
+     "restVs": 1,
      "avgRestDays": 1.2,
      "tags": [
       "Balanced",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -9443,12 +9468,13 @@
      "roadGames": 1,
      "homeGames": 4,
      "b2bCount": 1,
-     "tzHours": 1,
+     "tzHours": 2,
      "miles": 1768,
-     "restVs": 0,
+     "restVs": 1,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -9473,9 +9499,9 @@
      "roadGames": 3,
      "homeGames": 2,
      "b2bCount": 1,
-     "tzHours": 2,
+     "tzHours": 3,
      "miles": 2526,
-     "restVs": 0,
+     "restVs": 1,
      "avgRestDays": 1.0,
      "tags": [
       "Balanced"
@@ -9505,10 +9531,11 @@
      "b2bCount": 1,
      "tzHours": 3,
      "miles": 2329,
-     "restVs": 3,
+     "restVs": 2,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -9535,7 +9562,7 @@
      "b2bCount": 1,
      "tzHours": 4,
      "miles": 1446,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 0.8,
      "tags": [
       "Balanced"
@@ -9566,7 +9593,8 @@
      "restVs": 2,
      "avgRestDays": 1.25,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     }
    ],
@@ -9849,7 +9877,7 @@
      "isHome": false,
      "restDays": 5,
      "b2b": false,
-     "venueCity": "Ottawa"
+     "venueCity": "Dusseldorf"
     },
     {
      "date": "2026-12-20",
@@ -9857,7 +9885,7 @@
      "isHome": true,
      "restDays": 1,
      "b2b": false,
-     "venueCity": "Chicago"
+     "venueCity": "Dusseldorf"
     },
     {
      "date": "2026-12-27",
@@ -10459,47 +10487,40 @@
    "home": 42,
    "away": 42,
    "b2bCount": 10,
-   "avgRestDays": 1.31,
+   "avgRestDays": 1.16,
    "longestHomestand": 5,
    "longestRoadtrip": 5,
    "threeInFourCount": 10,
    "fourInSixCount": 6,
    "fiveInEightCount": 5,
-   "tzHours": 54,
+   "tzHours": 56,
    "totalTravelMiles": 50660,
-   "restVs": 0,
-   "tiredCount": 21,
-   "waitingCount": 20,
+   "restVs": 1,
+   "tiredCount": 7,
+   "waitingCount": 9,
    "toughestStretch": {
-    "index": 2,
-    "startDate": "2026-10-13",
-    "endDate": "2026-10-20",
-    "games": 5,
+    "startDate": "2026-10-19",
+    "endDate": "2026-10-28",
     "opponents": [
-     "DAL",
-     "DAL",
-     "PIT",
      "PHI",
+     "NJD",
+     "TBL",
+     "NSH",
      "NJD"
     ],
     "isHome": [
      false,
-     true,
+     false,
      true,
      false,
-     false
+     true
     ],
+    "games": 5,
     "roadGames": 3,
-    "homeGames": 2,
-    "b2bCount": 2,
-    "tzHours": 4,
-    "miles": 2314,
-    "restVs": -2,
-    "avgRestDays": 1.0,
-    "tags": [
-     "Balanced",
-     "B2B Heavy"
-    ]
+    "b2bCount": 1,
+    "tzHours": 6,
+    "miles": 3743,
+    "avgRestDays": 1.4
    },
    "segments": [
     {
@@ -10556,11 +10577,12 @@
      "b2bCount": 2,
      "tzHours": 4,
      "miles": 2314,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 1.0,
      "tags": [
       "Balanced",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -10587,10 +10609,11 @@
      "b2bCount": 0,
      "tzHours": 5,
      "miles": 2969,
-     "restVs": 5,
+     "restVs": 3,
      "avgRestDays": 1.6,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -10617,10 +10640,11 @@
      "b2bCount": 1,
      "tzHours": 5,
      "miles": 2735,
-     "restVs": -1,
+     "restVs": 0,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -10647,10 +10671,11 @@
      "b2bCount": 1,
      "tzHours": 3,
      "miles": 3015,
-     "restVs": 5,
+     "restVs": 1,
      "avgRestDays": 2.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -10707,10 +10732,11 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 801,
-     "restVs": 3,
+     "restVs": 2,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -10737,7 +10763,7 @@
      "b2bCount": 0,
      "tzHours": 3,
      "miles": 2370,
-     "restVs": 2,
+     "restVs": 1,
      "avgRestDays": 2.0,
      "tags": [
       "Balanced"
@@ -10770,7 +10796,8 @@
      "restVs": 0,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -10855,9 +10882,9 @@
      "roadGames": 4,
      "homeGames": 1,
      "b2bCount": 1,
-     "tzHours": 2,
+     "tzHours": 3,
      "miles": 3241,
-     "restVs": -7,
+     "restVs": -1,
      "avgRestDays": 1.2,
      "tags": [
       "Road Heavy"
@@ -10885,7 +10912,7 @@
      "roadGames": 2,
      "homeGames": 3,
      "b2bCount": 1,
-     "tzHours": 1,
+     "tzHours": 2,
      "miles": 1318,
      "restVs": 0,
      "avgRestDays": 1.0,
@@ -10977,10 +11004,11 @@
      "b2bCount": 1,
      "tzHours": 4,
      "miles": 2874,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -11901,7 +11929,7 @@
    "home": 42,
    "away": 42,
    "b2bCount": 13,
-   "avgRestDays": 1.29,
+   "avgRestDays": 1.17,
    "longestHomestand": 6,
    "longestRoadtrip": 5,
    "threeInFourCount": 16,
@@ -11909,39 +11937,32 @@
    "fiveInEightCount": 13,
    "tzHours": 38,
    "totalTravelMiles": 48472,
-   "restVs": 0,
-   "tiredCount": 18,
-   "waitingCount": 19,
+   "restVs": -1,
+   "tiredCount": 7,
+   "waitingCount": 9,
    "toughestStretch": {
-    "index": 10,
-    "startDate": "2027-01-14",
-    "endDate": "2027-01-20",
-    "games": 5,
+    "startDate": "2027-01-08",
+    "endDate": "2027-01-15",
     "opponents": [
+     "ANA",
+     "LAK",
+     "OTT",
      "BOS",
-     "NYI",
-     "NYR",
-     "NJD",
-     "CHI"
+     "NYI"
     ],
     "isHome": [
      false,
      false,
-     false,
+     true,
      false,
      false
     ],
-    "roadGames": 5,
-    "homeGames": 0,
+    "games": 5,
+    "roadGames": 4,
     "b2bCount": 2,
-    "tzHours": 2,
-    "miles": 914,
-    "restVs": -2,
-    "avgRestDays": 0.6,
-    "tags": [
-     "All Road",
-     "B2B Heavy"
-    ]
+    "tzHours": 3,
+    "miles": 2989,
+    "avgRestDays": 0.8
    },
    "segments": [
     {
@@ -12058,10 +12079,11 @@
      "b2bCount": 1,
      "tzHours": 1,
      "miles": 913,
-     "restVs": 4,
+     "restVs": 2,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -12088,10 +12110,11 @@
      "b2bCount": 0,
      "tzHours": 4,
      "miles": 1616,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -12121,7 +12144,8 @@
      "restVs": 1,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -12148,7 +12172,7 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 2393,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 1.2,
      "tags": [
       "Balanced"
@@ -12178,10 +12202,11 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 3032,
-     "restVs": 4,
+     "restVs": 1,
      "avgRestDays": 1.6,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -12208,10 +12233,11 @@
      "b2bCount": 1,
      "tzHours": 4,
      "miles": 3046,
-     "restVs": -4,
+     "restVs": -3,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -12242,7 +12268,8 @@
      "avgRestDays": 0.6,
      "tags": [
       "All Road",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -12299,10 +12326,11 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 2186,
-     "restVs": -4,
+     "restVs": -1,
      "avgRestDays": 2.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -12362,7 +12390,8 @@
      "restVs": -3,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -12450,7 +12479,8 @@
      "restVs": -1,
      "avgRestDays": 0.75,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     }
    ],
@@ -13342,7 +13372,7 @@
    "home": 42,
    "away": 42,
    "b2bCount": 12,
-   "avgRestDays": 1.29,
+   "avgRestDays": 1.17,
    "longestHomestand": 4,
    "longestRoadtrip": 5,
    "threeInFourCount": 12,
@@ -13350,39 +13380,32 @@
    "fiveInEightCount": 10,
    "tzHours": 28,
    "totalTravelMiles": 35396,
-   "restVs": 4,
-   "tiredCount": 20,
-   "waitingCount": 19,
+   "restVs": 1,
+   "tiredCount": 7,
+   "waitingCount": 10,
    "toughestStretch": {
-    "index": 7,
-    "startDate": "2026-12-11",
-    "endDate": "2026-12-18",
-    "games": 5,
+    "startDate": "2026-11-03",
+    "endDate": "2026-11-12",
     "opponents": [
-     "NYR",
-     "FLA",
-     "LAK",
-     "WSH",
-     "PHI"
+     "TBL",
+     "VGK",
+     "COL",
+     "STL",
+     "FLA"
     ],
     "isHome": [
+     false,
      true,
-     true,
-     true,
+     false,
      false,
      false
     ],
-    "roadGames": 2,
-    "homeGames": 3,
-    "b2bCount": 2,
-    "tzHours": 0,
-    "miles": 519,
-    "restVs": -3,
-    "avgRestDays": 0.8,
-    "tags": [
-     "Balanced",
-     "B2B Heavy"
-    ]
+    "games": 5,
+    "roadGames": 4,
+    "b2bCount": 1,
+    "tzHours": 4,
+    "miles": 3986,
+    "avgRestDays": 1.0
    },
    "segments": [
     {
@@ -13439,10 +13462,11 @@
      "b2bCount": 0,
      "tzHours": 3,
      "miles": 2053,
-     "restVs": 2,
+     "restVs": 1,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -13499,10 +13523,11 @@
      "b2bCount": 1,
      "tzHours": 4,
      "miles": 3986,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 1.0,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -13529,10 +13554,11 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 1155,
-     "restVs": 5,
+     "restVs": 3,
      "avgRestDays": 2.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -13593,7 +13619,8 @@
      "avgRestDays": 0.8,
      "tags": [
       "Balanced",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -13623,7 +13650,8 @@
      "restVs": 1,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -13680,10 +13708,11 @@
      "b2bCount": 1,
      "tzHours": 5,
      "miles": 2022,
-     "restVs": 3,
+     "restVs": 1,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -13773,7 +13802,8 @@
      "restVs": -1,
      "avgRestDays": 0.8,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -13803,7 +13833,8 @@
      "restVs": 3,
      "avgRestDays": 1.6,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -13833,7 +13864,8 @@
      "restVs": 1,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -13889,10 +13921,11 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 1056,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 1.0,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     }
    ],
@@ -14784,7 +14817,7 @@
    "home": 42,
    "away": 42,
    "b2bCount": 11,
-   "avgRestDays": 1.33,
+   "avgRestDays": 1.19,
    "longestHomestand": 8,
    "longestRoadtrip": 6,
    "threeInFourCount": 12,
@@ -14792,39 +14825,32 @@
    "fiveInEightCount": 10,
    "tzHours": 36,
    "totalTravelMiles": 45834,
-   "restVs": 0,
-   "tiredCount": 22,
-   "waitingCount": 19,
+   "restVs": 3,
+   "tiredCount": 7,
+   "waitingCount": 6,
    "toughestStretch": {
-    "index": 9,
-    "startDate": "2026-12-28",
-    "endDate": "2027-01-05",
-    "games": 5,
+    "startDate": "2026-10-28",
+    "endDate": "2026-11-05",
     "opponents": [
-     "WSH",
-     "BOS",
-     "DET",
-     "PIT",
-     "NSH"
+     "CGY",
+     "NYI",
+     "NYR",
+     "NJD",
+     "ANA"
     ],
     "isHome": [
+     true,
      false,
      false,
      false,
-     false,
-     false
+     true
     ],
-    "roadGames": 5,
-    "homeGames": 0,
-    "b2bCount": 2,
-    "tzHours": 1,
-    "miles": 1681,
-    "restVs": -3,
-    "avgRestDays": 0.8,
-    "tags": [
-     "All Road",
-     "B2B Heavy"
-    ]
+    "games": 5,
+    "roadGames": 3,
+    "b2bCount": 1,
+    "tzHours": 4,
+    "miles": 4090,
+    "avgRestDays": 1.0
    },
    "segments": [
     {
@@ -14911,10 +14937,11 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 2062,
-     "restVs": -4,
+     "restVs": 0,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -14941,7 +14968,7 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 2016,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 1.0,
      "tags": [
       "Balanced"
@@ -15032,7 +15059,7 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 2720,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 1.2,
      "tags": [
       "Road Heavy"
@@ -15062,7 +15089,7 @@
      "b2bCount": 1,
      "tzHours": 4,
      "miles": 3545,
-     "restVs": 6,
+     "restVs": 1,
      "avgRestDays": 2.0,
      "tags": [
       "Balanced"
@@ -15096,7 +15123,8 @@
      "avgRestDays": 0.8,
      "tags": [
       "All Road",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -15123,7 +15151,7 @@
      "b2bCount": 0,
      "tzHours": 1,
      "miles": 0,
-     "restVs": -3,
+     "restVs": -2,
      "avgRestDays": 1.0,
      "tags": [
       "Homestand"
@@ -15153,7 +15181,7 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 2659,
-     "restVs": -2,
+     "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
       "Road Heavy"
@@ -15183,10 +15211,11 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 0,
-     "restVs": -2,
+     "restVs": 1,
      "avgRestDays": 2.6,
      "tags": [
-      "Homestand"
+      "Homestand",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -15213,10 +15242,11 @@
      "b2bCount": 0,
      "tzHours": 1,
      "miles": 2368,
-     "restVs": 5,
+     "restVs": 3,
      "avgRestDays": 1.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -15246,7 +15276,8 @@
      "restVs": 2,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -15303,7 +15334,7 @@
      "b2bCount": 0,
      "tzHours": 4,
      "miles": 3350,
-     "restVs": 2,
+     "restVs": 1,
      "avgRestDays": 1.4,
      "tags": [
       "Balanced"
@@ -15331,7 +15362,7 @@
      "b2bCount": 1,
      "tzHours": 3,
      "miles": 2864,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.0,
      "tags": [
       "Balanced"
@@ -16227,7 +16258,7 @@
    "home": 42,
    "away": 42,
    "b2bCount": 14,
-   "avgRestDays": 1.33,
+   "avgRestDays": 1.21,
    "longestHomestand": 5,
    "longestRoadtrip": 5,
    "threeInFourCount": 15,
@@ -16235,37 +16266,32 @@
    "fiveInEightCount": 9,
    "tzHours": 24,
    "totalTravelMiles": 46366,
-   "restVs": 2,
-   "tiredCount": 20,
-   "waitingCount": 21,
+   "restVs": -1,
+   "tiredCount": 10,
+   "waitingCount": 5,
    "toughestStretch": {
-    "index": 17,
-    "startDate": "2027-04-04",
-    "endDate": "2027-04-10",
-    "games": 4,
+    "startDate": "2027-02-21",
+    "endDate": "2027-03-02",
     "opponents": [
-     "NJD",
-     "MTL",
-     "BOS",
-     "CAR"
+     "SJS",
+     "VGK",
+     "UTA",
+     "COL",
+     "UTA"
     ],
     "isHome": [
+     true,
      false,
-     true,
-     true,
+     false,
+     false,
      true
     ],
-    "roadGames": 1,
-    "homeGames": 3,
+    "games": 5,
+    "roadGames": 3,
     "b2bCount": 2,
-    "tzHours": 0,
-    "miles": 1061,
-    "restVs": -1,
-    "avgRestDays": 0.75,
-    "tags": [
-     "Balanced",
-     "B2B Heavy"
-    ]
+    "tzHours": 6,
+    "miles": 4602,
+    "avgRestDays": 1.0
    },
    "segments": [
     {
@@ -16292,7 +16318,7 @@
      "b2bCount": 0,
      "tzHours": 6,
      "miles": 5057,
-     "restVs": 2,
+     "restVs": 1,
      "avgRestDays": 1.75,
      "tags": [
       "Road Heavy"
@@ -16322,10 +16348,11 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 2602,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -16382,10 +16409,11 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 2897,
-     "restVs": -5,
+     "restVs": -3,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -16412,7 +16440,7 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 1636,
-     "restVs": 4,
+     "restVs": 2,
      "avgRestDays": 1.6,
      "tags": [
       "Balanced"
@@ -16502,7 +16530,7 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 0,
-     "restVs": 3,
+     "restVs": 2,
      "avgRestDays": 2.0,
      "tags": [
       "Homestand"
@@ -16530,12 +16558,13 @@
      "roadGames": 4,
      "homeGames": 1,
      "b2bCount": 1,
-     "tzHours": 4,
+     "tzHours": 5,
      "miles": 3934,
      "restVs": -1,
      "avgRestDays": 1.0,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -16560,9 +16589,9 @@
      "roadGames": 2,
      "homeGames": 3,
      "b2bCount": 0,
-     "tzHours": 4,
+     "tzHours": 3,
      "miles": 2874,
-     "restVs": -4,
+     "restVs": -2,
      "avgRestDays": 1.4,
      "tags": [
       "Balanced"
@@ -16592,7 +16621,7 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 2687,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
       "Balanced"
@@ -16622,10 +16651,11 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 358,
-     "restVs": 7,
+     "restVs": 2,
      "avgRestDays": 2.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -16656,7 +16686,8 @@
      "avgRestDays": 0.8,
      "tags": [
       "Balanced",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -16686,7 +16717,8 @@
      "restVs": 1,
      "avgRestDays": 1.6,
      "tags": [
-      "Homestand"
+      "Homestand",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -16713,10 +16745,11 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 1702,
-     "restVs": -1,
+     "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
-      "All Road"
+      "All Road",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -16771,11 +16804,12 @@
      "b2bCount": 2,
      "tzHours": 0,
      "miles": 1061,
-     "restVs": -1,
+     "restVs": 0,
      "avgRestDays": 0.75,
      "tags": [
       "Balanced",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     }
    ],
@@ -17668,22 +17702,20 @@
    "home": 42,
    "away": 42,
    "b2bCount": 10,
-   "avgRestDays": 1.31,
+   "avgRestDays": 1.21,
    "longestHomestand": 7,
    "longestRoadtrip": 7,
    "threeInFourCount": 14,
    "fourInSixCount": 15,
    "fiveInEightCount": 14,
-   "tzHours": 43,
+   "tzHours": 42,
    "totalTravelMiles": 45159,
    "restVs": -4,
-   "tiredCount": 18,
-   "waitingCount": 22,
+   "tiredCount": 9,
+   "waitingCount": 10,
    "toughestStretch": {
-    "index": 10,
     "startDate": "2027-01-16",
     "endDate": "2027-01-24",
-    "games": 5,
     "opponents": [
      "CGY",
      "SEA",
@@ -17698,17 +17730,12 @@
      false,
      false
     ],
+    "games": 5,
     "roadGames": 3,
-    "homeGames": 2,
     "b2bCount": 2,
     "tzHours": 4,
     "miles": 3763,
-    "restVs": 0,
-    "avgRestDays": 0.8,
-    "tags": [
-     "Balanced",
-     "B2B Heavy"
-    ]
+    "avgRestDays": 0.8
    },
    "segments": [
     {
@@ -17733,9 +17760,9 @@
      "roadGames": 3,
      "homeGames": 2,
      "b2bCount": 0,
-     "tzHours": 1,
+     "tzHours": 2,
      "miles": 1682,
-     "restVs": 4,
+     "restVs": 3,
      "avgRestDays": 2.25,
      "tags": [
       "Balanced"
@@ -17765,10 +17792,11 @@
      "b2bCount": 0,
      "tzHours": 3,
      "miles": 2564,
-     "restVs": 3,
+     "restVs": 1,
      "avgRestDays": 1.6,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -17795,10 +17823,11 @@
      "b2bCount": 1,
      "tzHours": 3,
      "miles": 1743,
-     "restVs": 2,
+     "restVs": 1,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -17855,7 +17884,7 @@
      "b2bCount": 1,
      "tzHours": 3,
      "miles": 2586,
-     "restVs": 2,
+     "restVs": 1,
      "avgRestDays": 1.4,
      "tags": [
       "Balanced"
@@ -17885,7 +17914,7 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 609,
-     "restVs": 2,
+     "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
       "Balanced"
@@ -17918,7 +17947,8 @@
      "restVs": -2,
      "avgRestDays": 1.0,
      "tags": [
-      "All Road"
+      "All Road",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -17943,12 +17973,13 @@
      "roadGames": 1,
      "homeGames": 4,
      "b2bCount": 0,
-     "tzHours": 4,
+     "tzHours": 2,
      "miles": 2170,
-     "restVs": 3,
+     "restVs": 2,
      "avgRestDays": 1.6,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -17975,10 +18006,11 @@
      "b2bCount": 0,
      "tzHours": 1,
      "miles": 586,
-     "restVs": -1,
+     "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -18036,10 +18068,11 @@
      "b2bCount": 1,
      "tzHours": 1,
      "miles": 2879,
-     "restVs": -10,
+     "restVs": -2,
      "avgRestDays": 2.2,
      "tags": [
-      "All Road"
+      "All Road",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -18069,7 +18102,8 @@
      "restVs": -1,
      "avgRestDays": 0.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -18096,7 +18130,7 @@
      "b2bCount": 1,
      "tzHours": 6,
      "miles": 3920,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
       "Balanced"
@@ -18156,10 +18190,11 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 1085,
-     "restVs": 2,
+     "restVs": 1,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -18186,7 +18221,7 @@
      "b2bCount": 0,
      "tzHours": 3,
      "miles": 2370,
-     "restVs": -3,
+     "restVs": -2,
      "avgRestDays": 1.0,
      "tags": [
       "Balanced"
@@ -18217,7 +18252,8 @@
      "restVs": -1,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     }
    ],
@@ -19110,7 +19146,7 @@
    "home": 42,
    "away": 42,
    "b2bCount": 10,
-   "avgRestDays": 1.3,
+   "avgRestDays": 1.16,
    "longestHomestand": 7,
    "longestRoadtrip": 5,
    "threeInFourCount": 11,
@@ -19118,38 +19154,32 @@
    "fiveInEightCount": 12,
    "tzHours": 41,
    "totalTravelMiles": 46284,
-   "restVs": 6,
-   "tiredCount": 19,
-   "waitingCount": 20,
+   "restVs": -1,
+   "tiredCount": 8,
+   "waitingCount": 5,
    "toughestStretch": {
-    "index": 3,
-    "startDate": "2026-10-22",
-    "endDate": "2026-10-29",
-    "games": 5,
+    "startDate": "2027-01-01",
+    "endDate": "2027-01-09",
     "opponents": [
-     "CGY",
-     "SEA",
-     "VAN",
-     "UTA",
-     "NYI"
+     "PIT",
+     "STL",
+     "ANA",
+     "VGK",
+     "NSH"
     ],
     "isHome": [
      false,
-     false,
+     true,
      false,
      false,
      true
     ],
-    "roadGames": 4,
-    "homeGames": 1,
+    "games": 5,
+    "roadGames": 3,
     "b2bCount": 1,
-    "tzHours": 3,
-    "miles": 2352,
-    "restVs": -5,
-    "avgRestDays": 0.8,
-    "tags": [
-     "Road Heavy"
-    ]
+    "tzHours": 6,
+    "miles": 3781,
+    "avgRestDays": 1.4
    },
    "segments": [
     {
@@ -19176,10 +19206,11 @@
      "b2bCount": 0,
      "tzHours": 1,
      "miles": 2640,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 1.25,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -19206,7 +19237,7 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 1876,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 1.0,
      "tags": [
       "Balanced"
@@ -19236,10 +19267,11 @@
      "b2bCount": 1,
      "tzHours": 3,
      "miles": 2352,
-     "restVs": -5,
+     "restVs": -3,
      "avgRestDays": 0.8,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -19269,7 +19301,8 @@
      "restVs": 0,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -19294,7 +19327,7 @@
      "roadGames": 4,
      "homeGames": 1,
      "b2bCount": 0,
-     "tzHours": 2,
+     "tzHours": 3,
      "miles": 3007,
      "restVs": 1,
      "avgRestDays": 1.2,
@@ -19324,7 +19357,7 @@
      "roadGames": 3,
      "homeGames": 2,
      "b2bCount": 0,
-     "tzHours": 5,
+     "tzHours": 4,
      "miles": 3650,
      "restVs": -1,
      "avgRestDays": 1.0,
@@ -19416,7 +19449,7 @@
      "b2bCount": 1,
      "tzHours": 4,
      "miles": 3210,
-     "restVs": 2,
+     "restVs": 0,
      "avgRestDays": 1.4,
      "tags": [
       "Balanced"
@@ -19446,7 +19479,7 @@
      "b2bCount": 1,
      "tzHours": 4,
      "miles": 1762,
-     "restVs": 3,
+     "restVs": 1,
      "avgRestDays": 1.4,
      "tags": [
       "Balanced"
@@ -19476,10 +19509,11 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 1982,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 0.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -19506,7 +19540,7 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 3306,
-     "restVs": 9,
+     "restVs": 1,
      "avgRestDays": 2.8,
      "tags": [
       "Balanced"
@@ -19536,7 +19570,7 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 1603,
-     "restVs": 2,
+     "restVs": 1,
      "avgRestDays": 1.4,
      "tags": [
       "Balanced"
@@ -19569,7 +19603,8 @@
      "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -19654,7 +19689,7 @@
      "b2bCount": 0,
      "tzHours": 3,
      "miles": 2501,
-     "restVs": -3,
+     "restVs": -2,
      "avgRestDays": 1.0,
      "tags": [
       "Balanced"
@@ -20549,7 +20584,7 @@
    "home": 42,
    "away": 42,
    "b2bCount": 10,
-   "avgRestDays": 1.33,
+   "avgRestDays": 1.21,
    "longestHomestand": 5,
    "longestRoadtrip": 4,
    "threeInFourCount": 8,
@@ -20557,38 +20592,32 @@
    "fiveInEightCount": 9,
    "tzHours": 24,
    "totalTravelMiles": 39150,
-   "restVs": -5,
-   "tiredCount": 25,
-   "waitingCount": 22,
+   "restVs": 3,
+   "tiredCount": 5,
+   "waitingCount": 14,
    "toughestStretch": {
-    "index": 5,
-    "startDate": "2026-11-16",
-    "endDate": "2026-11-23",
-    "games": 5,
+    "startDate": "2027-02-22",
+    "endDate": "2027-03-04",
     "opponents": [
-     "NYR",
-     "NJD",
-     "CAR",
      "PHI",
-     "LAK"
+     "LAK",
+     "ANA",
+     "SJS",
+     "SEA"
     ],
     "isHome": [
      false,
      false,
      false,
-     true,
+     false,
      true
     ],
-    "roadGames": 3,
-    "homeGames": 2,
-    "b2bCount": 1,
-    "tzHours": 0,
-    "miles": 1151,
-    "restVs": -7,
-    "avgRestDays": 0.8,
-    "tags": [
-     "Balanced"
-    ]
+    "games": 5,
+    "roadGames": 4,
+    "b2bCount": 0,
+    "tzHours": 6,
+    "miles": 5274,
+    "avgRestDays": 1.4
    },
    "segments": [
     {
@@ -20618,7 +20647,8 @@
      "restVs": 2,
      "avgRestDays": 1.75,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -20648,7 +20678,8 @@
      "restVs": 2,
      "avgRestDays": 1.6,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -20705,7 +20736,7 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 1124,
-     "restVs": -4,
+     "restVs": -2,
      "avgRestDays": 1.2,
      "tags": [
       "Balanced"
@@ -20735,10 +20766,11 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 1151,
-     "restVs": -7,
+     "restVs": -3,
      "avgRestDays": 0.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -20765,10 +20797,11 @@
      "b2bCount": 0,
      "tzHours": 6,
      "miles": 2913,
-     "restVs": -3,
+     "restVs": 0,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -20825,7 +20858,7 @@
      "b2bCount": 2,
      "tzHours": 2,
      "miles": 1944,
-     "restVs": -1,
+     "restVs": 1,
      "avgRestDays": 1.6,
      "tags": [
       "Balanced",
@@ -20859,7 +20892,8 @@
      "restVs": 2,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -20886,10 +20920,11 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 1900,
-     "restVs": 4,
+     "restVs": 2,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -20916,10 +20951,11 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 2365,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -20949,7 +20985,8 @@
      "restVs": -2,
      "avgRestDays": 2.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -20979,7 +21016,8 @@
      "restVs": 1,
      "avgRestDays": 1.6,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -21006,7 +21044,7 @@
      "b2bCount": 1,
      "tzHours": 3,
      "miles": 3190,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
       "Balanced"
@@ -21036,10 +21074,11 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 1146,
-     "restVs": 4,
+     "restVs": 3,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -21066,7 +21105,7 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 495,
-     "restVs": -4,
+     "restVs": -2,
      "avgRestDays": 1.0,
      "tags": [
       "Balanced"
@@ -21990,7 +22029,7 @@
    "home": 42,
    "away": 42,
    "b2bCount": 13,
-   "avgRestDays": 1.3,
+   "avgRestDays": 1.19,
    "longestHomestand": 4,
    "longestRoadtrip": 7,
    "threeInFourCount": 17,
@@ -21999,35 +22038,31 @@
    "tzHours": 28,
    "totalTravelMiles": 36750,
    "restVs": 0,
-   "tiredCount": 21,
-   "waitingCount": 21,
+   "tiredCount": 7,
+   "waitingCount": 8,
    "toughestStretch": {
-    "index": 17,
-    "startDate": "2027-04-04",
-    "endDate": "2027-04-10",
-    "games": 4,
+    "startDate": "2027-01-31",
+    "endDate": "2027-02-18",
     "opponents": [
-     "FLA",
-     "TBL",
-     "NYI",
-     "PIT"
+     "SEA",
+     "VAN",
+     "PHI",
+     "NSH",
+     "FLA"
     ],
     "isHome": [
-     true,
-     true,
-     true,
-     true
+     false,
+     false,
+     false,
+     false,
+     false
     ],
-    "roadGames": 0,
-    "homeGames": 4,
+    "games": 5,
+    "roadGames": 5,
     "b2bCount": 1,
-    "tzHours": 0,
-    "miles": 0,
-    "restVs": 2,
-    "avgRestDays": 0.75,
-    "tags": [
-     "Homestand"
-    ]
+    "tzHours": 6,
+    "miles": 3993,
+    "avgRestDays": 2.8
    },
    "segments": [
     {
@@ -22054,7 +22089,7 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 63,
-     "restVs": 2,
+     "restVs": 1,
      "avgRestDays": 1.75,
      "tags": [
       "Balanced"
@@ -22117,7 +22152,8 @@
      "restVs": 0,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -22174,7 +22210,7 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 2384,
-     "restVs": 3,
+     "restVs": 2,
      "avgRestDays": 1.6,
      "tags": [
       "Balanced"
@@ -22234,7 +22270,7 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 410,
-     "restVs": 0,
+     "restVs": 1,
      "avgRestDays": 1.4,
      "tags": [
       "Balanced"
@@ -22268,7 +22304,8 @@
      "avgRestDays": 1.0,
      "tags": [
       "Balanced",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -22295,10 +22332,11 @@
      "b2bCount": 1,
      "tzHours": 6,
      "miles": 3457,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 1.2,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -22325,7 +22363,7 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 937,
-     "restVs": 0,
+     "restVs": 1,
      "avgRestDays": 1.4,
      "tags": [
       "Balanced"
@@ -22385,10 +22423,11 @@
      "b2bCount": 1,
      "tzHours": 5,
      "miles": 3640,
-     "restVs": -1,
+     "restVs": 0,
      "avgRestDays": 2.8,
      "tags": [
-      "All Road"
+      "All Road",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -22445,10 +22484,11 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 3006,
-     "restVs": -1,
+     "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -22475,10 +22515,11 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 1007,
-     "restVs": 3,
+     "restVs": 1,
      "avgRestDays": 1.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -22505,10 +22546,11 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 1228,
-     "restVs": 0,
+     "restVs": -1,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -22536,7 +22578,8 @@
      "restVs": 2,
      "avgRestDays": 0.75,
      "tags": [
-      "Homestand"
+      "Homestand",
+      "Catching Tired Teams"
      ]
     }
    ],
@@ -23428,7 +23471,7 @@
    "home": 42,
    "away": 42,
    "b2bCount": 11,
-   "avgRestDays": 1.3,
+   "avgRestDays": 1.17,
    "longestHomestand": 6,
    "longestRoadtrip": 5,
    "threeInFourCount": 16,
@@ -23436,39 +23479,32 @@
    "fiveInEightCount": 15,
    "tzHours": 40,
    "totalTravelMiles": 40958,
-   "restVs": 18,
-   "tiredCount": 24,
-   "waitingCount": 17,
+   "restVs": 7,
+   "tiredCount": 9,
+   "waitingCount": 10,
    "toughestStretch": {
-    "index": 6,
-    "startDate": "2026-11-28",
-    "endDate": "2026-12-06",
-    "games": 5,
+    "startDate": "2027-01-02",
+    "endDate": "2027-01-10",
     "opponents": [
-     "DET",
-     "OTT",
-     "CHI",
-     "CBJ",
-     "STL"
+     "CAR",
+     "EDM",
+     "WPG",
+     "MIN",
+     "COL"
     ],
     "isHome": [
      false,
      true,
-     true,
-     true,
+     false,
+     false,
      false
     ],
-    "roadGames": 2,
-    "homeGames": 3,
+    "games": 5,
+    "roadGames": 4,
     "b2bCount": 2,
-    "tzHours": 2,
-    "miles": 715,
-    "restVs": -1,
-    "avgRestDays": 0.8,
-    "tags": [
-     "Balanced",
-     "B2B Heavy"
-    ]
+    "tzHours": 3,
+    "miles": 2634,
+    "avgRestDays": 0.8
    },
    "segments": [
     {
@@ -23498,7 +23534,8 @@
      "restVs": 1,
      "avgRestDays": 1.25,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -23525,10 +23562,11 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 1422,
-     "restVs": 5,
+     "restVs": 2,
      "avgRestDays": 1.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -23585,10 +23623,11 @@
      "b2bCount": 1,
      "tzHours": 4,
      "miles": 3051,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 1.0,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -23615,10 +23654,11 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 3496,
-     "restVs": 3,
+     "restVs": 2,
      "avgRestDays": 1.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -23649,7 +23689,8 @@
      "avgRestDays": 0.8,
      "tags": [
       "Balanced",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -23709,7 +23750,8 @@
      "restVs": 1,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -23739,7 +23781,8 @@
      "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -23796,10 +23839,11 @@
      "b2bCount": 1,
      "tzHours": 5,
      "miles": 3299,
-     "restVs": -3,
+     "restVs": -1,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -23826,10 +23870,11 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 1974,
-     "restVs": 8,
+     "restVs": 0,
      "avgRestDays": 2.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -23859,7 +23904,8 @@
      "restVs": -2,
      "avgRestDays": 0.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -23889,7 +23935,8 @@
      "restVs": 2,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -23946,7 +23993,7 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 1815,
-     "restVs": 3,
+     "restVs": 2,
      "avgRestDays": 1.4,
      "tags": [
       "Balanced"
@@ -23974,10 +24021,11 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 794,
-     "restVs": 3,
+     "restVs": 2,
      "avgRestDays": 1.25,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     }
    ],
@@ -24869,7 +24917,7 @@
    "home": 42,
    "away": 42,
    "b2bCount": 13,
-   "avgRestDays": 1.31,
+   "avgRestDays": 1.21,
    "longestHomestand": 4,
    "longestRoadtrip": 6,
    "threeInFourCount": 12,
@@ -24877,38 +24925,32 @@
    "fiveInEightCount": 10,
    "tzHours": 26,
    "totalTravelMiles": 36361,
-   "restVs": 0,
-   "tiredCount": 21,
-   "waitingCount": 22,
+   "restVs": -1,
+   "tiredCount": 9,
+   "waitingCount": 8,
    "toughestStretch": {
-    "index": 10,
-    "startDate": "2027-01-15",
-    "endDate": "2027-01-22",
-    "games": 5,
+    "startDate": "2026-12-11",
+    "endDate": "2026-12-20",
     "opponents": [
-     "DAL",
-     "NJD",
-     "NSH",
-     "BUF",
-     "WSH"
+     "CAR",
+     "UTA",
+     "COL",
+     "VGK",
+     "NYR"
     ],
     "isHome": [
-     true,
      false,
-     true,
-     true,
-     false
+     false,
+     false,
+     false,
+     true
     ],
-    "roadGames": 2,
-    "homeGames": 3,
-    "b2bCount": 1,
-    "tzHours": 0,
-    "miles": 282,
-    "restVs": -2,
-    "avgRestDays": 0.8,
-    "tags": [
-     "Balanced"
-    ]
+    "games": 5,
+    "roadGames": 4,
+    "b2bCount": 2,
+    "tzHours": 6,
+    "miles": 5046,
+    "avgRestDays": 1.0
    },
    "segments": [
     {
@@ -24965,10 +25007,11 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 910,
-     "restVs": 3,
+     "restVs": 2,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -24995,7 +25038,7 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 2329,
-     "restVs": 2,
+     "restVs": 0,
      "avgRestDays": 1.8,
      "tags": [
       "Balanced"
@@ -25116,11 +25159,12 @@
      "b2bCount": 2,
      "tzHours": 3,
      "miles": 3229,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
       "Road Heavy",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -25147,10 +25191,11 @@
      "b2bCount": 1,
      "tzHours": 3,
      "miles": 349,
-     "restVs": -5,
+     "restVs": 0,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -25177,10 +25222,11 @@
      "b2bCount": 0,
      "tzHours": 6,
      "miles": 2753,
-     "restVs": 4,
+     "restVs": 2,
      "avgRestDays": 1.8,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -25207,7 +25253,7 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 282,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 0.8,
      "tags": [
       "Balanced"
@@ -25267,7 +25313,7 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 313,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 2.4,
      "tags": [
       "Balanced"
@@ -25301,7 +25347,8 @@
      "avgRestDays": 0.8,
      "tags": [
       "Road Heavy",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -25328,10 +25375,11 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 1073,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.6,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -25362,7 +25410,8 @@
      "avgRestDays": 0.8,
      "tags": [
       "Balanced",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -25389,7 +25438,7 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 1567,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.4,
      "tags": [
       "Balanced"
@@ -26313,46 +26362,40 @@
    "home": 42,
    "away": 42,
    "b2bCount": 11,
-   "avgRestDays": 1.33,
+   "avgRestDays": 1.21,
    "longestHomestand": 5,
    "longestRoadtrip": 4,
    "threeInFourCount": 16,
    "fourInSixCount": 15,
    "fiveInEightCount": 12,
-   "tzHours": 28,
+   "tzHours": 30,
    "totalTravelMiles": 38263,
-   "restVs": 6,
-   "tiredCount": 23,
-   "waitingCount": 26,
+   "restVs": -3,
+   "tiredCount": 9,
+   "waitingCount": 13,
    "toughestStretch": {
-    "index": 1,
-    "startDate": "2026-09-29",
-    "endDate": "2026-10-06",
-    "games": 5,
+    "startDate": "2027-01-09",
+    "endDate": "2027-01-17",
     "opponents": [
+     "SJS",
+     "LAK",
+     "ANA",
      "BOS",
-     "TBL",
-     "DET",
-     "UTA",
-     "NYI"
+     "DAL"
     ],
     "isHome": [
      false,
-     true,
+     false,
      false,
      true,
      true
     ],
-    "roadGames": 2,
-    "homeGames": 3,
-    "b2bCount": 1,
-    "tzHours": 0,
-    "miles": 1149,
-    "restVs": 0,
-    "avgRestDays": 0.75,
-    "tags": [
-     "Balanced"
-    ]
+    "games": 5,
+    "roadGames": 3,
+    "b2bCount": 2,
+    "tzHours": 6,
+    "miles": 2766,
+    "avgRestDays": 1.0
    },
    "segments": [
     {
@@ -26382,7 +26425,8 @@
      "restVs": 0,
      "avgRestDays": 0.75,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -26409,10 +26453,11 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 685,
-     "restVs": -1,
+     "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -26439,10 +26484,11 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 877,
-     "restVs": 5,
+     "restVs": 1,
      "avgRestDays": 2.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -26497,12 +26543,13 @@
      "roadGames": 3,
      "homeGames": 2,
      "b2bCount": 0,
-     "tzHours": 3,
+     "tzHours": 5,
      "miles": 3167,
-     "restVs": 4,
+     "restVs": 1,
      "avgRestDays": 2.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -26559,11 +26606,12 @@
      "b2bCount": 2,
      "tzHours": 0,
      "miles": 1073,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 0.8,
      "tags": [
       "Road Heavy",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -26593,7 +26641,8 @@
      "restVs": 0,
      "avgRestDays": 1.6,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -26620,10 +26669,11 @@
      "b2bCount": 0,
      "tzHours": 5,
      "miles": 4875,
-     "restVs": 2,
+     "restVs": 1,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -26650,11 +26700,12 @@
      "b2bCount": 2,
      "tzHours": 3,
      "miles": 2462,
-     "restVs": -1,
+     "restVs": -2,
      "avgRestDays": 1.0,
      "tags": [
       "Balanced",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -26684,7 +26735,8 @@
      "restVs": 0,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -26711,7 +26763,7 @@
      "b2bCount": 2,
      "tzHours": 0,
      "miles": 973,
-     "restVs": 2,
+     "restVs": 0,
      "avgRestDays": 2.4,
      "tags": [
       "Balanced",
@@ -26742,7 +26794,7 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 884,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
       "Road Heavy"
@@ -26775,7 +26827,8 @@
      "restVs": -2,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -26805,7 +26858,8 @@
      "restVs": 2,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -26832,10 +26886,11 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 2743,
-     "restVs": -3,
+     "restVs": -2,
      "avgRestDays": 0.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -27756,46 +27811,40 @@
    "home": 42,
    "away": 42,
    "b2bCount": 14,
-   "avgRestDays": 1.28,
+   "avgRestDays": 1.12,
    "longestHomestand": 6,
    "longestRoadtrip": 5,
    "threeInFourCount": 18,
    "fourInSixCount": 19,
    "fiveInEightCount": 18,
    "tzHours": 22,
-   "totalTravelMiles": 35545,
-   "restVs": 4,
-   "tiredCount": 16,
-   "waitingCount": 22,
+   "totalTravelMiles": 41512,
+   "restVs": -6,
+   "tiredCount": 11,
+   "waitingCount": 5,
    "toughestStretch": {
-    "index": 1,
-    "startDate": "2026-10-03",
-    "endDate": "2026-10-10",
-    "games": 5,
+    "startDate": "2026-10-27",
+    "endDate": "2026-11-04",
     "opponents": [
-     "TOR",
-     "BOS",
-     "DET",
-     "PHI",
-     "NSH"
+     "VGK",
+     "LAK",
+     "SJS",
+     "ANA",
+     "BUF"
     ],
     "isHome": [
      false,
      false,
      false,
-     true,
-     true
+     false,
+     false
     ],
-    "roadGames": 3,
-    "homeGames": 2,
+    "games": 5,
+    "roadGames": 5,
     "b2bCount": 1,
-    "tzHours": 0,
-    "miles": 1463,
-    "restVs": -2,
-    "avgRestDays": 0.75,
-    "tags": [
-     "Balanced"
-    ]
+    "tzHours": 6,
+    "miles": 3046,
+    "avgRestDays": 1.2
    },
    "segments": [
     {
@@ -27825,7 +27874,8 @@
      "restVs": -2,
      "avgRestDays": 0.75,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -27852,10 +27902,11 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 1061,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -27885,7 +27936,8 @@
      "restVs": -1,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -27912,10 +27964,11 @@
      "b2bCount": 1,
      "tzHours": 3,
      "miles": 2413,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -27972,10 +28025,11 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 2077,
-     "restVs": -3,
+     "restVs": -1,
      "avgRestDays": 1.0,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -28031,11 +28085,12 @@
      "homeGames": 3,
      "b2bCount": 0,
      "tzHours": 2,
-     "miles": 1715,
-     "restVs": 4,
+     "miles": 7682,
+     "restVs": 0,
      "avgRestDays": 2.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -28065,7 +28120,8 @@
      "restVs": -2,
      "avgRestDays": 1.0,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -28122,10 +28178,11 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 0,
-     "restVs": 12,
+     "restVs": 4,
      "avgRestDays": 3.0,
      "tags": [
-      "Homestand"
+      "Homestand",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -28150,12 +28207,13 @@
      "roadGames": 4,
      "homeGames": 1,
      "b2bCount": 1,
-     "tzHours": 4,
+     "tzHours": 3,
      "miles": 2890,
      "restVs": -2,
      "avgRestDays": 0.8,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -28180,13 +28238,14 @@
      "roadGames": 4,
      "homeGames": 1,
      "b2bCount": 2,
-     "tzHours": 2,
+     "tzHours": 3,
      "miles": 2457,
      "restVs": 1,
      "avgRestDays": 1.4,
      "tags": [
       "Road Heavy",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -28216,7 +28275,8 @@
      "restVs": 1,
      "avgRestDays": 0.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -28273,7 +28333,7 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 1386,
-     "restVs": 4,
+     "restVs": 2,
      "avgRestDays": 1.6,
      "tags": [
       "All Road"
@@ -28304,7 +28364,8 @@
      "restVs": 0,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     }
    ],
@@ -28603,7 +28664,7 @@
      "isHome": true,
      "restDays": 3,
      "b2b": false,
-     "venueCity": "Ottawa"
+     "venueCity": "Dusseldorf"
     },
     {
      "date": "2026-12-20",
@@ -28611,7 +28672,7 @@
      "isHome": false,
      "restDays": 1,
      "b2b": false,
-     "venueCity": "Chicago"
+     "venueCity": "Dusseldorf"
     },
     {
      "date": "2026-12-27",
@@ -29196,46 +29257,40 @@
    "home": 42,
    "away": 42,
    "b2bCount": 12,
-   "avgRestDays": 1.31,
+   "avgRestDays": 1.17,
    "longestHomestand": 5,
    "longestRoadtrip": 5,
    "threeInFourCount": 13,
    "fourInSixCount": 9,
    "fiveInEightCount": 8,
-   "tzHours": 22,
+   "tzHours": 24,
    "totalTravelMiles": 34294,
-   "restVs": -2,
-   "tiredCount": 22,
-   "waitingCount": 19,
+   "restVs": 3,
+   "tiredCount": 7,
+   "waitingCount": 8,
    "toughestStretch": {
-    "index": 2,
-    "startDate": "2026-10-10",
-    "endDate": "2026-10-17",
-    "games": 5,
+    "startDate": "2026-11-05",
+    "endDate": "2026-11-14",
     "opponents": [
-     "BOS",
-     "CAR",
-     "SEA",
-     "DET",
-     "OTT"
+     "NYR",
+     "CGY",
+     "VAN",
+     "EDM",
+     "CBJ"
     ],
     "isHome": [
      false,
-     true,
-     true,
      false,
-     true
+     false,
+     false,
+     false
     ],
-    "roadGames": 2,
-    "homeGames": 3,
+    "games": 5,
+    "roadGames": 5,
     "b2bCount": 1,
-    "tzHours": 0,
-    "miles": 1151,
-    "restVs": 0,
-    "avgRestDays": 0.8,
-    "tags": [
-     "Balanced"
-    ]
+    "tzHours": 6,
+    "miles": 4642,
+    "avgRestDays": 1.2
    },
    "segments": [
     {
@@ -29265,7 +29320,8 @@
      "restVs": 2,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -29322,10 +29378,11 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 677,
-     "restVs": -5,
+     "restVs": -2,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -29350,12 +29407,13 @@
      "roadGames": 3,
      "homeGames": 2,
      "b2bCount": 1,
-     "tzHours": 2,
+     "tzHours": 3,
      "miles": 2522,
      "restVs": 1,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -29380,7 +29438,7 @@
      "roadGames": 3,
      "homeGames": 2,
      "b2bCount": 1,
-     "tzHours": 2,
+     "tzHours": 3,
      "miles": 2479,
      "restVs": 0,
      "avgRestDays": 1.0,
@@ -29442,10 +29500,11 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 2627,
-     "restVs": 5,
+     "restVs": 4,
      "avgRestDays": 1.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -29475,7 +29534,8 @@
      "restVs": 1,
      "avgRestDays": 1.6,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -29502,10 +29562,11 @@
      "b2bCount": 1,
      "tzHours": 5,
      "miles": 3459,
-     "restVs": -6,
+     "restVs": -2,
      "avgRestDays": 1.2,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -29532,7 +29593,7 @@
      "b2bCount": 2,
      "tzHours": 2,
      "miles": 1813,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 0.8,
      "tags": [
       "Balanced",
@@ -29566,7 +29627,8 @@
      "restVs": 3,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -29593,7 +29655,7 @@
      "b2bCount": 1,
      "tzHours": 1,
      "miles": 1316,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 2.6,
      "tags": [
       "Balanced"
@@ -29656,7 +29718,8 @@
      "restVs": -2,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -29683,7 +29746,7 @@
      "b2bCount": 0,
      "tzHours": 4,
      "miles": 2385,
-     "restVs": -3,
+     "restVs": -2,
      "avgRestDays": 1.2,
      "tags": [
       "Balanced"
@@ -30637,7 +30700,7 @@
    "home": 42,
    "away": 42,
    "b2bCount": 15,
-   "avgRestDays": 1.31,
+   "avgRestDays": 1.19,
    "longestHomestand": 4,
    "longestRoadtrip": 6,
    "threeInFourCount": 18,
@@ -30645,37 +30708,32 @@
    "fiveInEightCount": 14,
    "tzHours": 22,
    "totalTravelMiles": 31254,
-   "restVs": -1,
-   "tiredCount": 26,
-   "waitingCount": 29,
+   "restVs": -3,
+   "tiredCount": 12,
+   "waitingCount": 9,
    "toughestStretch": {
-    "index": 17,
-    "startDate": "2027-04-04",
-    "endDate": "2027-04-10",
-    "games": 4,
+    "startDate": "2026-11-05",
+    "endDate": "2026-11-14",
     "opponents": [
-     "WSH",
-     "NYR",
-     "DET",
-     "NJD"
+     "BOS",
+     "LAK",
+     "ANA",
+     "SJS",
+     "OTT"
     ],
     "isHome": [
+     true,
      false,
      false,
      false,
-     false
+     true
     ],
-    "roadGames": 4,
-    "homeGames": 0,
-    "b2bCount": 2,
-    "tzHours": 0,
-    "miles": 1161,
-    "restVs": -2,
-    "avgRestDays": 0.75,
-    "tags": [
-     "All Road",
-     "B2B Heavy"
-    ]
+    "games": 5,
+    "roadGames": 3,
+    "b2bCount": 1,
+    "tzHours": 6,
+    "miles": 4737,
+    "avgRestDays": 1.2
    },
    "segments": [
     {
@@ -30702,10 +30760,11 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 774,
-     "restVs": -6,
+     "restVs": -2,
      "avgRestDays": 1.25,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -30736,7 +30795,8 @@
      "avgRestDays": 1.0,
      "tags": [
       "Road Heavy",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -30763,10 +30823,11 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 956,
-     "restVs": 7,
+     "restVs": 3,
      "avgRestDays": 2.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -30796,7 +30857,8 @@
      "restVs": -1,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -30826,7 +30888,8 @@
      "restVs": 0,
      "avgRestDays": 1.6,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -30853,11 +30916,12 @@
      "b2bCount": 2,
      "tzHours": 2,
      "miles": 1115,
-     "restVs": -3,
+     "restVs": -2,
      "avgRestDays": 0.8,
      "tags": [
       "Balanced",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -30914,10 +30978,11 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 1054,
-     "restVs": 3,
+     "restVs": 1,
      "avgRestDays": 1.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -30944,7 +31009,7 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 1525,
-     "restVs": 0,
+     "restVs": 1,
      "avgRestDays": 1.4,
      "tags": [
       "Balanced"
@@ -30974,7 +31039,7 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 581,
-     "restVs": 0,
+     "restVs": 2,
      "avgRestDays": 1.2,
      "tags": [
       "Balanced"
@@ -31004,7 +31069,7 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 208,
-     "restVs": -1,
+     "restVs": 0,
      "avgRestDays": 1.0,
      "tags": [
       "Balanced"
@@ -31034,7 +31099,7 @@
      "b2bCount": 1,
      "tzHours": 5,
      "miles": 1849,
-     "restVs": 9,
+     "restVs": 1,
      "avgRestDays": 2.8,
      "tags": [
       "All Road"
@@ -31094,7 +31159,7 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 511,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 0.8,
      "tags": [
       "Balanced"
@@ -31124,10 +31189,11 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 955,
-     "restVs": -5,
+     "restVs": -3,
      "avgRestDays": 0.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -31186,7 +31252,8 @@
      "avgRestDays": 0.75,
      "tags": [
       "All Road",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     }
    ],
@@ -32079,44 +32146,40 @@
    "home": 42,
    "away": 42,
    "b2bCount": 13,
-   "avgRestDays": 1.3,
+   "avgRestDays": 1.15,
    "longestHomestand": 5,
    "longestRoadtrip": 6,
    "threeInFourCount": 20,
    "fourInSixCount": 22,
    "fiveInEightCount": 21,
-   "tzHours": 49,
-   "totalTravelMiles": 49733,
-   "restVs": 3,
-   "tiredCount": 16,
-   "waitingCount": 21,
+   "tzHours": 46,
+   "totalTravelMiles": 54548,
+   "restVs": -5,
+   "tiredCount": 9,
+   "waitingCount": 6,
    "toughestStretch": {
-    "index": 17,
-    "startDate": "2027-04-05",
-    "endDate": "2027-04-10",
-    "games": 4,
+    "startDate": "2027-01-19",
+    "endDate": "2027-01-26",
     "opponents": [
-     "DAL",
-     "NSH",
-     "STL",
-     "CHI"
+     "LAK",
+     "BUF",
+     "NYI",
+     "NYR",
+     "NJD"
     ],
     "isHome": [
      false,
      false,
      false,
+     false,
      false
     ],
-    "roadGames": 4,
-    "homeGames": 0,
-    "b2bCount": 1,
-    "tzHours": 2,
-    "miles": 1129,
-    "restVs": -2,
-    "avgRestDays": 0.75,
-    "tags": [
-     "All Road"
-    ]
+    "games": 5,
+    "roadGames": 5,
+    "b2bCount": 2,
+    "tzHours": 3,
+    "miles": 2544,
+    "avgRestDays": 0.6
    },
    "segments": [
     {
@@ -32141,7 +32204,7 @@
      "roadGames": 3,
      "homeGames": 2,
      "b2bCount": 1,
-     "tzHours": 4,
+     "tzHours": 5,
      "miles": 2666,
      "restVs": 0,
      "avgRestDays": 1.0,
@@ -32203,7 +32266,7 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 875,
-     "restVs": 4,
+     "restVs": 1,
      "avgRestDays": 2.0,
      "tags": [
       "Balanced"
@@ -32232,7 +32295,7 @@
      "homeGames": 3,
      "b2bCount": 0,
      "tzHours": 6,
-     "miles": 5425,
+     "miles": 10241,
      "restVs": 1,
      "avgRestDays": 2.4,
      "tags": [
@@ -32293,10 +32356,11 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 3385,
-     "restVs": -3,
+     "restVs": -2,
      "avgRestDays": 0.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -32351,13 +32415,14 @@
      "roadGames": 1,
      "homeGames": 4,
      "b2bCount": 2,
-     "tzHours": 3,
+     "tzHours": 1,
      "miles": 246,
-     "restVs": 3,
+     "restVs": -1,
      "avgRestDays": 1.8,
      "tags": [
       "Balanced",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -32382,12 +32447,13 @@
      "roadGames": 3,
      "homeGames": 2,
      "b2bCount": 1,
-     "tzHours": 3,
+     "tzHours": 2,
      "miles": 2616,
-     "restVs": -4,
+     "restVs": -2,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -32412,12 +32478,13 @@
      "roadGames": 3,
      "homeGames": 2,
      "b2bCount": 1,
-     "tzHours": 4,
+     "tzHours": 3,
      "miles": 3472,
-     "restVs": 0,
+     "restVs": 1,
      "avgRestDays": 0.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -32444,7 +32511,7 @@
      "b2bCount": 1,
      "tzHours": 3,
      "miles": 2410,
-     "restVs": 2,
+     "restVs": 1,
      "avgRestDays": 1.2,
      "tags": [
       "Balanced"
@@ -32474,7 +32541,7 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 1282,
-     "restVs": 8,
+     "restVs": 0,
      "avgRestDays": 2.4,
      "tags": [
       "Balanced"
@@ -32504,10 +32571,11 @@
      "b2bCount": 0,
      "tzHours": 3,
      "miles": 4055,
-     "restVs": 0,
+     "restVs": 1,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -32534,10 +32602,11 @@
      "b2bCount": 1,
      "tzHours": 3,
      "miles": 2888,
-     "restVs": -1,
+     "restVs": 0,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -32594,7 +32663,7 @@
      "b2bCount": 1,
      "tzHours": 4,
      "miles": 3468,
-     "restVs": -1,
+     "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
       "Balanced"
@@ -32622,10 +32691,11 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 1129,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 0.75,
      "tags": [
-      "All Road"
+      "All Road",
+      "Grinding Through Fatigue"
      ]
     }
    ],
@@ -32764,7 +32834,7 @@
      "isHome": true,
      "restDays": 4,
      "b2b": false,
-     "venueCity": "Seattle"
+     "venueCity": "Helsinki"
     },
     {
      "date": "2026-11-14",
@@ -32772,7 +32842,7 @@
      "isHome": false,
      "restDays": 1,
      "b2b": false,
-     "venueCity": "Carolina"
+     "venueCity": "Helsinki"
     },
     {
      "date": "2026-11-19",
@@ -33517,22 +33587,20 @@
    "home": 42,
    "away": 42,
    "b2bCount": 13,
-   "avgRestDays": 1.3,
+   "avgRestDays": 1.17,
    "longestHomestand": 7,
    "longestRoadtrip": 6,
    "threeInFourCount": 17,
    "fourInSixCount": 19,
    "fiveInEightCount": 20,
-   "tzHours": 46,
+   "tzHours": 44,
    "totalTravelMiles": 45883,
-   "restVs": -7,
-   "tiredCount": 18,
-   "waitingCount": 23,
+   "restVs": -5,
+   "tiredCount": 9,
+   "waitingCount": 5,
    "toughestStretch": {
-    "index": 7,
     "startDate": "2026-12-03",
     "endDate": "2026-12-09",
-    "games": 5,
     "opponents": [
      "NYR",
      "NYI",
@@ -33547,17 +33615,12 @@
      true,
      false
     ],
+    "games": 5,
     "roadGames": 4,
-    "homeGames": 1,
     "b2bCount": 2,
     "tzHours": 3,
     "miles": 2907,
-    "restVs": -3,
-    "avgRestDays": 0.6,
-    "tags": [
-     "Road Heavy",
-     "B2B Heavy"
-    ]
+    "avgRestDays": 0.6
    },
    "segments": [
     {
@@ -33614,10 +33677,11 @@
      "b2bCount": 1,
      "tzHours": 3,
      "miles": 2921,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 1.0,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -33647,7 +33711,8 @@
      "restVs": 1,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -33674,10 +33739,11 @@
      "b2bCount": 1,
      "tzHours": 4,
      "miles": 4144,
-     "restVs": -4,
+     "restVs": -3,
      "avgRestDays": 0.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -33704,10 +33770,11 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 1176,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -33764,7 +33831,7 @@
      "b2bCount": 2,
      "tzHours": 3,
      "miles": 2907,
-     "restVs": -3,
+     "restVs": -1,
      "avgRestDays": 0.6,
      "tags": [
       "Road Heavy",
@@ -33793,9 +33860,9 @@
      "roadGames": 3,
      "homeGames": 2,
      "b2bCount": 0,
-     "tzHours": 2,
+     "tzHours": 0,
      "miles": 1498,
-     "restVs": 0,
+     "restVs": 1,
      "avgRestDays": 1.6,
      "tags": [
       "Balanced"
@@ -33825,11 +33892,12 @@
      "b2bCount": 2,
      "tzHours": 4,
      "miles": 3276,
-     "restVs": -4,
+     "restVs": -2,
      "avgRestDays": 1.2,
      "tags": [
       "Balanced",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -33856,10 +33924,11 @@
      "b2bCount": 1,
      "tzHours": 1,
      "miles": 1189,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -33886,10 +33955,11 @@
      "b2bCount": 1,
      "tzHours": 1,
      "miles": 1149,
-     "restVs": 4,
+     "restVs": 0,
      "avgRestDays": 2.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -33949,7 +34019,8 @@
      "restVs": 1,
      "avgRestDays": 1.0,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -34036,7 +34107,7 @@
      "b2bCount": 0,
      "tzHours": 3,
      "miles": 2696,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 1.2,
      "tags": [
       "Balanced"
@@ -34959,7 +35030,7 @@
    "home": 42,
    "away": 42,
    "b2bCount": 12,
-   "avgRestDays": 1.29,
+   "avgRestDays": 1.16,
    "longestHomestand": 6,
    "longestRoadtrip": 5,
    "threeInFourCount": 15,
@@ -34967,36 +35038,32 @@
    "fiveInEightCount": 14,
    "tzHours": 46,
    "totalTravelMiles": 43984,
-   "restVs": -7,
-   "tiredCount": 23,
-   "waitingCount": 23,
+   "restVs": 0,
+   "tiredCount": 6,
+   "waitingCount": 10,
    "toughestStretch": {
-    "index": 17,
-    "startDate": "2027-04-04",
-    "endDate": "2027-04-10",
-    "games": 4,
+    "startDate": "2027-01-05",
+    "endDate": "2027-01-16",
     "opponents": [
-     "SJS",
-     "VGK",
-     "SEA",
-     "UTA"
+     "CAR",
+     "OTT",
+     "LAK",
+     "ANA",
+     "MIN"
     ],
     "isHome": [
      false,
-     false,
      true,
+     false,
+     false,
      true
     ],
-    "roadGames": 2,
-    "homeGames": 2,
+    "games": 5,
+    "roadGames": 3,
     "b2bCount": 1,
-    "tzHours": 2,
-    "miles": 1760,
-    "restVs": 0,
-    "avgRestDays": 0.75,
-    "tags": [
-     "Balanced"
-    ]
+    "tzHours": 6,
+    "miles": 3852,
+    "avgRestDays": 1.6
    },
    "segments": [
     {
@@ -35023,7 +35090,7 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 1848,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 1.0,
      "tags": [
       "Balanced"
@@ -35053,10 +35120,11 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 1783,
-     "restVs": 2,
+     "restVs": 1,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -35116,7 +35184,8 @@
      "restVs": 1,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -35143,7 +35212,7 @@
      "b2bCount": 1,
      "tzHours": 3,
      "miles": 2009,
-     "restVs": -2,
+     "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
       "Balanced"
@@ -35173,10 +35242,11 @@
      "b2bCount": 1,
      "tzHours": 1,
      "miles": 0,
-     "restVs": 4,
+     "restVs": 3,
      "avgRestDays": 1.2,
      "tags": [
-      "Homestand"
+      "Homestand",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -35203,10 +35273,11 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 2705,
-     "restVs": -4,
+     "restVs": -2,
      "avgRestDays": 0.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -35236,7 +35307,8 @@
      "restVs": -1,
      "avgRestDays": 1.4,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -35266,7 +35338,8 @@
      "restVs": 0,
      "avgRestDays": 0.8,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -35293,10 +35366,11 @@
      "b2bCount": 1,
      "tzHours": 6,
      "miles": 3849,
-     "restVs": 3,
+     "restVs": 1,
      "avgRestDays": 1.6,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -35353,7 +35427,7 @@
      "b2bCount": 1,
      "tzHours": 4,
      "miles": 4050,
-     "restVs": -8,
+     "restVs": -2,
      "avgRestDays": 2.6,
      "tags": [
       "Balanced"
@@ -35413,7 +35487,7 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 1084,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.6,
      "tags": [
       "Balanced"
@@ -35446,7 +35520,8 @@
      "restVs": -3,
      "avgRestDays": 1.0,
      "tags": [
-      "All Road"
+      "All Road",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -35473,7 +35548,7 @@
      "b2bCount": 1,
      "tzHours": 4,
      "miles": 2384,
-     "restVs": -1,
+     "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
       "Balanced"
@@ -35504,7 +35579,8 @@
      "restVs": 0,
      "avgRestDays": 0.75,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     }
    ],
@@ -36396,7 +36472,7 @@
    "home": 42,
    "away": 42,
    "b2bCount": 13,
-   "avgRestDays": 1.3,
+   "avgRestDays": 1.2,
    "longestHomestand": 6,
    "longestRoadtrip": 4,
    "threeInFourCount": 16,
@@ -36404,36 +36480,32 @@
    "fiveInEightCount": 13,
    "tzHours": 26,
    "totalTravelMiles": 46103,
-   "restVs": 20,
-   "tiredCount": 25,
-   "waitingCount": 12,
+   "restVs": 13,
+   "tiredCount": 8,
+   "waitingCount": 8,
    "toughestStretch": {
-    "index": 17,
-    "startDate": "2027-04-05",
-    "endDate": "2027-04-10",
-    "games": 4,
+    "startDate": "2027-02-28",
+    "endDate": "2027-03-08",
     "opponents": [
-     "BUF",
-     "NJD",
-     "MTL",
-     "BOS"
+     "UTA",
+     "LAK",
+     "ANA",
+     "SJS",
+     "CHI"
     ],
     "isHome": [
-     false,
-     false,
      true,
-     true
+     false,
+     false,
+     false,
+     false
     ],
-    "roadGames": 2,
-    "homeGames": 2,
-    "b2bCount": 1,
-    "tzHours": 0,
-    "miles": 1288,
-    "restVs": 0,
-    "avgRestDays": 0.75,
-    "tags": [
-     "Balanced"
-    ]
+    "games": 5,
+    "roadGames": 4,
+    "b2bCount": 2,
+    "tzHours": 5,
+    "miles": 4344,
+    "avgRestDays": 0.8
    },
    "segments": [
     {
@@ -36463,7 +36535,8 @@
      "restVs": 2,
      "avgRestDays": 1.25,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -36520,10 +36593,11 @@
      "b2bCount": 1,
      "tzHours": 4,
      "miles": 3139,
-     "restVs": 5,
+     "restVs": 2,
      "avgRestDays": 1.6,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -36550,11 +36624,12 @@
      "b2bCount": 2,
      "tzHours": 2,
      "miles": 2510,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 0.8,
      "tags": [
       "Road Heavy",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -36581,10 +36656,11 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 0,
-     "restVs": 2,
+     "restVs": 1,
      "avgRestDays": 1.6,
      "tags": [
-      "Homestand"
+      "Homestand",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -36611,7 +36687,7 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 2746,
-     "restVs": 4,
+     "restVs": 3,
      "avgRestDays": 1.6,
      "tags": [
       "Balanced"
@@ -36765,7 +36841,8 @@
      "restVs": 2,
      "avgRestDays": 1.6,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -36792,7 +36869,7 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 0,
-     "restVs": 5,
+     "restVs": 1,
      "avgRestDays": 2.4,
      "tags": [
       "Homestand"
@@ -36825,7 +36902,8 @@
      "restVs": 1,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -36852,10 +36930,11 @@
      "b2bCount": 1,
      "tzHours": 3,
      "miles": 3177,
-     "restVs": 0,
+     "restVs": 1,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -36885,7 +36964,8 @@
      "restVs": -1,
      "avgRestDays": 1.0,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -37835,46 +37915,40 @@
    "home": 42,
    "away": 42,
    "b2bCount": 11,
-   "avgRestDays": 1.33,
+   "avgRestDays": 1.22,
    "longestHomestand": 6,
    "longestRoadtrip": 7,
    "threeInFourCount": 12,
    "fourInSixCount": 13,
    "fiveInEightCount": 14,
-   "tzHours": 29,
+   "tzHours": 30,
    "totalTravelMiles": 37446,
-   "restVs": -5,
-   "tiredCount": 17,
-   "waitingCount": 16,
+   "restVs": 1,
+   "tiredCount": 7,
+   "waitingCount": 2,
    "toughestStretch": {
-    "index": 3,
-    "startDate": "2026-10-20",
-    "endDate": "2026-10-28",
-    "games": 5,
+    "startDate": "2026-12-26",
+    "endDate": "2027-01-04",
     "opponents": [
-     "CBJ",
-     "NYR",
-     "EDM",
-     "CGY",
-     "SEA"
+     "MTL",
+     "ANA",
+     "LAK",
+     "SJS",
+     "WSH"
     ],
     "isHome": [
      false,
-     true,
+     false,
      false,
      false,
      false
     ],
-    "roadGames": 4,
-    "homeGames": 1,
+    "games": 5,
+    "roadGames": 5,
     "b2bCount": 1,
-    "tzHours": 3,
-    "miles": 2605,
-    "restVs": -4,
-    "avgRestDays": 0.8,
-    "tags": [
-     "Road Heavy"
-    ]
+    "tzHours": 6,
+    "miles": 5207,
+    "avgRestDays": 1.6
    },
    "segments": [
     {
@@ -37961,10 +38035,11 @@
      "b2bCount": 1,
      "tzHours": 3,
      "miles": 2605,
-     "restVs": -4,
+     "restVs": -3,
      "avgRestDays": 0.8,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -37989,9 +38064,9 @@
      "roadGames": 1,
      "homeGames": 4,
      "b2bCount": 1,
-     "tzHours": 2,
+     "tzHours": 3,
      "miles": 2087,
-     "restVs": 3,
+     "restVs": 2,
      "avgRestDays": 1.6,
      "tags": [
       "Balanced"
@@ -38051,7 +38126,7 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 879,
-     "restVs": 3,
+     "restVs": 2,
      "avgRestDays": 1.4,
      "tags": [
       "Balanced"
@@ -38114,7 +38189,8 @@
      "restVs": -1,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -38141,7 +38217,7 @@
      "b2bCount": 1,
      "tzHours": 6,
      "miles": 2873,
-     "restVs": 2,
+     "restVs": 1,
      "avgRestDays": 1.4,
      "tags": [
       "All Road"
@@ -38204,7 +38280,8 @@
      "restVs": 1,
      "avgRestDays": 1.4,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -38231,7 +38308,7 @@
      "b2bCount": 0,
      "tzHours": 1,
      "miles": 1078,
-     "restVs": -8,
+     "restVs": 0,
      "avgRestDays": 2.8,
      "tags": [
       "Balanced"
@@ -38264,7 +38341,8 @@
      "restVs": 2,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -38294,7 +38372,8 @@
      "restVs": 0,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -38324,7 +38403,8 @@
      "restVs": -2,
      "avgRestDays": 0.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -38354,7 +38434,8 @@
      "restVs": -1,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -39275,7 +39356,7 @@
    "home": 42,
    "away": 42,
    "b2bCount": 10,
-   "avgRestDays": 1.3,
+   "avgRestDays": 1.19,
    "longestHomestand": 6,
    "longestRoadtrip": 6,
    "threeInFourCount": 15,
@@ -39283,38 +39364,32 @@
    "fiveInEightCount": 15,
    "tzHours": 45,
    "totalTravelMiles": 47632,
-   "restVs": -4,
-   "tiredCount": 21,
-   "waitingCount": 22,
+   "restVs": -1,
+   "tiredCount": 9,
+   "waitingCount": 7,
    "toughestStretch": {
-    "index": 1,
-    "startDate": "2026-10-01",
-    "endDate": "2026-10-08",
-    "games": 5,
+    "startDate": "2027-02-03",
+    "endDate": "2027-02-17",
     "opponents": [
-     "CHI",
-     "CBJ",
-     "NYR",
-     "NJD",
-     "BOS"
+     "CGY",
+     "CGY",
+     "WSH",
+     "NYI",
+     "CBJ"
     ],
     "isHome": [
+     false,
      true,
      false,
      false,
-     false,
-     false
+     true
     ],
-    "roadGames": 4,
-    "homeGames": 1,
-    "b2bCount": 1,
-    "tzHours": 2,
-    "miles": 2203,
-    "restVs": -3,
-    "avgRestDays": 0.75,
-    "tags": [
-     "Road Heavy"
-    ]
+    "games": 5,
+    "roadGames": 3,
+    "b2bCount": 2,
+    "tzHours": 4,
+    "miles": 4764,
+    "avgRestDays": 2.0
    },
    "segments": [
     {
@@ -39344,7 +39419,8 @@
      "restVs": -3,
      "avgRestDays": 0.75,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -39401,10 +39477,11 @@
      "b2bCount": 0,
      "tzHours": 4,
      "miles": 2615,
-     "restVs": -1,
+     "restVs": 1,
      "avgRestDays": 1.6,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -39434,7 +39511,8 @@
      "restVs": -2,
      "avgRestDays": 1.2,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -39461,10 +39539,11 @@
      "b2bCount": 0,
      "tzHours": 1,
      "miles": 952,
-     "restVs": -1,
+     "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -39521,10 +39600,11 @@
      "b2bCount": 1,
      "tzHours": 4,
      "miles": 2988,
-     "restVs": 2,
+     "restVs": 0,
      "avgRestDays": 1.4,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -39551,10 +39631,11 @@
      "b2bCount": 1,
      "tzHours": 1,
      "miles": 2471,
-     "restVs": -2,
+     "restVs": 0,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -39611,10 +39692,11 @@
      "b2bCount": 1,
      "tzHours": 3,
      "miles": 2554,
-     "restVs": -1,
+     "restVs": 1,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -39641,10 +39723,11 @@
      "b2bCount": 0,
      "tzHours": 1,
      "miles": 0,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.6,
      "tags": [
-      "Homestand"
+      "Homestand",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -39675,7 +39758,8 @@
      "avgRestDays": 2.0,
      "tags": [
       "Balanced",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -39735,7 +39819,8 @@
      "restVs": 1,
      "avgRestDays": 1.2,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -39765,7 +39850,8 @@
      "restVs": 1,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -39792,10 +39878,11 @@
      "b2bCount": 0,
      "tzHours": 3,
      "miles": 1759,
-     "restVs": 4,
+     "restVs": 3,
      "avgRestDays": 1.6,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -39823,7 +39910,8 @@
      "restVs": -1,
      "avgRestDays": 0.75,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     }
    ],
@@ -40715,46 +40803,40 @@
    "home": 42,
    "away": 42,
    "b2bCount": 11,
-   "avgRestDays": 1.33,
+   "avgRestDays": 1.2,
    "longestHomestand": 7,
    "longestRoadtrip": 7,
    "threeInFourCount": 12,
    "fourInSixCount": 10,
    "fiveInEightCount": 9,
-   "tzHours": 35,
+   "tzHours": 43,
    "totalTravelMiles": 45547,
-   "restVs": 4,
-   "tiredCount": 24,
-   "waitingCount": 24,
+   "restVs": 0,
+   "tiredCount": 7,
+   "waitingCount": 9,
    "toughestStretch": {
-    "index": 2,
-    "startDate": "2026-10-10",
-    "endDate": "2026-10-17",
-    "games": 5,
+    "startDate": "2026-11-16",
+    "endDate": "2026-11-25",
     "opponents": [
-     "NJD",
-     "NYR",
-     "NYI",
-     "FLA",
-     "TBL"
+     "UTA",
+     "SEA",
+     "MIN",
+     "CHI",
+     "DET"
     ],
     "isHome": [
      false,
      false,
-     false,
-     false,
+     true,
+     true,
      false
     ],
-    "roadGames": 5,
-    "homeGames": 0,
-    "b2bCount": 1,
-    "tzHours": 0,
-    "miles": 1287,
-    "restVs": -4,
-    "avgRestDays": 0.8,
-    "tags": [
-     "All Road"
-    ]
+    "games": 5,
+    "roadGames": 3,
+    "b2bCount": 2,
+    "tzHours": 5,
+    "miles": 2781,
+    "avgRestDays": 1.0
    },
    "segments": [
     {
@@ -40779,12 +40861,13 @@
      "roadGames": 2,
      "homeGames": 3,
      "b2bCount": 1,
-     "tzHours": 4,
+     "tzHours": 5,
      "miles": 2908,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.25,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -40811,10 +40894,11 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 1287,
-     "restVs": -4,
+     "restVs": -3,
      "avgRestDays": 0.8,
      "tags": [
-      "All Road"
+      "All Road",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -40841,10 +40925,11 @@
      "b2bCount": 0,
      "tzHours": 3,
      "miles": 1434,
-     "restVs": 2,
+     "restVs": 1,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -40869,12 +40954,13 @@
      "roadGames": 2,
      "homeGames": 3,
      "b2bCount": 0,
-     "tzHours": 2,
+     "tzHours": 4,
      "miles": 2407,
      "restVs": 1,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -40899,12 +40985,13 @@
      "roadGames": 3,
      "homeGames": 2,
      "b2bCount": 1,
-     "tzHours": 4,
+     "tzHours": 2,
      "miles": 2185,
      "restVs": -1,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -40929,7 +41016,7 @@
      "roadGames": 4,
      "homeGames": 1,
      "b2bCount": 1,
-     "tzHours": 2,
+     "tzHours": 3,
      "miles": 3065,
      "restVs": -2,
      "avgRestDays": 1.0,
@@ -40961,10 +41048,11 @@
      "b2bCount": 1,
      "tzHours": 3,
      "miles": 1085,
-     "restVs": 3,
+     "restVs": 2,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -41019,12 +41107,13 @@
      "roadGames": 2,
      "homeGames": 3,
      "b2bCount": 1,
-     "tzHours": 2,
+     "tzHours": 3,
      "miles": 1620,
      "restVs": 1,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -41049,12 +41138,13 @@
      "roadGames": 1,
      "homeGames": 4,
      "b2bCount": 0,
-     "tzHours": 0,
+     "tzHours": 1,
      "miles": 1103,
-     "restVs": 4,
+     "restVs": 2,
      "avgRestDays": 1.6,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -41081,7 +41171,7 @@
      "b2bCount": 1,
      "tzHours": 3,
      "miles": 2403,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.0,
      "tags": [
       "All Road"
@@ -41109,12 +41199,13 @@
      "roadGames": 1,
      "homeGames": 4,
      "b2bCount": 0,
-     "tzHours": 1,
+     "tzHours": 2,
      "miles": 1778,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 2.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -41139,9 +41230,9 @@
      "roadGames": 2,
      "homeGames": 3,
      "b2bCount": 1,
-     "tzHours": 1,
+     "tzHours": 2,
      "miles": 2312,
-     "restVs": -4,
+     "restVs": -3,
      "avgRestDays": 0.8,
      "tags": [
       "Balanced"
@@ -41169,7 +41260,7 @@
      "roadGames": 3,
      "homeGames": 2,
      "b2bCount": 0,
-     "tzHours": 3,
+     "tzHours": 5,
      "miles": 2898,
      "restVs": 1,
      "avgRestDays": 1.8,
@@ -41232,7 +41323,7 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 1313,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 1.0,
      "tags": [
       "Balanced"
@@ -41263,7 +41354,8 @@
      "restVs": 1,
      "avgRestDays": 1.5,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     }
    ],
@@ -42156,7 +42248,7 @@
    "home": 42,
    "away": 42,
    "b2bCount": 8,
-   "avgRestDays": 1.33,
+   "avgRestDays": 1.21,
    "longestHomestand": 5,
    "longestRoadtrip": 4,
    "threeInFourCount": 9,
@@ -42164,38 +42256,32 @@
    "fiveInEightCount": 7,
    "tzHours": 58,
    "totalTravelMiles": 50703,
-   "restVs": 10,
-   "tiredCount": 23,
-   "waitingCount": 18,
+   "restVs": 5,
+   "tiredCount": 7,
+   "waitingCount": 9,
    "toughestStretch": {
-    "index": 2,
-    "startDate": "2026-10-10",
-    "endDate": "2026-10-17",
-    "games": 5,
+    "startDate": "2026-12-22",
+    "endDate": "2026-12-31",
     "opponents": [
-     "LAK",
+     "ANA",
+     "SJS",
      "MIN",
-     "NSH",
-     "CGY",
-     "PIT"
+     "CHI",
+     "STL"
     ],
     "isHome": [
-     true,
      false,
      false,
-     true,
+     false,
+     false,
      true
     ],
-    "roadGames": 2,
-    "homeGames": 3,
-    "b2bCount": 1,
+    "games": 5,
+    "roadGames": 4,
+    "b2bCount": 2,
     "tzHours": 4,
-    "miles": 3569,
-    "restVs": -3,
-    "avgRestDays": 0.8,
-    "tags": [
-     "Balanced"
-    ]
+    "miles": 3773,
+    "avgRestDays": 1.0
    },
    "segments": [
     {
@@ -42225,7 +42311,8 @@
      "restVs": 1,
      "avgRestDays": 1.25,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -42252,7 +42339,7 @@
      "b2bCount": 1,
      "tzHours": 4,
      "miles": 3569,
-     "restVs": -3,
+     "restVs": -1,
      "avgRestDays": 0.8,
      "tags": [
       "Balanced"
@@ -42282,7 +42369,7 @@
      "b2bCount": 0,
      "tzHours": 6,
      "miles": 3539,
-     "restVs": -1,
+     "restVs": 0,
      "avgRestDays": 1.6,
      "tags": [
       "Balanced"
@@ -42312,10 +42399,11 @@
      "b2bCount": 1,
      "tzHours": 6,
      "miles": 2882,
-     "restVs": -1,
+     "restVs": 0,
      "avgRestDays": 1.4,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -42372,7 +42460,7 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 2025,
-     "restVs": 1,
+     "restVs": 2,
      "avgRestDays": 1.4,
      "tags": [
       "Balanced"
@@ -42402,7 +42490,7 @@
      "b2bCount": 0,
      "tzHours": 6,
      "miles": 4515,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.6,
      "tags": [
       "Balanced"
@@ -42435,7 +42523,8 @@
      "restVs": -1,
      "avgRestDays": 1.4,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -42465,7 +42554,8 @@
      "restVs": 0,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -42525,7 +42615,8 @@
      "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -42552,10 +42643,11 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 2411,
-     "restVs": 8,
+     "restVs": 1,
      "avgRestDays": 2.6,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -42582,10 +42674,11 @@
      "b2bCount": 0,
      "tzHours": 4,
      "miles": 2338,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -42615,7 +42708,8 @@
      "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -42672,7 +42766,7 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 1569,
-     "restVs": 3,
+     "restVs": 2,
      "avgRestDays": 1.6,
      "tags": [
       "Balanced"
@@ -42703,7 +42797,8 @@
      "restVs": 0,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     }
    ],
@@ -43596,7 +43691,7 @@
    "home": 42,
    "away": 42,
    "b2bCount": 9,
-   "avgRestDays": 1.29,
+   "avgRestDays": 1.17,
    "longestHomestand": 6,
    "longestRoadtrip": 6,
    "threeInFourCount": 13,
@@ -43604,38 +43699,32 @@
    "fiveInEightCount": 13,
    "tzHours": 37,
    "totalTravelMiles": 48942,
-   "restVs": -12,
-   "tiredCount": 14,
-   "waitingCount": 21,
+   "restVs": -7,
+   "tiredCount": 7,
+   "waitingCount": 3,
    "toughestStretch": {
-    "index": 1,
-    "startDate": "2026-10-02",
-    "endDate": "2026-10-09",
-    "games": 5,
+    "startDate": "2027-02-02",
+    "endDate": "2027-02-17",
     "opponents": [
-     "BOS",
-     "DET",
-     "PIT",
-     "COL",
-     "ANA"
+     "WSH",
+     "NYR",
+     "VAN",
+     "SJS",
+     "LAK"
     ],
     "isHome": [
-     true,
      false,
      false,
-     true,
+     false,
+     false,
      true
     ],
-    "roadGames": 2,
-    "homeGames": 3,
+    "games": 5,
+    "roadGames": 4,
     "b2bCount": 1,
-    "tzHours": 2,
-    "miles": 2114,
-    "restVs": -3,
-    "avgRestDays": 0.75,
-    "tags": [
-     "Balanced"
-    ]
+    "tzHours": 5,
+    "miles": 4964,
+    "avgRestDays": 2.6
    },
    "segments": [
     {
@@ -43662,10 +43751,11 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 2114,
-     "restVs": -3,
+     "restVs": -2,
      "avgRestDays": 0.75,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -43692,10 +43782,11 @@
      "b2bCount": 0,
      "tzHours": 0,
      "miles": 2822,
-     "restVs": 1,
+     "restVs": 0,
      "avgRestDays": 1.6,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -43722,10 +43813,11 @@
      "b2bCount": 1,
      "tzHours": 1,
      "miles": 2553,
-     "restVs": -5,
+     "restVs": -2,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -43752,10 +43844,11 @@
      "b2bCount": 0,
      "tzHours": 1,
      "miles": 2311,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 1.2,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -43812,10 +43905,11 @@
      "b2bCount": 1,
      "tzHours": 3,
      "miles": 2432,
-     "restVs": -1,
+     "restVs": 0,
      "avgRestDays": 0.8,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -43845,7 +43939,8 @@
      "restVs": -1,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -43872,7 +43967,7 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 2615,
-     "restVs": 3,
+     "restVs": 2,
      "avgRestDays": 1.8,
      "tags": [
       "Balanced"
@@ -43935,7 +44030,8 @@
      "restVs": 0,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -43962,7 +44058,7 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 1381,
-     "restVs": 2,
+     "restVs": 1,
      "avgRestDays": 1.6,
      "tags": [
       "Balanced"
@@ -43992,10 +44088,11 @@
      "b2bCount": 1,
      "tzHours": 5,
      "miles": 4964,
-     "restVs": -3,
+     "restVs": -1,
      "avgRestDays": 2.6,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -44052,7 +44149,7 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 0,
-     "restVs": 0,
+     "restVs": -1,
      "avgRestDays": 1.4,
      "tags": [
       "Homestand"
@@ -44082,10 +44179,11 @@
      "b2bCount": 1,
      "tzHours": 4,
      "miles": 3079,
-     "restVs": -2,
+     "restVs": -1,
      "avgRestDays": 0.8,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -44112,7 +44210,7 @@
      "b2bCount": 0,
      "tzHours": 2,
      "miles": 2596,
-     "restVs": 2,
+     "restVs": 1,
      "avgRestDays": 1.8,
      "tags": [
       "Balanced"
@@ -44140,10 +44238,11 @@
      "b2bCount": 1,
      "tzHours": 3,
      "miles": 1695,
-     "restVs": -3,
+     "restVs": -2,
      "avgRestDays": 0.75,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     }
    ],
@@ -45035,7 +45134,7 @@
    "home": 42,
    "away": 42,
    "b2bCount": 14,
-   "avgRestDays": 1.29,
+   "avgRestDays": 1.16,
    "longestHomestand": 5,
    "longestRoadtrip": 6,
    "threeInFourCount": 13,
@@ -45043,36 +45142,32 @@
    "fiveInEightCount": 14,
    "tzHours": 26,
    "totalTravelMiles": 36441,
-   "restVs": 3,
-   "tiredCount": 21,
-   "waitingCount": 20,
+   "restVs": 1,
+   "tiredCount": 9,
+   "waitingCount": 10,
    "toughestStretch": {
-    "index": 17,
-    "startDate": "2027-04-04",
-    "endDate": "2027-04-10",
-    "games": 4,
+    "startDate": "2027-01-24",
+    "endDate": "2027-02-03",
     "opponents": [
-     "PIT",
-     "CBJ",
-     "OTT",
-     "PHI"
+     "NJD",
+     "UTA",
+     "VGK",
+     "WPG",
+     "FLA"
     ],
     "isHome": [
+     false,
+     false,
+     false,
      true,
-     false,
-     false,
      false
     ],
-    "roadGames": 3,
-    "homeGames": 1,
-    "b2bCount": 1,
-    "tzHours": 0,
-    "miles": 1217,
-    "restVs": 0,
-    "avgRestDays": 0.75,
-    "tags": [
-     "Road Heavy"
-    ]
+    "games": 5,
+    "roadGames": 4,
+    "b2bCount": 2,
+    "tzHours": 6,
+    "miles": 5314,
+    "avgRestDays": 1.4
    },
    "segments": [
     {
@@ -45099,10 +45194,11 @@
      "b2bCount": 1,
      "tzHours": 0,
      "miles": 1413,
-     "restVs": 0,
+     "restVs": -1,
      "avgRestDays": 1.25,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -45159,7 +45255,7 @@
      "b2bCount": 1,
      "tzHours": 2,
      "miles": 1136,
-     "restVs": 2,
+     "restVs": 0,
      "avgRestDays": 1.8,
      "tags": [
       "Balanced"
@@ -45249,7 +45345,7 @@
      "b2bCount": 0,
      "tzHours": 4,
      "miles": 1728,
-     "restVs": -1,
+     "restVs": 0,
      "avgRestDays": 1.2,
      "tags": [
       "All Road"
@@ -45372,7 +45468,8 @@
      "restVs": 2,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -45399,11 +45496,12 @@
      "b2bCount": 2,
      "tzHours": 6,
      "miles": 4740,
-     "restVs": 1,
+     "restVs": -1,
      "avgRestDays": 3.0,
      "tags": [
       "Road Heavy",
-      "B2B Heavy"
+      "B2B Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -45433,7 +45531,8 @@
      "restVs": 0,
      "avgRestDays": 1.0,
      "tags": [
-      "Homestand"
+      "Homestand",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -45460,10 +45559,11 @@
      "b2bCount": 1,
      "tzHours": 1,
      "miles": 1671,
-     "restVs": -4,
+     "restVs": -2,
      "avgRestDays": 1.0,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Grinding Through Fatigue"
      ]
     },
     {
@@ -45554,7 +45654,8 @@
      "restVs": 2,
      "avgRestDays": 1.0,
      "tags": [
-      "Balanced"
+      "Balanced",
+      "Catching Tired Teams"
      ]
     },
     {
@@ -45582,7 +45683,8 @@
      "restVs": 0,
      "avgRestDays": 0.75,
      "tags": [
-      "Road Heavy"
+      "Road Heavy",
+      "Catching Tired Teams"
      ]
     }
    ],
