@@ -39,29 +39,21 @@
 </section>
 
 <section class="panel">
-  <div class="panel-label" id="teamPanelLabel">Season at a glance</div>
-  <div class="stat-row" id="statRow"></div>
-</section>
-
-<section class="panel" id="toughestPanel">
-  <div class="panel-label">Toughest Stretch</div>
-  <p class="panel-sub">The 5-game window with the fewest average rest days \u2014 a plain, transparent ranking (no fabricated "fatigue" score involved).</p>
-  <div id="toughestBody"></div>
+  <div class="panel-label">Season at a Glance</div>
+  <div class="stat-row stat-row-compact" id="statRow"></div>
 </section>
 
 <section class="panel">
   <div class="panel-label">Season Calendar</div>
-  <p class="panel-sub">Every game, in order. Hover a bar for details; taller/darker means less rest.</p>
-  <div class="heatstrip" id="calendarStrip"></div>
-  <div class="heat-months" id="calendarMonths"></div>
+  <p class="panel-sub"><span class="cal-legend"><span class="cal-dot cal-home"></span>Home</span> <span class="cal-legend"><span class="cal-dot cal-away"></span>Away</span> <span class="cal-legend"><span class="cal-dot cal-b2b"></span>B2B</span> <span class="cal-legend"><span class="cal-dot cal-off"></span>Off</span> — hover any day for matchup detail.</p>
+  <div id="calendarGrid"></div>
 </section>
 
 <section class="panel">
   <div class="panel-label">Season Segments</div>
-  <p class="panel-sub">Rolling 5-game windows. Strip is shaded by this team's own range across the season; table cells are shaded against the league average for that same segment number. Click a block or row for its opponents.</p>
+  <p class="panel-sub">Fixed 5-game blocks. Strip shaded by this team's own range; table shaded against the league average for that same segment. Click a row to expand its games.</p>
   <div class="segment-strip" id="segmentStrip"></div>
-  <div id="segmentDetail"></div>
-  <div class="table-wrap" style="margin-top:14px">
+  <div class="table-wrap" style="margin-top:12px">
     <table id="segmentTable">
       <thead><tr>
         <th class="num">Seg</th><th>Games</th><th>Dates</th><th class="num">Days</th>
@@ -73,15 +65,30 @@
   </div>
 </section>
 
-<section class="panel">
-  <div class="panel-label">Opponents</div>
-  <div class="table-wrap">
-    <table id="oppTable">
-      <thead><tr><th>Opponent</th><th class="num">Total</th><th class="num">Home</th><th class="num">Away</th></tr></thead>
-      <tbody></tbody>
-    </table>
-  </div>
-</section>
+<div class="two-col">
+  <section class="panel">
+    <div class="panel-label">Opponent Frequency</div>
+    <p class="panel-sub">Click a column header to sort · click a team to see their games</p>
+    <div class="table-wrap">
+      <table id="oppTable">
+        <thead><tr>
+          <th data-opp-sort="team">Team</th>
+          <th class="num" data-opp-sort="total">Total</th>
+          <th class="num" data-opp-sort="home">Home</th>
+          <th class="num" data-opp-sort="away">Away</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div id="oppDetail" style="margin-top:10px"></div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-label">Monthly Workload</div>
+    <p class="panel-sub">Games per month vs league average.</p>
+    <div id="monthChart"></div>
+  </section>
+</div>
 
 <footer class="site-foot">
   <p><span id="updatedStamp"></span></p>

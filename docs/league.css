@@ -197,3 +197,53 @@ svg.travelmap { width:100%; height:auto; }
 .avg-table{width:100%;border-collapse:collapse;white-space:nowrap}
 .avg-table th{text-align:center;padding:7px 14px;color:var(--text3);font:700 11px 'Rubik',sans-serif;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid var(--border);background:var(--surface2)}
 .avg-table td{text-align:center;padding:10px 14px;color:var(--text);font-variant-numeric:tabular-nums;font-family:'DM Mono',monospace;font-size:15px;font-weight:600;border-bottom:1px solid var(--border)}
+
+/* compact stat cards */
+.stat-row-compact { flex-wrap:nowrap; overflow-x:auto; gap:8px }
+.stat-card-sm { min-width:80px; padding:9px 10px }
+.stat-card-sm .st-label { font-size:10px; letter-spacing:.04em }
+.stat-card-sm .st-value { font-size:18px; line-height:1.1 }
+.stat-card-sm .st-sub { font-size:10px; margin-top:4px }
+
+/* month-grid calendar */
+.cal-legend { display:inline-flex; align-items:center; gap:5px; margin-right:14px; font-size:12px; color:var(--text2) }
+.cal-dot { width:10px; height:10px; border-radius:2px; display:inline-block }
+.cal-dot.cal-home { background:#00205B }
+.cal-dot.cal-away { background:var(--brand-orange) }
+.cal-dot.cal-b2b  { background:#7B1FA2 }
+.cal-dot.cal-off  { background:var(--grid) }
+#calendarGrid { display:flex; flex-wrap:wrap; gap:18px; margin-top:10px }
+.cal-month { flex:0 0 auto }
+.cal-month-label { font:700 11px 'Rubik',sans-serif; letter-spacing:.06em; text-transform:uppercase; color:var(--text3); margin-bottom:5px }
+.cal-dow-row { display:grid; grid-template-columns:repeat(7,22px); gap:2px; margin-bottom:2px }
+.cal-dow-row span { font-size:9px; text-align:center; color:var(--text3); font-family:'Rubik',sans-serif }
+.cal-grid { display:grid; grid-template-columns:repeat(7,22px); gap:2px }
+.cal-cell { width:22px; height:22px; border-radius:3px; font-size:9px; display:flex; align-items:center; justify-content:center; cursor:default; color:#fff; font-family:'DM Mono',monospace; font-weight:600 }
+.cal-cell.cal-home { background:#00205B }
+.cal-cell.cal-away { background:var(--brand-orange) }
+.cal-cell.cal-b2b  { background:#7B1FA2; outline:2px solid #fff; outline-offset:-2px }
+.cal-cell.cal-off  { background:var(--grid); color:var(--text3) }
+.cal-cell.cal-pad  { background:transparent }
+.cal-cell:hover { opacity:.8 }
+
+/* segment inline expand */
+.seg-open { background:var(--accent-light) }
+.seg-detail-row td { padding:0 }
+.seg-detail-cell { padding:0 !important; border-top:none !important }
+.seg-detail-inner { padding:10px 14px 12px; background:var(--accent-light); border-bottom:1px solid var(--border); font-size:13px; color:var(--text) }
+.seg-tags-inline { margin-left:8px }
+.seg-opp { margin-top:6px; color:var(--text2); font-size:12.5px }
+
+/* two-column layout for opp + workload */
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:start }
+@media (max-width:760px) { .two-col { grid-template-columns:1fr } }
+
+/* opponent expanded game detail */
+.opp-games { margin-top:0; border:1px solid var(--border); border-radius:8px; overflow:hidden; font-size:12.5px }
+.opp-games-label { padding:7px 12px; font:700 11px 'Rubik',sans-serif; letter-spacing:.05em; text-transform:uppercase; color:var(--text3); background:var(--surface2); border-bottom:1px solid var(--border) }
+.opp-game-row { display:flex; gap:12px; padding:5px 12px; border-bottom:1px solid var(--border); color:var(--text2) }
+.opp-game-row:last-child { border-bottom:none }
+.opp-b2b { color:var(--bad-text); font-weight:700 }
+
+/* monthly workload chart */
+#monthChart svg { width:100%; height:auto; display:block }

@@ -1,43 +1,14 @@
-/* team-explorer.js — per-team drill-down across all 32 teams */
+/* team-explorer.js */
 "use strict";
 const $ = (s, el = document) => el.querySelector(s);
 
-const state = { league: null, team: null };
+const state = { league: null, team: null, oppSort: { key: "total", dir: -1 } };
 
-function statCard(label, value, sub) {
-  return `<div class="stat-card">
-    <div class="st-label">${label}</div>
-    <div class="st-value">${value}</div>
-    ${sub ? `<div class="st-sub">${sub}</div>` : ""}
-  </div>`;
-}
-
+/* ---- helpers ----------------------------------------------------------- */
 function fmtDateShort(iso) {
   if (!iso) return "";
   const [y, m, d] = iso.split("-").map(Number);
   return new Date(y, m - 1, d).toLocaleDateString("en-US", { month: "short", day: "numeric" });
-}
-
-const SEGMENT_TAG_COLOR = {
-  "All Road": "#8f0e0e", "Road Heavy": "#c0392b", "B2B Heavy": "#c0392b",
-  "Homestand": "#1d4d8f", "Balanced": "#6b6b65",
-};
-function segmentColor(tags) {
-  for (const t of ["All Road", "B2B Heavy", "Road Heavy", "Homestand"]) {
-    if (tags.includes(t)) return SEGMENT_TAG_COLOR[t];
-  }
-  return SEGMENT_TAG_COLOR.Balanced;
-}
-
-function statCardRanked(label, value, allValues, lowerIsBetter, opts = {}) {
-  const info = rankInfo(value, allValues, lowerIsBetter);
-  const badgeCls = info.cls ? ` rank-${info.cls}` : "";
-  const fmt = opts.fmt || (v => v);
-  return `<div class="stat-card">
-    <div class="st-label">${label}</div>
-    <div class="st-value">${fmt(value)}${opts.unit || ""}</div>
-    <div class="st-sub"><span class="rank-chip${badgeCls}">#${info.rank}</span> Avg ${fmt(info.avg)}</div>
-  </div>`;
 }
 
 function leagueValuesFor(league, key) {
@@ -46,157 +17,318 @@ function leagueValuesFor(league, key) {
 
 const milesF = v => Math.round(v).toLocaleString();
 
+/* ---- stat cards (compact, no Games card) ------------------------------- */
+function statCardRanked(label, value, allValues, lowerIsBetter, opts = {}) {
+  const info = rankInfo(value, allValues, lowerIsBetter);
+  const badgeCls = info.cls ? ` rank-${info.cls}` : "";
+  const fmt = opts.fmt || (v => v);
+  return `<div class="stat-card stat-card-sm">
+    <div class="st-label">${label}</div>
+    <div class="st-value">${fmt(value)}${opts.unit || ""}</div>
+    <div class="st-sub"><span class="rank-chip${badgeCls}">#${info.rank}</span> Avg&nbsp;${fmt(info.avg)}</div>
+  </div>`;
+}
+
 function renderStats(s, league) {
   const L = key => leagueValuesFor(league, key);
   $("#statRow").innerHTML = [
-    statCard("Games", s.games, `${s.home} home / ${s.away} away`),
     statCardRanked("B2B", s.b2bCount, L("b2bCount"), true),
     statCardRanked("3-in-4", s.threeInFourCount, L("threeInFourCount"), true),
     statCardRanked("4-in-6", s.fourInSixCount, L("fourInSixCount"), true),
     statCardRanked("5-in-8", s.fiveInEightCount, L("fiveInEightCount"), true),
-    statCardRanked("Avg rest days", s.avgRestDays, L("avgRestDays"), false),
+    statCardRanked("Avg rest", s.avgRestDays, L("avgRestDays"), false),
     statCardRanked("Waiting", s.waitingCount, L("waitingCount"), false),
     statCardRanked("Tired", s.tiredCount, L("tiredCount"), true),
     statCardRanked("Rest vs", s.restVs, L("restVs"), false,
       { fmt: v => (v > 0 ? "+" : "") + v }),
-    statCardRanked("Longest road trip", s.longestRoadtrip, L("longestRoadtrip"), true, { unit: " gm" }),
-    statCardRanked("Longest home stand", s.longestHomestand, L("longestHomestand"), false, { unit: " gm" }),
+    statCardRanked("Longest trip", s.longestRoadtrip, L("longestRoadtrip"), true, { unit: " gm" }),
+    statCardRanked("Longest stand", s.longestHomestand, L("longestHomestand"), false, { unit: " gm" }),
     statCardRanked("Miles", s.totalTravelMiles, L("totalTravelMiles"), true, { fmt: milesF }),
-    statCardRanked("TZ hours", s.tzHours, L("tzHours"), true),
+    statCardRanked("TZ hrs", s.tzHours, L("tzHours"), true),
   ].join("");
 }
 
-function renderToughest(stretch) {
-  if (!stretch) { $("#toughestBody").innerHTML = "<p class=\"panel-sub\">Not enough games yet.</p>"; return; }
-  $("#toughestBody").innerHTML = `
-    <div class="stat-row">
-      ${statCard("Window", `${fmtDateShort(stretch.startDate)} \u2013 ${fmtDateShort(stretch.endDate)}`)}
-      ${statCard("Avg rest days", stretch.avgRestDays)}
-      ${statCard("Road games", `${stretch.roadGames} of ${stretch.games}`)}
-      ${statCard("Back-to-backs", stretch.b2bCount)}
-      ${statCard("Travel miles", Math.round(stretch.miles).toLocaleString())}
-    </div>
-    <p class="panel-sub" style="margin-top:12px">Opponents: ${stretch.opponents.map((o, i) =>
-      `${stretch.isHome[i] ? "" : "@"}${o}`).join(", ")}</p>`;
-}
-
+/* ---- season calendar (month-grid) -------------------------------------- */
 function renderCalendar(gameLog) {
-  const restVals = gameLog.map(g => g.restDays).filter(r => r !== null);
-  const strip = $("#calendarStrip");
-  strip.innerHTML = gameLog.map((g, i) => {
-    const bg = g.restDays === null ? "var(--grid)" :
-      (deltaBg(g.restDays, restVals, false) || "background:var(--grid)").replace("background:", "");
-    return `<div class="heat-day" data-idx="${i}" style="background:${bg}"></div>`;
-  }).join("");
+  // Build a lookup: date string -> game
+  const byDate = {};
+  gameLog.forEach(g => { byDate[g.date] = g; });
+
+  // Determine full date range: first game date to last, padded to week boundaries
+  const dates = gameLog.map(g => g.date).sort();
+  const start = new Date(dates[0]);
+  const end   = new Date(dates[dates.length - 1]);
+
+  // Group by month-year
+  const months = {};
+  for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+    const iso = d.toISOString().slice(0, 10);
+    const key = d.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+    if (!months[key]) months[key] = [];
+    months[key].push(iso);
+  }
 
   const tip = $("#tooltip");
-  strip.querySelectorAll(".heat-day").forEach(el => {
-    const g = gameLog[+el.dataset.idx];
-    el.addEventListener("mouseenter", () => {
-      tip.hidden = false;
-      tip.innerHTML = `${fmtDateShort(g.date)} \u00B7 ${g.isHome ? "vs" : "@"} ${g.opponent}` +
-        (g.restDays === null ? "" : `<br>${g.restDays} day${g.restDays === 1 ? "" : "s"} rest${g.b2b ? " \u2014 B2B" : ""}`);
+
+  const html = Object.entries(months).map(([monthLabel, days]) => {
+    // Pad the start to Sunday
+    const firstDay = new Date(days[0]);
+    const padBefore = firstDay.getDay(); // 0=Sun
+    const cells = [];
+    for (let i = 0; i < padBefore; i++) cells.push(`<div class="cal-cell cal-pad"></div>`);
+
+    days.forEach(iso => {
+      const g = byDate[iso];
+      let cls = "cal-off";
+      let title = "";
+      if (g) {
+        if (g.b2b) cls = "cal-b2b";
+        else if (g.isHome) cls = "cal-home";
+        else cls = "cal-away";
+        title = `${fmtDateShort(iso)} · ${g.isHome ? "vs" : "@"} ${g.opponent}` +
+          (g.restDays === null ? "" : ` · ${g.restDays}d rest${g.b2b ? " (B2B)" : ""}`);
+      }
+      const dayNum = new Date(iso).getDate();
+      cells.push(`<div class="cal-cell ${cls}" data-tip="${title}" data-date="${iso}">${dayNum}</div>`);
     });
+
+    return `<div class="cal-month">
+      <div class="cal-month-label">${monthLabel}</div>
+      <div class="cal-dow-row"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+      <div class="cal-grid">${cells.join("")}</div>
+    </div>`;
+  }).join("");
+
+  $("#calendarGrid").innerHTML = html;
+
+  // Tooltip wiring
+  $("#calendarGrid").querySelectorAll(".cal-cell[data-tip]").forEach(el => {
+    const t = el.dataset.tip;
+    if (!t) return;
+    el.addEventListener("mouseenter", () => { tip.hidden = false; tip.innerHTML = t; });
     el.addEventListener("mousemove", e => {
       tip.style.left = Math.min(e.clientX + 12, innerWidth - 220) + "px";
       tip.style.top = (e.clientY + 12) + "px";
     });
     el.addEventListener("mouseleave", () => { tip.hidden = true; });
   });
-
-  const months = [];
-  let lastMonth = null;
-  gameLog.forEach((g, i) => {
-    const m = g.date.slice(0, 7);
-    if (m !== lastMonth) { months.push({ i, label: fmtDateShort(g.date).split(" ")[0] }); lastMonth = m; }
-  });
-  $("#calendarMonths").innerHTML = months.map(m =>
-    `<span style="flex:0 0 auto;margin-left:${m.i === 0 ? 0 : 6}px">${m.label}</span>`).join("");
 }
 
+/* ---- segments (inline row accordion) ----------------------------------- */
 function daySpan(startDate, endDate) {
-  const d1 = new Date(startDate), d2 = new Date(endDate);
-  return Math.round((d2 - d1) / 86400000) + 1;
+  return Math.round((new Date(endDate) - new Date(startDate)) / 86400000) + 1;
 }
 
 function segmentLeagueValues(league, index, key) {
   return Object.values(league.teamSummary)
-    .map(s => s.segments[index - 1])
-    .filter(Boolean)
-    .map(seg => seg[key]);
+    .map(s => s.segments[index - 1]).filter(Boolean).map(seg => seg[key]);
 }
 
 function renderSegments(segments, league) {
-  // strip: shaded by THIS team's own range across their own segments
-  // (self-relative -- how tough is this stretch compared to this team's
-  // own season, not the league)
   const ownRest = segments.map(s => s.avgRestDays).filter(v => v !== null);
+
   $("#segmentStrip").innerHTML = segments.map(seg => {
     const bg = seg.avgRestDays === null ? "var(--grid)" :
       (deltaBg(seg.avgRestDays, ownRest, false) || "background:var(--grid)").replace("background:", "");
-    return `<div class="segment-block" data-idx="${seg.index}" style="background:${bg};color:var(--text)"
-       title="${fmtDateShort(seg.startDate)}\u2013${fmtDateShort(seg.endDate)}">${seg.index}</div>`;
+    return `<div class="segment-block" data-seg="${seg.index}"
+      style="background:${bg};color:var(--text)"
+      title="${fmtDateShort(seg.startDate)}–${fmtDateShort(seg.endDate)}">${seg.index}</div>`;
   }).join("");
 
-  // table: every segment, each numeric cell shaded against the LEAGUE
-  // AVERAGE for that same segment index (not this team's own range --
-  // e.g. segment 6 compared across all 32 teams' segment-6 stats)
   const cols = [
     { key: "roadGames", lowerIsBetter: true }, { key: "b2bCount", lowerIsBetter: true },
     { key: "tzHours", lowerIsBetter: true }, { key: "miles", lowerIsBetter: true },
     { key: "restVs", lowerIsBetter: false },
   ];
-  $("#segmentTable tbody").innerHTML = segments.map(seg => {
-    const cells = cols.map(col => {
-      const vals = segmentLeagueValues(league, seg.index, col.key);
-      const bg = vals.length > 4 ? deltaBg(seg[col.key], vals, col.lowerIsBetter) : "";
-      const disp = col.key === "miles" ? Math.round(seg[col.key]).toLocaleString()
-        : col.key === "restVs" ? (seg[col.key] > 0 ? "+" : "") + seg[col.key]
-        : seg[col.key];
-      return `<td class="num" style="${bg}">${disp}</td>`;
-    }).join("");
-    return `<tr class="segment-row" data-idx="${seg.index}">
-      <td class="num">${seg.index}</td>
-      <td>Games ${(seg.index - 1) * 5 + 1}\u2013${(seg.index - 1) * 5 + seg.games}</td>
-      <td>${fmtDateShort(seg.startDate)} \u2013 ${fmtDateShort(seg.endDate)}</td>
-      <td class="num">${daySpan(seg.startDate, seg.endDate)}</td>
-      ${cells}
-      <td>${seg.tags.map(t => `<span class="segment-tag-pill">${t}</span>`).join("")}</td>
+
+  function makeDetailRow(seg) {
+    const opponents = seg.opponents.map((o, i) => `${seg.isHome[i] ? "" : "@"}${o}`).join(", ");
+    return `<tr class="seg-detail-row" data-detail-for="${seg.index}">
+      <td colspan="10" class="seg-detail-cell">
+        <div class="seg-detail-inner">
+          <strong>Segment ${seg.index}</strong> · ${fmtDateShort(seg.startDate)} – ${fmtDateShort(seg.endDate)}
+          <span class="seg-tags-inline">${seg.tags.map(t => `<span class="segment-tag-pill">${t}</span>`).join("")}</span>
+          <div class="seg-opp">${opponents}</div>
+        </div>
+      </td>
     </tr>`;
-  }).join("");
+  }
 
-  const showDetail = idx => {
-    const seg = segments.find(s => s.index === idx);
-    $("#segmentDetail").innerHTML = `
-      <div style="margin-top:12px;padding:12px;border:1px solid var(--border);border-radius:8px">
-        <strong>Segment ${seg.index}</strong> \u00B7 ${fmtDateShort(seg.startDate)} \u2013 ${fmtDateShort(seg.endDate)}
-        <p class="panel-sub" style="margin-top:8px">Opponents: ${seg.opponents.map((o, i) =>
-          `${seg.isHome[i] ? "" : "@"}${o}`).join(", ")}</p>
-      </div>`;
-  };
-  $("#segmentStrip").querySelectorAll(".segment-block").forEach(el =>
-    el.addEventListener("click", () => showDetail(+el.dataset.idx)));
-  $("#segmentTable").querySelectorAll(".segment-row").forEach(el =>
-    el.addEventListener("click", () => showDetail(+el.dataset.idx)));
+  let openIdx = null;
+  const tbody = $("#segmentTable tbody");
+
+  function buildRows() {
+    tbody.innerHTML = segments.map(seg => {
+      const cells = cols.map(col => {
+        const vals = segmentLeagueValues(league, seg.index, col.key);
+        const bg = vals.length > 4 ? deltaBg(seg[col.key], vals, col.lowerIsBetter) : "";
+        const disp = col.key === "miles" ? Math.round(seg[col.key]).toLocaleString()
+          : col.key === "restVs" ? (seg[col.key] > 0 ? "+" : "") + seg[col.key]
+          : seg[col.key];
+        return `<td class="num" style="${bg}">${disp}</td>`;
+      }).join("");
+      const isOpen = openIdx === seg.index;
+      const mainRow = `<tr class="segment-row${isOpen ? " seg-open" : ""}" data-seg="${seg.index}">
+        <td class="num">${seg.index}</td>
+        <td>Games ${(seg.index - 1) * 5 + 1}–${(seg.index - 1) * 5 + seg.games}</td>
+        <td>${fmtDateShort(seg.startDate)} – ${fmtDateShort(seg.endDate)}</td>
+        <td class="num">${daySpan(seg.startDate, seg.endDate)}</td>
+        ${cells}
+        <td>${seg.tags.map(t => `<span class="segment-tag-pill">${t}</span>`).join("")}</td>
+      </tr>`;
+      return mainRow + (isOpen ? makeDetailRow(seg) : "");
+    }).join("");
+
+    tbody.querySelectorAll(".segment-row").forEach(el => {
+      el.addEventListener("click", () => {
+        const idx = +el.dataset.seg;
+        openIdx = (openIdx === idx) ? null : idx;
+        buildRows();
+        // scroll strip block to match
+        const block = $("#segmentStrip .segment-block[data-seg='" + openIdx + "']");
+        if (block) block.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      });
+    });
+  }
+  buildRows();
+
+  // Strip click syncs with table
+  $("#segmentStrip").querySelectorAll(".segment-block").forEach(el => {
+    el.addEventListener("click", () => {
+      const idx = +el.dataset.seg;
+      openIdx = (openIdx === idx) ? null : idx;
+      buildRows();
+      const row = $("#segmentTable .segment-row[data-seg='" + openIdx + "']");
+      if (row) row.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  });
 }
 
-function renderOpponents(matchups) {
-  const rows = Object.entries(matchups).sort((a, b) => b[1].total - a[1].total);
-  $("#oppTable tbody").innerHTML = rows.map(([opp, m]) =>
-    `<tr class="opp-row"><td>${opp}</td><td class="num">${m.total}</td><td class="num">${m.home}</td><td class="num">${m.away}</td></tr>`
-  ).join("");
+/* ---- opponent frequency (sortable, click to expand games) -------------- */
+function renderOpponents(matchups, gameLog) {
+  const tip = $("#tooltip");
+  let oppSortState = { key: "total", dir: -1 };
+
+  function buildOppTable() {
+    const rows = Object.entries(matchups).sort((a, b) => {
+      const k = oppSortState.key;
+      if (k === "team") return oppSortState.dir * a[0].localeCompare(b[0]);
+      return oppSortState.dir * (a[1][k] - b[1][k]);
+    });
+    const tbody = $("#oppTable tbody");
+    tbody.innerHTML = rows.map(([opp, m]) =>
+      `<tr class="opp-row" data-opp="${opp}">
+        <td>${opp}</td>
+        <td class="num">${m.total}</td>
+        <td class="num">${m.home}</td>
+        <td class="num">${m.away}</td>
+      </tr>`
+    ).join("");
+
+    tbody.querySelectorAll(".opp-row").forEach(el => {
+      el.addEventListener("click", () => {
+        const opp = el.dataset.opp;
+        const games = gameLog.filter(g => g.opponent === opp);
+        const detail = $("#oppDetail");
+        // toggle
+        if (detail.dataset.opp === opp) {
+          detail.innerHTML = ""; detail.dataset.opp = "";
+          return;
+        }
+        detail.dataset.opp = opp;
+        detail.innerHTML = `<div class="opp-games">
+          <div class="opp-games-label">vs ${opp}</div>
+          ${games.map(g => `<div class="opp-game-row">
+            <span>${fmtDateShort(g.date)}</span>
+            <span>${g.isHome ? "Home" : "Away"}</span>
+            ${g.b2b ? `<span class="opp-b2b">B2B</span>` : ""}
+          </div>`).join("")}
+        </div>`;
+      });
+    });
+  }
+  buildOppTable();
+
+  document.querySelectorAll("#oppTable th[data-opp-sort]").forEach(th => {
+    th.style.cursor = "pointer";
+    th.addEventListener("click", () => {
+      const k = th.dataset.oppSort;
+      oppSortState = { key: k, dir: oppSortState.key === k ? -oppSortState.dir : -1 };
+      buildOppTable();
+    });
+  });
 }
 
+/* ---- monthly workload bar chart (SVG, no library) ---------------------- */
+const MONTH_ORDER = ["Sep","Oct","Nov","Dec","Jan","Feb","Mar","Apr"];
+
+function renderMonthChart(monthCounts, leagueMonthCounts) {
+  // Get all months this team plays in, in season order
+  const allMonthKeys = Object.keys(monthCounts).sort((a, b) => {
+    const [ma, ya] = a.split(" "); const [mb, yb] = b.split(" ");
+    return ya !== yb ? ya - yb : MONTH_ORDER.indexOf(ma) - MONTH_ORDER.indexOf(mb);
+  });
+
+  if (!allMonthKeys.length) { $("#monthChart").innerHTML = ""; return; }
+
+  // League average per month (total / 32)
+  const leagueAvg = {};
+  for (const k of allMonthKeys) leagueAvg[k] = ((leagueMonthCounts[k] || 0) / 32);
+
+  const W = 360, H = 200, padL = 28, padB = 36, padT = 14, padR = 8;
+  const plotW = W - padL - padR;
+  const plotH = H - padT - padB;
+  const maxVal = Math.max(...allMonthKeys.map(k => monthCounts[k] || 0), 1);
+  const yMax = Math.ceil(maxVal / 5) * 5;
+
+  const barW = plotW / allMonthKeys.length;
+  const x = i => padL + i * barW;
+  const y = v => padT + plotH - (v / yMax) * plotH;
+
+  let svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">`;
+
+  // gridlines
+  for (let v = 0; v <= yMax; v += 5) {
+    svg += `<line x1="${padL}" y1="${y(v).toFixed(1)}" x2="${W - padR}" y2="${y(v).toFixed(1)}"
+      stroke="var(--grid)" stroke-width="1"/>`;
+    svg += `<text x="${padL - 4}" y="${(y(v) + 4).toFixed(1)}" text-anchor="end"
+      fill="var(--text3)" font-size="9" font-family="Rubik">${v}</text>`;
+  }
+
+  // bars
+  allMonthKeys.forEach((k, i) => {
+    const v = monthCounts[k] || 0;
+    const bx = x(i) + barW * 0.15, bw = barW * 0.7;
+    svg += `<rect x="${bx.toFixed(1)}" y="${y(v).toFixed(1)}" width="${bw.toFixed(1)}"
+      height="${(plotH - (plotH - (v / yMax) * plotH)).toFixed(1)}"
+      fill="var(--brand-orange)" rx="2"/>`;
+    const label = k.split(" ")[0];
+    svg += `<text x="${(x(i) + barW / 2).toFixed(1)}" y="${(H - padB + 14).toFixed(1)}"
+      text-anchor="middle" fill="var(--text3)" font-size="9.5" font-family="Rubik">${label}</text>`;
+  });
+
+  // league average line
+  const linePoints = allMonthKeys.map((k, i) =>
+    `${(x(i) + barW / 2).toFixed(1)},${y(leagueAvg[k]).toFixed(1)}`).join(" ");
+  svg += `<polyline points="${linePoints}" fill="none" stroke="var(--accent)"
+    stroke-width="1.5" stroke-dasharray="3 2"/>`;
+  svg += `<text x="${W - padR}" y="${(y(leagueAvg[allMonthKeys[allMonthKeys.length - 1]]) - 4).toFixed(1)}"
+    text-anchor="end" fill="var(--accent)" font-size="9" font-family="Rubik">Avg</text>`;
+
+  svg += "</svg>";
+  $("#monthChart").innerHTML = svg;
+}
+
+/* ---- main render ------------------------------------------------------- */
 function showTeam(teamName) {
   state.team = teamName;
   const s = state.league.teamSummary[teamName];
   if (!s) return;
-  $("#teamPanelLabel").textContent = `${teamName} \u2014 Season at a Glance`;
   renderStats(s, state.league);
-  renderToughest(s.toughestStretch);
   renderCalendar(s.gameLog);
   renderSegments(s.segments, state.league);
-  renderOpponents(s.opponentMatchups);
+  renderOpponents(s.opponentMatchups, s.gameLog);
+  renderMonthChart(s.monthCounts, state.league.leagueMonthCounts);
 }
 
 async function boot() {
@@ -209,11 +341,11 @@ async function boot() {
     sel.addEventListener("change", () => showTeam(sel.value));
     $("#updatedStamp").textContent = state.league.generated && !state.league.generated.startsWith("TEST")
       ? `Last updated: ${state.league.generated.slice(0, 10)}.`
-      : "Placeholder data \u2014 pending the first live pipeline run.";
+      : "Placeholder data — pending the first live pipeline run.";
     showTeam(state.league.teams[0]);
   } catch (e) {
     console.error(e);
-    $("#statRow").innerHTML = "<p>Couldn't load league data. If you opened this file directly, serve the folder instead: python -m http.server</p>";
+    $("#statRow").innerHTML = "<p>Couldn't load league data.</p>";
   }
 }
 boot();
