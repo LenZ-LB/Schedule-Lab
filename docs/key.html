@@ -39,23 +39,32 @@
   <div class="key-card">
     <div class="key-card-label">Schedule Density</div>
     <p><strong>B2B</strong> (Back-to-Back) — Games played with zero days of rest: the team played the day before and plays again today.</p>
-    <p><strong>3-in-4</strong> — Every stretch of 3 consecutive games that spans 4 calendar days or less (measured from the first game to the last).</p>
+    <p><strong>3-in-4</strong> — Every stretch of 3 consecutive games spanning 4 calendar days or less (measured from the first game to the last).</p>
     <p><strong>4-in-6</strong> — Every stretch of 4 consecutive games spanning 6 calendar days or less.</p>
     <p><strong>5-in-8</strong> — Every stretch of 5 consecutive games spanning 8 calendar days or less. These three stats overlap by design — a brutal 5-in-8 stretch will usually contain a couple of the shorter stretches too.</p>
   </div>
 
   <div class="key-card">
     <div class="key-card-label">Rest Comparisons</div>
-    <p><strong>Rest Vs</strong> — For every game, compare this team's days of rest against that same game's opponent: +1 if this team had more rest, −1 if fewer. Either club's season opener is excluded (no prior game to compare). Summed across the season — league-wide this always nets to exactly 0.</p>
-    <p><strong>Waiting</strong> — Games where this team had at least one day off (not on a back-to-back itself) while that night's opponent was playing the second half of <em>their</em> back-to-back.</p>
+    <p><strong>Rest Vs</strong> — For every game, compare this team's days of rest against the opponent's: +1 if this team had more rest, −1 if fewer, 0 if equal. Either club's season opener is excluded (no prior game to compare). Summed across the season — league-wide this always nets to exactly 0.</p>
+    <p><strong>Waiting</strong> — Games where this team had at least one day off while the opponent was on the second half of <em>their</em> back-to-back.</p>
     <p><strong>Tired</strong> — The mirror of Waiting: games where this team was on the second half of a back-to-back while the opponent had rest. League-wide, Waiting and Tired totals always match exactly.</p>
-    <p><strong>Avg Rest Days</strong> — Average days between games. Excludes any gap that fully spans the Christmas break (Dec 23–25, 2026) or the All-Star break (Feb 4–7, 2027) — including whatever extra buffer days a specific team has attached to those breaks — so a league-mandated pause doesn't inflate a team's number.</p>
+    <p><strong>Avg Rest Days</strong> — Average days between games. Excludes any gap spanning the Christmas break (Dec 23–25, 2026) or the All-Star break (Feb 4–7, 2027) so a league-mandated pause doesn't inflate a team's number.</p>
+  </div>
+
+  <div class="key-card">
+    <div class="key-card-label">Opponent Rest &amp; Density</div>
+    <p>The same rest and density metrics computed for the <em>opponent</em> entering each matchup — not this team's own schedule, but what the other team was dealing with. Shown as split cards on the Schedule page and as columns in the main schedule table.</p>
+    <p><strong>Opp B2B</strong> — The opponent was on a back-to-back entering this game.</p>
+    <p><strong>Opp Rest</strong> — The opponent's actual days off before this game.</p>
+    <p><strong>Rest +/−</strong> — Our rest days minus theirs. Positive = we were more rested; negative = they were. This is the per-game version of the season-level Rest Vs stat.</p>
+    <p>On the Full Schedule table, the <strong>Adv</strong> column shows ✓ when we had more rest, ✗ when the opponent did, and — when even or for openers.</p>
   </div>
 
   <div class="key-card">
     <div class="key-card-label">Travel</div>
-    <p><strong>Miles</strong> — Approximate season travel mileage: the straight-line (great-circle) distance between each consecutive game location on the schedule (own city when home, opponent's city when away). The two Global Series games route through the actual host city (Helsinki, Düsseldorf) rather than the "designated home" team's city. This is straight-line distance, not actual flight-path routing.</p>
-    <p><strong>TZ Hours</strong> — Cumulative time-zone hours crossed across the season. For each consecutive pair of games, the shift is (previous game's hours-behind-Eastern) minus (this game's) — e.g. Pacific→Eastern is +3. The magnitude of every shift is summed for the season.</p>
+    <p><strong>Miles</strong> — Approximate season travel mileage: straight-line (great-circle) distance between each consecutive game location (own city when home, opponent's city when away). The Global Series games route through the actual host city (Helsinki, Düsseldorf) rather than either team's home city.</p>
+    <p><strong>TZ Hours</strong> — Cumulative time-zone hours crossed. For each consecutive pair of games, the shift is (previous game's hours-behind-Eastern) minus (this game's) — e.g. Pacific→Eastern is +3. The magnitude of every shift is summed across the season.</p>
   </div>
 
   <div class="key-card">
@@ -65,18 +74,50 @@
   </div>
 
   <div class="key-card">
-    <div class="key-card-label">Toughest Stretch</div>
-    <p>The single worst 5-game window this season for the selected team. Every 5-game window is scored on road games, back-to-backs, TZ hours, and miles <em>within that window</em>, with each component normalized against that team's own other windows (so miles don't automatically dominate the score just because they're a bigger number). The highest-scoring window is surfaced as the callout on Team Explorer.</p>
+    <div class="key-card-label">Manual-Entry Columns (Schedule)</div>
+    <p>Some columns can't be derived from the NHL API and are entered by hand via the Game Editor. They appear as split cards and table columns on the Schedule page.</p>
+    <p><strong>EA</strong> (Early Arrival) — Away games where the team arrived in the city more than one day before the game. Away only; shown as — on home games.</p>
+    <p><strong>Hotel 25+</strong> — Away games where the team's hotel was more than 25 minutes from the arena. Away only.</p>
+    <p><strong>MDO</strong> (Mandatory Day Off) — A league-mandated day off before this game.</p>
+    <p><strong>MS / DBS</strong> — Whether the team held a morning skate on game day (MS) or skated the day before (DBS).</p>
+    <p><strong>ST</strong> (Special Teams) — Whether the team won or tied on special teams in this game.</p>
+    <p><strong>11F / 7D</strong> — Whether the team dressed 11 forwards and 7 defencemen.</p>
   </div>
 
   <div class="key-card">
-    <div class="key-card-label">5-Game Segments</div>
-    <p>The season split into fixed, non-overlapping blocks of 5 games (the final block is 4, since 84 doesn't divide evenly) — the way a coaching staff actually talks about upcoming stretches, as opposed to Toughest Stretch's sliding window. The <strong>strip</strong> is shaded by this team's own range (which of MY segments is worst); the <strong>table</strong> is shaded against the league average for that same segment number (is this stretch tough because of us, or because that point in the season is tough for everyone). Click a row to expand the individual games in that segment.</p>
+    <div class="key-card-label">5-Game Segments (Team Explorer)</div>
+    <p>The season split into fixed, non-overlapping blocks of 5 games (the final block is 4, since 84 doesn't divide evenly). The <strong>strip</strong> is shaded by this team's own range across their segments — darker means a tougher block relative to their own season. The <strong>table</strong> cells are shaded against the league average for that same segment number — is this stretch tough because of us, or because that point in the season is tough for everyone? Click any row to expand the individual games in that segment, showing the full schedule detail including opponent rest and rest advantage.</p>
   </div>
 
   <div class="key-card">
-    <div class="key-card-label">Segment Tags</div>
-    <p>Simple threshold labels applied per segment — All Road / Homestand / Road Heavy (4 of 5 games away), B2B Heavy (2+ back-to-backs), Time Zone Grind (8+ TZ hours), Catching Tired Teams / Grinding Through Fatigue (based on Waiting vs. Tired counts within the segment), or Balanced if nothing crosses a threshold. A segment can carry more than one tag.</p>
+    <div class="key-card-label">Season Calendar (Team Explorer)</div>
+    <p>One cell per calendar day across the full season. Colors show the type of day at a glance:</p>
+    <p>
+      <span style="display:inline-flex;align-items:center;gap:6px;margin-right:14px">
+        <span style="width:14px;height:14px;border-radius:3px;background:#00205B;display:inline-block"></span>Home game
+      </span>
+      <span style="display:inline-flex;align-items:center;gap:6px;margin-right:14px">
+        <span style="width:14px;height:14px;border-radius:3px;background:var(--brand-orange);display:inline-block"></span>Away game
+      </span>
+      <span style="display:inline-flex;align-items:center;gap:6px;margin-right:14px">
+        <span style="width:14px;height:14px;border-radius:3px;background:#7B1FA2;outline:2px solid #fff;outline-offset:-2px;display:inline-block"></span>Back-to-back
+      </span>
+      <span style="display:inline-flex;align-items:center;gap:6px">
+        <span style="width:14px;height:14px;border-radius:3px;background:var(--grid);display:inline-block"></span>Off day
+      </span>
+    </p>
+    <p>Hover any game day to see the game number, date, opponent, and rest days.</p>
+  </div>
+
+  <div class="key-card">
+    <div class="key-card-label">Monthly Workload (Team Explorer)</div>
+    <p>Orange bars show how many games this team plays in each month. The number is printed above each bar and also appears in the hover tooltip.</p>
+    <p>The short <span style="color:var(--accent);font-weight:700">blue tick</span> inside each bar shows the NHL-wide average for that specific month — since the league doesn't spread games evenly across the season, each month has its own average rather than a single season-wide line.</p>
+  </div>
+
+  <div class="key-card">
+    <div class="key-card-label">Opponent Frequency (Team Explorer)</div>
+    <p>Total / Home / Away games against each of the other 31 teams this season. Click any column header to sort. Click a team row to expand the individual games against that opponent, showing the date and whether it was home or away.</p>
   </div>
 
   <div class="key-card">
@@ -86,7 +127,8 @@
       <span class="rank-chip rank-bad">#28</span> bottom ~19% — unfavorable &nbsp;·&nbsp;
       <span class="rank-chip">#16</span> everyone in between — neutral
     </p>
-    <p><strong>Cell shading (Overview &amp; tile ranks)</strong> — Each shaded cell's color is relative to that column's actual league average, not a fixed target — <span style="color:var(--good-text)">blue</span> means better than average, <span style="color:var(--bad-text)">red</span> means worse, and how saturated the color is reflects how far from average that team sits.</p>
+    <p><strong>Cell shading</strong> — Each shaded cell's color is relative to that column's actual league average, not a fixed target. <span style="color:var(--good-text)">Blue</span> means better than average, <span style="color:var(--bad-text)">red</span> means worse, and saturation reflects how far from average that team sits.</p>
+    <p><strong>Rank chips</strong> appear on the Season at a Glance tiles in Team Explorer, showing where this team ranks among all 32 for that metric along with the league average.</p>
   </div>
 
 </div>
