@@ -333,7 +333,6 @@ function renderOpponents(matchups, gameLog) {
 const MONTH_ORDER = ["Sep","Oct","Nov","Dec","Jan","Feb","Mar","Apr"];
 
 function renderMonthChart(monthCounts, leagueMonthCounts) {
-  // Get all months this team plays in, in season order
   const allMonthKeys = Object.keys(monthCounts).sort((a, b) => {
     const [ma, ya] = a.split(" "); const [mb, yb] = b.split(" ");
     return ya !== yb ? ya - yb : MONTH_ORDER.indexOf(ma) - MONTH_ORDER.indexOf(mb);
@@ -341,21 +340,21 @@ function renderMonthChart(monthCounts, leagueMonthCounts) {
 
   if (!allMonthKeys.length) { $("#monthChart").innerHTML = ""; return; }
 
-  // League average per month (total / 32)
   const leagueAvg = {};
   for (const k of allMonthKeys) leagueAvg[k] = ((leagueMonthCounts[k] || 0) / 32);
 
   const W = 360, H = 200, padL = 28, padB = 36, padT = 14, padR = 8;
   const plotW = W - padL - padR;
   const plotH = H - padT - padB;
-  const maxVal = Math.max(...allMonthKeys.map(k => monthCounts[k] || 0), 1);
+  const maxVal = Math.max(...allMonthKeys.map(k => monthCounts[k] || 0),
+                          ...allMonthKeys.map(k => leagueAvg[k]), 1);
   const yMax = Math.ceil(maxVal / 5) * 5;
 
   const barW = plotW / allMonthKeys.length;
   const x = i => padL + i * barW;
   const y = v => padT + plotH - (v / yMax) * plotH;
 
-  let svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">`;
+  let svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">`;
 
   // gridlines
   for (let v = 0; v <= yMax; v += 5) {
@@ -365,28 +364,62 @@ function renderMonthChart(monthCounts, leagueMonthCounts) {
       fill="var(--text3)" font-size="9" font-family="Rubik">${v}</text>`;
   }
 
-  // bars
+  // bars + per-bar league-average tick + hover tooltip
   allMonthKeys.forEach((k, i) => {
     const v = monthCounts[k] || 0;
-    const bx = x(i) + barW * 0.15, bw = barW * 0.7;
-    svg += `<rect x="${bx.toFixed(1)}" y="${y(v).toFixed(1)}" width="${bw.toFixed(1)}"
-      height="${(plotH - (plotH - (v / yMax) * plotH)).toFixed(1)}"
-      fill="var(--brand-orange)" rx="2"/>`;
+    const avg = leagueAvg[k];
+    const bx = x(i) + barW * 0.1;
+    const bw = barW * 0.8;
+    const barH = (v / yMax) * plotH;
+    const barTop = y(v);
+    const cx = x(i) + barW / 2;
     const label = k.split(" ")[0];
-    svg += `<text x="${(x(i) + barW / 2).toFixed(1)}" y="${(H - padB + 14).toFixed(1)}"
+
+    // bar
+    svg += `<rect class="mc-bar" data-month="${label}" data-val="${v}" data-avg="${avg.toFixed(1)}"
+      x="${bx.toFixed(1)}" y="${barTop.toFixed(1)}"
+      width="${bw.toFixed(1)}" height="${barH.toFixed(1)}"
+      fill="var(--brand-orange)" rx="2"/>`;
+
+    // game count label above bar (always visible)
+    svg += `<text x="${cx.toFixed(1)}" y="${(barTop - 3).toFixed(1)}"
+      text-anchor="middle" fill="var(--text)" font-size="9.5" font-weight="600"
+      font-family="DM Mono,monospace">${v}</text>`;
+
+    // league-average tick: a short horizontal line at the avg height for this month
+    const avgY = y(avg);
+    const tickHalf = bw * 0.45;
+    svg += `<line x1="${(cx - tickHalf).toFixed(1)}" y1="${avgY.toFixed(1)}"
+      x2="${(cx + tickHalf).toFixed(1)}" y2="${avgY.toFixed(1)}"
+      stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>`;
+
+    // month label below
+    svg += `<text x="${cx.toFixed(1)}" y="${(H - padB + 14).toFixed(1)}"
       text-anchor="middle" fill="var(--text3)" font-size="9.5" font-family="Rubik">${label}</text>`;
   });
 
-  // league average line
-  const linePoints = allMonthKeys.map((k, i) =>
-    `${(x(i) + barW / 2).toFixed(1)},${y(leagueAvg[k]).toFixed(1)}`).join(" ");
-  svg += `<polyline points="${linePoints}" fill="none" stroke="var(--accent)"
-    stroke-width="1.5" stroke-dasharray="3 2"/>`;
-  svg += `<text x="${W - padR}" y="${(y(leagueAvg[allMonthKeys[allMonthKeys.length - 1]]) - 4).toFixed(1)}"
-    text-anchor="end" fill="var(--accent)" font-size="9" font-family="Rubik">Avg</text>`;
+  // legend
+  svg += `<line x1="${padL}" y1="${(H - 6).toFixed(1)}" x2="${padL + 14}" y2="${(H - 6).toFixed(1)}"
+    stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>`;
+  svg += `<text x="${(padL + 17).toFixed(1)}" y="${(H - 2).toFixed(1)}"
+    fill="var(--text3)" font-size="9" font-family="Rubik">NHL avg</text>`;
 
   svg += "</svg>";
   $("#monthChart").innerHTML = svg;
+
+  // hover tooltips on bars
+  const tip = $("#tooltip");
+  $("#monthChart").querySelectorAll(".mc-bar").forEach(el => {
+    el.addEventListener("mouseenter", () => {
+      tip.hidden = false;
+      tip.innerHTML = `${el.dataset.month} · <strong>${el.dataset.val} games</strong> · NHL avg ${el.dataset.avg}`;
+    });
+    el.addEventListener("mousemove", e => {
+      tip.style.left = Math.min(e.clientX + 12, innerWidth - 220) + "px";
+      tip.style.top = (e.clientY + 12) + "px";
+    });
+    el.addEventListener("mouseleave", () => { tip.hidden = true; });
+  });
 }
 
 /* ---- full schedule table ----------------------------------------------- */
