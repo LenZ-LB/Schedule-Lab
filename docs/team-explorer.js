@@ -381,17 +381,19 @@ function renderMonthChart(monthCounts, leagueMonthCounts) {
       width="${bw.toFixed(1)}" height="${barH.toFixed(1)}"
       fill="var(--brand-orange)" rx="2"/>`;
 
-    // game count label above bar (always visible)
-    svg += `<text x="${cx.toFixed(1)}" y="${(barTop - 3).toFixed(1)}"
-      text-anchor="middle" fill="var(--text)" font-size="9.5" font-weight="600"
-      font-family="DM Mono,monospace">${v}</text>`;
-
-    // league-average tick: a short horizontal line at the avg height for this month
+    // league-average tick: thin horizontal line at avg height for this month
     const avgY = y(avg);
-    const tickHalf = bw * 0.45;
+    const tickHalf = bw * 0.42;
     svg += `<line x1="${(cx - tickHalf).toFixed(1)}" y1="${avgY.toFixed(1)}"
       x2="${(cx + tickHalf).toFixed(1)}" y2="${avgY.toFixed(1)}"
-      stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>`;
+      stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round"/>`;
+
+    // game count label: always 7px above whichever is higher — the bar top or the avg tick.
+    // This prevents the number from landing on top of the tick when they're at similar heights.
+    const labelY = Math.min(barTop, avgY) - 7;
+    svg += `<text x="${cx.toFixed(1)}" y="${labelY.toFixed(1)}"
+      text-anchor="middle" fill="var(--text)" font-size="9.5" font-weight="600"
+      font-family="DM Mono,monospace">${v}</text>`;
 
     // month label below
     svg += `<text x="${cx.toFixed(1)}" y="${(H - padB + 14).toFixed(1)}"
@@ -400,7 +402,7 @@ function renderMonthChart(monthCounts, leagueMonthCounts) {
 
   // legend
   svg += `<line x1="${padL}" y1="${(H - 6).toFixed(1)}" x2="${padL + 14}" y2="${(H - 6).toFixed(1)}"
-    stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>`;
+    stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round"/>`;
   svg += `<text x="${(padL + 17).toFixed(1)}" y="${(H - 2).toFixed(1)}"
     fill="var(--text3)" font-size="9" font-family="Rubik">NHL avg</text>`;
 
