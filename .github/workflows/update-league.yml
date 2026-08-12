@@ -2,15 +2,19 @@ name: Update league-wide data
 
 on:
   schedule:
-    # 07:00 UTC daily -- runs after the team-schedule update (06:15 UTC) so
-    # this always reflects that day's results too. 32 team-schedule fetches
-    # takes longer than the single-team update, hence the later start.
+    # 07:00 UTC daily during the season. Runs after the single-team update
+    # (06:15 UTC) so any same-day result data is already committed first.
+    # 32 API fetches take longer than one, hence the later window.
     - cron: "0 7 * 10,11,12,1,2,3,4 *"
   workflow_dispatch:
     inputs:
       season:
         description: "Season id (e.g. 20262027). Blank = config default."
         required: false
+      detect_only:
+        description: "Check for changes without writing updated data (true/false)"
+        required: false
+        default: "false"
 
 permissions:
   contents: write
@@ -23,12 +27,32 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Update league-wide data
-        run: python scripts/update_league.py ${{ github.event.inputs.season }}
+
+      - name: Check for schedule changes
+        id: detect
+        run: |
+          DETECT_FLAG=""
+          if [ "${{ github.event.inputs.detect_only }}" = "true" ]; then
+            DETECT_FLAG="--detect-only"
+          fi
+          python scripts/update_league.py ${{ github.event.inputs.season }} $DETECT_FLAG
+
       - name: Commit if changed
+        # Skips commit entirely when running in detect-only mode or when
+        # the API returned the same schedule as what's already on disk.
+        if: github.event.inputs.detect_only != 'true'
         run: |
           git config user.name "schedule-bot"
           git config user.email "actions@github.com"
           git add docs/data/league
-          git diff --cached --quiet || git commit -m "League data update $(date -u +%F)"
-          git push
+          # Only commit when actual files changed (the change log will
+          # also be staged if amendments were detected, making this an
+          # accurate proxy for "something real changed").
+          if git diff --cached --quiet; then
+            echo "No file changes -- schedule is unchanged, skipping commit."
+          else
+            # Include change summary in the commit message if there were amendments
+            CHANGED_TEAMS=$(git diff --cached --name-only | grep -v "_changes_" | wc -l)
+            git commit -m "League data update $(date -u +%F)${CHANGED_TEAMS:+ -- schedule changes detected}"
+            git push
+          fi
